@@ -14,6 +14,8 @@ class BaseNavigationController: UINavigationController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationBar.translucent = false
+        self.navigationBar.setBackgroundImage(UIImage(named: "Home_titleBackGround.png"), forBarMetrics: .Default)
     }
 
     override func didReceiveMemoryWarning() {

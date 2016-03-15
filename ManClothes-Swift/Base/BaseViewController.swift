@@ -12,6 +12,15 @@ class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var bgImage = UIImage(named: "Home_background.png")
+        //拉伸图片
+        UIGraphicsBeginImageContext(CGSize(width: kScreenWidth, height: kScreenHeight))
+        bgImage?.drawInRect(CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight))
+        bgImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        self.view.backgroundColor = UIColor.init(patternImage: bgImage!)
 
         // Do any additional setup after loading the view.
     }

@@ -8,6 +8,9 @@
 
 import UIKit
 
+let kScreenWidth = UIScreen.mainScreen().bounds.width
+let kScreenHeight = UIScreen.mainScreen().bounds.height
+
 class MainTabbarController: UITabBarController {
 
     override func viewDidLoad() {
@@ -34,7 +37,29 @@ class MainTabbarController: UITabBarController {
             navArr.append(nav)
         }
         
+        self.tabBar.tintColor = UIColor.init(red: 86/255.0, green: 171/255.0, blue: 228/255.0, alpha: 1)
+        
+        let homeTabBarItem = UITabBarItem(title: "首页", image: UIImage(named: "tabBar_home_nor")?.imageWithRenderingMode(.AlwaysOriginal), selectedImage: UIImage(named: "tabBar_home_sel")?.imageWithRenderingMode(.AlwaysOriginal))
+        homeVC.tabBarItem = homeTabBarItem
+        
+        let issuseTabBarItem = UITabBarItem(title: "专题", image: UIImage(named: "tabBar_issuse_nor")?.imageWithRenderingMode(.AlwaysOriginal), selectedImage: UIImage(named: "tabBar_issuse_sel")?.imageWithRenderingMode(.AlwaysOriginal))
+        issuseVC.tabBarItem = issuseTabBarItem
+        
+        let matchedTabBarItem = UITabBarItem(title: "搭配", image: UIImage(named: "tabBar_match_nor")?.imageWithRenderingMode(.AlwaysOriginal), selectedImage: UIImage(named: "tabBar_match_sel")?.imageWithRenderingMode(.AlwaysOriginal))
+        matchedVC.tabBarItem = matchedTabBarItem
+        
+        let discoverTabBarItem = UITabBarItem(title: "发现", image: UIImage(named: "tabBar_discover_nor")?.imageWithRenderingMode(.AlwaysOriginal), selectedImage: UIImage(named: "tabBar_discover_sel")?.imageWithRenderingMode(.AlwaysOriginal))
+        discovedVC.tabBarItem = discoverTabBarItem
+        
+        let mineTabBarItem = UITabBarItem(title: "我的", image: UIImage(named: "tabBar_mine_nor")?.imageWithRenderingMode(.AlwaysOriginal), selectedImage: UIImage(named: "tabBar_mine_sel")?.imageWithRenderingMode(.AlwaysOriginal))
+        mineVC.tabBarItem = mineTabBarItem
+        
+        
         self.viewControllers = navArr
+        
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
