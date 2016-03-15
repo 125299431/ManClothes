@@ -1,0 +1,89 @@
+{
+  "user": {
+    "member_type": "guest",
+    "login_status": "error",
+    "login_status_msg": "not login in"
+  },
+  "data": [
+    {
+      "theme_id": 15,
+      "type": "3",
+      "theme_name": "潮品专区",
+      "theme_image": "http://im01.nanyibang.com/icons/chaopin_icon02.png",
+      "theme_desc": "",
+      "theme_link": "nanyibang://fashionItem"
+    },
+    {
+      "theme_id": 16,
+      "type": "3",
+      "theme_name": "日常洗护",
+      "theme_image": "http://im01.nanyibang.com/icons/xihu_icon02.png",
+      "theme_desc": "",
+      "theme_link": "nanyibang://dailyToiletries"
+    },
+    {
+      "theme_id": 21,
+      "type": "3",
+      "theme_name": "品牌墙",
+      "theme_image": "http://im01.nanyibang.com/icons/brand_icon02.png",
+      "theme_desc": "",
+      "theme_link": "nanyibang://page/BrandStory"
+    },
+    {
+      "theme_id": 34,
+      "type": "2",
+      "theme_name": "七匹狼",
+      "theme_image": "http://im01.nanyibang.com/focus_map/sevenwolf_theme.jpg",
+      "theme_desc": "",
+      "theme_link": "http://shop.nanyibang.com/topic/20150925.html"
+    },
+    {
+      "theme_id": 33,
+      "type": "2",
+      "theme_name": "户外潮搭",
+      "theme_image": "http://im01.nanyibang.com/focus_map/huwaichao_theme.jpg",
+      "theme_desc": "",
+      "theme_link": "http://shop.nanyibang.com/topic/20150924.html"
+    },
+    {
+      "theme_id": 32,
+      "type": "2",
+      "theme_name": "针织衫",
+      "theme_image": "http://im01.nanyibang.com/focus_map/zhenzhi_theme.jpg",
+      "theme_desc": "",
+      "theme_link": "http://shop.nanyibang.com/topic/20150923.html"
+    },
+    {
+      "theme_id": 30,
+      "type": "2",
+      "theme_name": "秋季校园",
+      "theme_image": "http://im01.nanyibang.com/focus_map/schoolautomn_theme.jpg",
+      "theme_desc": "",
+      "theme_link": "http://shop.nanyibang.com/topic/0915fall.html"
+    },
+    {
+      "theme_id": 29,
+      "type": "2",
+      "theme_name": "商务成熟",
+      "theme_image": "http://im01.nanyibang.com/focus_map/shangwu_theme.jpg",
+      "theme_desc": "",
+      "theme_link": "http://shop.nanyibang.com/topic/0910work.html"
+    },
+    {
+      "theme_id": 9,
+      "type": "2",
+      "theme_name": "9.9包邮",
+      "theme_image": "http://im01.nanyibang.com/focus_map/9_9.jpg",
+      "theme_desc": "",
+      "theme_link": "nanyibang://postageFree"
+    },
+    {
+      "theme_id": 11,
+      "type": "2",
+      "theme_name": "好看么",
+      "theme_image": "http://im01.nanyibang.com/focus_map/show_picture.jpg",
+      "theme_desc": "",
+      "theme_link": "nanyibang://haokanme"
+    }
+  ]
+}
