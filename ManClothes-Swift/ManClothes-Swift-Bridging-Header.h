@@ -7,4 +7,4 @@
 #import "UIImageView+WebCache.h"
 #import "MJRefresh.h"
 #import "UIButton+WebCache.h"
-#import "MBProgressHUD"
+#import "MBProgressHUD.h"
