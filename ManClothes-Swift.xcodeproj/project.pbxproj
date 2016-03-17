@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		784516F51C990BCA007FE225 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784516F41C990BCA007FE225 /* HomeCell.swift */; };
+		784516F71C993265007FE225 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784516F61C993265007FE225 /* HomeHeaderView.swift */; };
+		784516F91C995FFC007FE225 /* DataSerive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784516F81C995FFC007FE225 /* DataSerive.swift */; };
 		786255CC1C97A6230073DD62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786255CB1C97A6230073DD62 /* AppDelegate.swift */; };
 		786255D31C97A6230073DD62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 786255D21C97A6230073DD62 /* Assets.xcassets */; };
 		786255D61C97A6230073DD62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 786255D41C97A6230073DD62 /* LaunchScreen.storyboard */; };
@@ -192,6 +195,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		784516F41C990BCA007FE225 /* HomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		784516F61C993265007FE225 /* HomeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
+		784516F81C995FFC007FE225 /* DataSerive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSerive.swift; sourceTree = "<group>"; };
 		786255C81C97A6230073DD62 /* ManClothes-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ManClothes-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		786255CB1C97A6230073DD62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		786255D21C97A6230073DD62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -843,6 +849,8 @@
 		7862576F1C97B5A60073DD62 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				784516F41C990BCA007FE225 /* HomeCell.swift */,
+				784516F61C993265007FE225 /* HomeHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -917,6 +925,7 @@
 				7862584C1C97B5F70073DD62 /* MainTabbarController.swift */,
 				7862584E1C97B6170073DD62 /* BaseNavigationController.swift */,
 				786258501C97B62A0073DD62 /* BaseViewController.swift */,
+				784516F81C995FFC007FE225 /* DataSerive.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1165,6 +1174,7 @@
 				786256681C97B1BE0073DD62 /* AFURLRequestSerialization.m in Sources */,
 				786256671C97B1BE0073DD62 /* AFURLConnectionOperation.m in Sources */,
 				786258591C97B7880073DD62 /* DiscoverViewController.swift in Sources */,
+				784516F71C993265007FE225 /* HomeHeaderView.swift in Sources */,
 				7862566D1C97B1BE0073DD62 /* UIAlertView+AFNetworking.m in Sources */,
 				786256771C97B1BE0073DD62 /* MJRefreshBaseView.m in Sources */,
 				7862567B1C97B1BE0073DD62 /* UIScrollView+MJExtension.m in Sources */,
@@ -1177,6 +1187,7 @@
 				7862567C1C97B1BE0073DD62 /* UIScrollView+MJRefresh.m in Sources */,
 				786256691C97B1BE0073DD62 /* AFURLResponseSerialization.m in Sources */,
 				786256781C97B1BE0073DD62 /* MJRefreshConst.m in Sources */,
+				784516F91C995FFC007FE225 /* DataSerive.swift in Sources */,
 				786256891C97B1BE0073DD62 /* UIImage+MultiFormat.m in Sources */,
 				786256791C97B1BE0073DD62 /* MJRefreshFooterView.m in Sources */,
 				786256751C97B1BE0073DD62 /* MBProgressHUD.m in Sources */,
@@ -1193,6 +1204,7 @@
 				786256851C97B1BE0073DD62 /* SDWebImageManager.m in Sources */,
 				786258511C97B62A0073DD62 /* BaseViewController.swift in Sources */,
 				7862568A1C97B1BE0073DD62 /* UIImage+WebP.m in Sources */,
+				784516F51C990BCA007FE225 /* HomeCell.swift in Sources */,
 				7862567A1C97B1BE0073DD62 /* MJRefreshHeaderView.m in Sources */,
 				786256711C97B1BE0073DD62 /* UIRefreshControl+AFNetworking.m in Sources */,
 				7862567D1C97B1BE0073DD62 /* UIView+MJExtension.m in Sources */,
@@ -1435,6 +1447,7 @@
 				786255F21C97A6230073DD62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		786255F31C97A6230073DD62 /* Build configuration list for PBXNativeTarget "ManClothes-SwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -1443,6 +1456,7 @@
 				786255F51C97A6230073DD62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		786255F61C97A6230073DD62 /* Build configuration list for PBXNativeTarget "ManClothes-SwiftUITests" */ = {
 			isa = XCConfigurationList;
@@ -1451,6 +1465,7 @@
 				786255F81C97A6230073DD62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

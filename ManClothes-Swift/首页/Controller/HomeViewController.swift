@@ -8,13 +8,42 @@
 
 import UIKit
 
-class HomeViewController: BaseViewController {
+class HomeViewController: BaseViewController , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
+    var collectionView:UICollectionView?
+    var homeHeaderView:HomeHeaderView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "首页"
+        
+        self._initCollectionView()
 
-        // Do any additional setup after loading the view.
+    }
+    
+    
+    func _initCollectionView() {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.minimumInteritemSpacing = 10
+        flowLayout.minimumLineSpacing = 10
+//        flowLayout.itemSize = CGSize(width: kScreenWidth / 2 - 30, height: 200 * (kScreenWidth / 2 - 30) / 150)
+        //头视图的size
+        flowLayout.headerReferenceSize = CGSize(width: kScreenWidth, height: 250)
+        //单元格偏移量
+        flowLayout.sectionInset = UIEdgeInsetsMake(0, 15, 0, 15)
+        self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowLayout)
+        self.collectionView!.backgroundColor = UIColor.clearColor()
+        self.collectionView!.delegate = self
+        self.collectionView!.dataSource = self
+        self.collectionView!.contentInset = UIEdgeInsetsMake(0, 0, 64, 0)
+        self.collectionView?.showsVerticalScrollIndicator = false
+        
+        //注册头视图
+        self.collectionView?.registerClass(HomeHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "HomeHeader")
+        self.collectionView!.registerClass(HomeCell.self, forCellWithReuseIdentifier: "HomeCell")
+        self.view.addSubview(self.collectionView!)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,15 +51,25 @@ class HomeViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //MARK:UICollectionViewDataSource
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 20
     }
-    */
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSize(width: kScreenWidth / 2 - 30, height: 200 * (kScreenWidth / 2 - 30) / 150)
+    }
+    //头视图
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        homeHeaderView  = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "HomeHeader", forIndexPath: indexPath) as? HomeHeaderView
+        return self.homeHeaderView!
+    }
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("HomeCell", forIndexPath: indexPath)
+//        cell.contentView.backgroundColor = UIColor.redColor()
+        return cell
+    }
+    
+
+
 
 }
