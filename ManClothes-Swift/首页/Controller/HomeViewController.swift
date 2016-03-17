@@ -18,6 +18,8 @@ class HomeViewController: BaseViewController , UICollectionViewDataSource, UICol
         self.title = "首页"
         
         self._initCollectionView()
+        
+        self._loadData()
 
     }
     
@@ -44,6 +46,31 @@ class HomeViewController: BaseViewController , UICollectionViewDataSource, UICol
         self.view.addSubview(self.collectionView!)
         
         
+    }
+    
+    
+    func _loadData() {
+        //请求单元格数据
+        let params0 = NSMutableDictionary()
+        params0.setObject("19", forKey: "age")
+        params0.setObject("0", forKey: "campaignId")
+        params0.setObject("jingxuan", forKey: "campaignType")
+        params0.setObject("1", forKey: "page")
+        
+        DataSerive.requireDataWithURL(campaign, params: params0, method: "GET", successBlock: { (operation, resust) -> Void in
+            
+            print(resust)
+            let jsonDic = resust["data"] as! NSDictionary
+            let itemDetailArr = jsonDic["itemDetail"] as! [NSDictionary]
+            let mArr = []
+            for dic in itemDetailArr {
+                
+            }
+            
+            
+            }) { (operation, error) -> Void in
+                
+        }
     }
 
     override func didReceiveMemoryWarning() {

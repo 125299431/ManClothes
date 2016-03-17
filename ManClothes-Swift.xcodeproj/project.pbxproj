@@ -175,6 +175,9 @@
 		786258571C97B7750073DD62 /* MatchedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786258561C97B7750073DD62 /* MatchedViewController.swift */; };
 		786258591C97B7880073DD62 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786258581C97B7880073DD62 /* DiscoverViewController.swift */; };
 		7862585B1C97B7970073DD62 /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7862585A1C97B7970073DD62 /* MineViewController.swift */; };
+		78896D451C9A570000A229FA /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78896D441C9A570000A229FA /* BaseModel.swift */; };
+		78896D861C9AD7D100A229FA /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78896D851C9AD7D100A229FA /* Constant.swift */; };
+		78896D8A1C9AE77B00A229FA /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78896D891C9AE77B00A229FA /* HomeModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -418,6 +421,9 @@
 		786258561C97B7750073DD62 /* MatchedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchedViewController.swift; sourceTree = "<group>"; };
 		786258581C97B7880073DD62 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		7862585A1C97B7970073DD62 /* MineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
+		78896D441C9A570000A229FA /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
+		78896D851C9AD7D100A229FA /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		78896D891C9AE77B00A229FA /* HomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -842,6 +848,7 @@
 		7862576E1C97B5A60073DD62 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				78896D891C9AE77B00A229FA /* HomeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -926,6 +933,8 @@
 				7862584E1C97B6170073DD62 /* BaseNavigationController.swift */,
 				786258501C97B62A0073DD62 /* BaseViewController.swift */,
 				784516F81C995FFC007FE225 /* DataSerive.swift */,
+				78896D441C9A570000A229FA /* BaseModel.swift */,
+				78896D851C9AD7D100A229FA /* Constant.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1178,6 +1187,7 @@
 				7862566D1C97B1BE0073DD62 /* UIAlertView+AFNetworking.m in Sources */,
 				786256771C97B1BE0073DD62 /* MJRefreshBaseView.m in Sources */,
 				7862567B1C97B1BE0073DD62 /* UIScrollView+MJExtension.m in Sources */,
+				78896D8A1C9AE77B00A229FA /* HomeModel.swift in Sources */,
 				786256661C97B1BE0073DD62 /* AFSecurityPolicy.m in Sources */,
 				786256621C97B1BE0073DD62 /* AFHTTPRequestOperation.m in Sources */,
 				7862566A1C97B1BE0073DD62 /* AFURLSessionManager.m in Sources */,
@@ -1207,6 +1217,7 @@
 				784516F51C990BCA007FE225 /* HomeCell.swift in Sources */,
 				7862567A1C97B1BE0073DD62 /* MJRefreshHeaderView.m in Sources */,
 				786256711C97B1BE0073DD62 /* UIRefreshControl+AFNetworking.m in Sources */,
+				78896D861C9AD7D100A229FA /* Constant.swift in Sources */,
 				7862567D1C97B1BE0073DD62 /* UIView+MJExtension.m in Sources */,
 				786256901C97B1BE0073DD62 /* UIViewExt.m in Sources */,
 				786256721C97B1BE0073DD62 /* UIWebView+AFNetworking.m in Sources */,
@@ -1222,6 +1233,7 @@
 				786256811C97B1BE0073DD62 /* SDWebImageCompat.m in Sources */,
 				7862568B1C97B1BE0073DD62 /* UIImageView+HighlightedWebCache.m in Sources */,
 				7862567F1C97B1BE0073DD62 /* NSData+ImageContentType.m in Sources */,
+				78896D451C9A570000A229FA /* BaseModel.swift in Sources */,
 				7862584D1C97B5F70073DD62 /* MainTabbarController.swift in Sources */,
 				7862566C1C97B1BE0073DD62 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 			);

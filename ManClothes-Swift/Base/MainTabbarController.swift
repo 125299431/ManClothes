@@ -8,8 +8,7 @@
 
 import UIKit
 
-let kScreenWidth = UIScreen.mainScreen().bounds.width
-let kScreenHeight = UIScreen.mainScreen().bounds.height
+
 
 class MainTabbarController: UITabBarController {
 

@@ -22,7 +22,7 @@ class DataSerive: NSObject {
         //请求解析方式
         manager.requestSerializer = AFHTTPRequestSerializer()
         //响应的解析方式
-        manager.responseSerializer = AFHTTPResponseSerializer()
+        manager.responseSerializer = AFJSONResponseSerializer(readingOptions: .MutableContainers)
         var operation:AFHTTPRequestOperation?
         if method.isEqualToString("GET") {
             operation = manager.GET(urlStr as String, parameters: params, success: { (operation, responseObject) -> Void in
