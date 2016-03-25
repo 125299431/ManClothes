@@ -50,10 +50,10 @@ class BaseModel: NSObject {
     private func stringToSel(attName:String) -> Selector{
         //截取首字母
         let index = attName.startIndex.advancedBy(1)
-        let firstStr = attName.substringToIndex(index)
+        let firstStr = attName.substringToIndex(index).uppercaseString
         let endStr = attName.substringFromIndex(index)
         
-        let setMethod = "set" + firstStr + endStr
+        let setMethod = "set" + firstStr + endStr + ":"
         
         //将字符串转换成SEL类型
         return NSSelectorFromString(setMethod)

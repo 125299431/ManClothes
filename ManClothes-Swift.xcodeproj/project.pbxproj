@@ -178,6 +178,11 @@
 		78896D451C9A570000A229FA /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78896D441C9A570000A229FA /* BaseModel.swift */; };
 		78896D861C9AD7D100A229FA /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78896D851C9AD7D100A229FA /* Constant.swift */; };
 		78896D8A1C9AE77B00A229FA /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78896D891C9AE77B00A229FA /* HomeModel.swift */; };
+		789219261CA2A25F00AEAB30 /* HeaderSellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789219251CA2A25F00AEAB30 /* HeaderSellController.swift */; };
+		78E9F7B41C9FECBE00C71D66 /* HeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E9F7B31C9FECBE00C71D66 /* HeaderCollectionViewCell.swift */; };
+		78E9F7B61C9FF3DD00C71D66 /* DrawLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E9F7B51C9FF3DD00C71D66 /* DrawLabel.swift */; };
+		78E9F7B81C9FFE3C00C71D66 /* HomeHerderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E9F7B71C9FFE3C00C71D66 /* HomeHerderModel.swift */; };
+		78F70B2C1CA39048000694FB /* FinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F70B2B1CA39048000694FB /* FinderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -424,6 +429,11 @@
 		78896D441C9A570000A229FA /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		78896D851C9AD7D100A229FA /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		78896D891C9AE77B00A229FA /* HomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		789219251CA2A25F00AEAB30 /* HeaderSellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderSellController.swift; sourceTree = "<group>"; };
+		78E9F7B31C9FECBE00C71D66 /* HeaderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewCell.swift; sourceTree = "<group>"; };
+		78E9F7B51C9FF3DD00C71D66 /* DrawLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawLabel.swift; sourceTree = "<group>"; };
+		78E9F7B71C9FFE3C00C71D66 /* HomeHerderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHerderModel.swift; sourceTree = "<group>"; };
+		78F70B2B1CA39048000694FB /* FinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -524,6 +534,7 @@
 				7862565F1C97B1BE0073DD62 /* UIView+FindViewController.m */,
 				786256601C97B1BE0073DD62 /* UIViewExt.h */,
 				786256611C97B1BE0073DD62 /* UIViewExt.m */,
+				78F70B2B1CA39048000694FB /* FinderViewController.swift */,
 			);
 			path = "资源文件";
 			sourceTree = "<group>";
@@ -841,6 +852,7 @@
 			isa = PBXGroup;
 			children = (
 				786258521C97B74F0073DD62 /* HomeViewController.swift */,
+				789219251CA2A25F00AEAB30 /* HeaderSellController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -849,6 +861,7 @@
 			isa = PBXGroup;
 			children = (
 				78896D891C9AE77B00A229FA /* HomeModel.swift */,
+				78E9F7B71C9FFE3C00C71D66 /* HomeHerderModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -858,6 +871,7 @@
 			children = (
 				784516F41C990BCA007FE225 /* HomeCell.swift */,
 				784516F61C993265007FE225 /* HomeHeaderView.swift */,
+				78E9F7B31C9FECBE00C71D66 /* HeaderCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -935,6 +949,7 @@
 				784516F81C995FFC007FE225 /* DataSerive.swift */,
 				78896D441C9A570000A229FA /* BaseModel.swift */,
 				78896D851C9AD7D100A229FA /* Constant.swift */,
+				78E9F7B51C9FF3DD00C71D66 /* DrawLabel.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1177,6 +1192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78E9F7B81C9FFE3C00C71D66 /* HomeHerderModel.swift in Sources */,
 				7862568E1C97B1BE0073DD62 /* SMPageControl.m in Sources */,
 				786258571C97B7750073DD62 /* MatchedViewController.swift in Sources */,
 				7862568D1C97B1BE0073DD62 /* UIView+WebCacheOperation.m in Sources */,
@@ -1188,6 +1204,7 @@
 				786256771C97B1BE0073DD62 /* MJRefreshBaseView.m in Sources */,
 				7862567B1C97B1BE0073DD62 /* UIScrollView+MJExtension.m in Sources */,
 				78896D8A1C9AE77B00A229FA /* HomeModel.swift in Sources */,
+				78F70B2C1CA39048000694FB /* FinderViewController.swift in Sources */,
 				786256661C97B1BE0073DD62 /* AFSecurityPolicy.m in Sources */,
 				786256621C97B1BE0073DD62 /* AFHTTPRequestOperation.m in Sources */,
 				7862566A1C97B1BE0073DD62 /* AFURLSessionManager.m in Sources */,
@@ -1224,9 +1241,11 @@
 				7862568C1C97B1BE0073DD62 /* UIImageView+WebCache.m in Sources */,
 				786256831C97B1BE0073DD62 /* SDWebImageDownloader.m in Sources */,
 				7862585B1C97B7970073DD62 /* MineViewController.swift in Sources */,
+				78E9F7B61C9FF3DD00C71D66 /* DrawLabel.swift in Sources */,
 				786256651C97B1BE0073DD62 /* AFNetworkReachabilityManager.m in Sources */,
 				7862567E1C97B1BE0073DD62 /* MKAnnotationView+WebCache.m in Sources */,
 				786258531C97B74F0073DD62 /* HomeViewController.swift in Sources */,
+				789219261CA2A25F00AEAB30 /* HeaderSellController.swift in Sources */,
 				7862584F1C97B6170073DD62 /* BaseNavigationController.swift in Sources */,
 				786255CC1C97A6230073DD62 /* AppDelegate.swift in Sources */,
 				786256821C97B1BE0073DD62 /* SDWebImageDecoder.m in Sources */,
@@ -1234,6 +1253,7 @@
 				7862568B1C97B1BE0073DD62 /* UIImageView+HighlightedWebCache.m in Sources */,
 				7862567F1C97B1BE0073DD62 /* NSData+ImageContentType.m in Sources */,
 				78896D451C9A570000A229FA /* BaseModel.swift in Sources */,
+				78E9F7B41C9FECBE00C71D66 /* HeaderCollectionViewCell.swift in Sources */,
 				7862584D1C97B5F70073DD62 /* MainTabbarController.swift in Sources */,
 				7862566C1C97B1BE0073DD62 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 			);
