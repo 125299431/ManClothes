@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78087F351CA522350060616E /* HeaderWebController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78087F341CA522350060616E /* HeaderWebController.swift */; };
+		78087F371CA524240060616E /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78087F361CA524240060616E /* PhotoViewController.swift */; };
+		78087F3A1CA52BF10060616E /* PhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78087F381CA52BF10060616E /* PhotoViewCell.swift */; };
+		78087F3B1CA52BF10060616E /* PhotoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78087F391CA52BF10060616E /* PhotoViewCell.xib */; };
 		784516F51C990BCA007FE225 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784516F41C990BCA007FE225 /* HomeCell.swift */; };
 		784516F71C993265007FE225 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784516F61C993265007FE225 /* HomeHeaderView.swift */; };
 		784516F91C995FFC007FE225 /* DataSerive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784516F81C995FFC007FE225 /* DataSerive.swift */; };
@@ -203,6 +207,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		78087F341CA522350060616E /* HeaderWebController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderWebController.swift; sourceTree = "<group>"; };
+		78087F361CA524240060616E /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		78087F381CA52BF10060616E /* PhotoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewCell.swift; sourceTree = "<group>"; };
+		78087F391CA52BF10060616E /* PhotoViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewCell.xib; sourceTree = "<group>"; };
 		784516F41C990BCA007FE225 /* HomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		784516F61C993265007FE225 /* HomeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		784516F81C995FFC007FE225 /* DataSerive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSerive.swift; sourceTree = "<group>"; };
@@ -853,6 +861,8 @@
 			children = (
 				786258521C97B74F0073DD62 /* HomeViewController.swift */,
 				789219251CA2A25F00AEAB30 /* HeaderSellController.swift */,
+				78087F341CA522350060616E /* HeaderWebController.swift */,
+				78087F361CA524240060616E /* PhotoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -872,6 +882,8 @@
 				784516F41C990BCA007FE225 /* HomeCell.swift */,
 				784516F61C993265007FE225 /* HomeHeaderView.swift */,
 				78E9F7B31C9FECBE00C71D66 /* HeaderCollectionViewCell.swift */,
+				78087F381CA52BF10060616E /* PhotoViewCell.swift */,
+				78087F391CA52BF10060616E /* PhotoViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1151,6 +1163,7 @@
 				786257411C97B37D0073DD62 /* LaunchImage-800-Portrait-736h@3x.png in Resources */,
 				786257141C97B37D0073DD62 /* AppIcon72x72~ipad.png in Resources */,
 				7862573E1C97B37D0073DD62 /* LaunchImage-700@2x.png in Resources */,
+				78087F3B1CA52BF10060616E /* PhotoViewCell.xib in Resources */,
 				786257061C97B37D0073DD62 /* 004@3x.png in Resources */,
 				7862575F1C97B37D0073DD62 /* star@2x.png in Resources */,
 				7862570B1C97B37D0073DD62 /* AppIcon40x40@2x.png in Resources */,
@@ -1212,6 +1225,7 @@
 				786256861C97B1BE0073DD62 /* SDWebImagePrefetcher.m in Sources */,
 				786258551C97B7640073DD62 /* IssuseViewController.swift in Sources */,
 				7862567C1C97B1BE0073DD62 /* UIScrollView+MJRefresh.m in Sources */,
+				78087F3A1CA52BF10060616E /* PhotoViewCell.swift in Sources */,
 				786256691C97B1BE0073DD62 /* AFURLResponseSerialization.m in Sources */,
 				786256781C97B1BE0073DD62 /* MJRefreshConst.m in Sources */,
 				784516F91C995FFC007FE225 /* DataSerive.swift in Sources */,
@@ -1247,6 +1261,7 @@
 				786258531C97B74F0073DD62 /* HomeViewController.swift in Sources */,
 				789219261CA2A25F00AEAB30 /* HeaderSellController.swift in Sources */,
 				7862584F1C97B6170073DD62 /* BaseNavigationController.swift in Sources */,
+				78087F351CA522350060616E /* HeaderWebController.swift in Sources */,
 				786255CC1C97A6230073DD62 /* AppDelegate.swift in Sources */,
 				786256821C97B1BE0073DD62 /* SDWebImageDecoder.m in Sources */,
 				786256811C97B1BE0073DD62 /* SDWebImageCompat.m in Sources */,
@@ -1256,6 +1271,7 @@
 				78E9F7B41C9FECBE00C71D66 /* HeaderCollectionViewCell.swift in Sources */,
 				7862584D1C97B5F70073DD62 /* MainTabbarController.swift in Sources */,
 				7862566C1C97B1BE0073DD62 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				78087F371CA524240060616E /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

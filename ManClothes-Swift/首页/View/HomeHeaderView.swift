@@ -188,16 +188,14 @@ class HomeHeaderView: UICollectionReusableView , UICollectionViewDataSource, UIC
     //点击单元格
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        let headerSellVC = HeaderSellController()
-        
-        self.viewController().navigationController?.pushViewController(headerSellVC, animated: true)
-        
         switch indexPath.row {
-        case 7:
+        case (self.scrollerData?.count)! - 2:
             //卖场
-            
+            let headerSellVC = HeaderSellController()
+            let nav = UINavigationController(rootViewController: headerSellVC)
+            self.viewController().presentViewController(nav, animated: true, completion: nil)
             break
-        case 8:
+        case (self.scrollerData?.count)! - 1:
             //照片墙
             
             break
