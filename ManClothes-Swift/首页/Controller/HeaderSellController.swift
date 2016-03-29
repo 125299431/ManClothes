@@ -58,10 +58,13 @@ class HeaderSellController: BaseViewController, UICollectionViewDelegateFlowLayo
     func segmentedCtrlAction(segemented:UISegmentedControl) {
         switch segemented.selectedSegmentIndex {
         case 0:
+            self._loadData(9.9)
             break
         case 1:
+            self._loadData(19.9)
             break
         case 2:
+            self._loadData(29.9)
             break
             
         default:

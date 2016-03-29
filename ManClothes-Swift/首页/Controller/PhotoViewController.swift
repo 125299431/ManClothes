@@ -17,6 +17,9 @@ class PhotoViewController: BaseViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self._init()
+        self._loadData()
     }
     
     func _init() {
@@ -36,7 +39,7 @@ class PhotoViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     func backClick() {
-        
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func _creatTabbleView() {
@@ -51,6 +54,31 @@ class PhotoViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     func _loadData() {
+        let params = NSMutableDictionary()
+        params.setObject("15243", forKey: "member_id")
+        params.setObject("member", forKey: "member_type")
+        params.setObject("1", forKey: "page")
+        params.setObject("1", forKey: "public")
+        params.setObject("38388", forKey: "random_key")
+        
+        DataSerive.requireDataWithURL(photoMall, params: params, method: "GET", successBlock: { (operation, resust) in
+            let jsonArr = resust["data"] as! NSArray
+            var mArr = [PhotoModel]()
+            for dic in jsonArr {
+                var model = PhotoModel()
+                model = model.initContentWithDic(dic as! NSDictionary) as! PhotoModel
+                mArr.append(model)
+            }
+            
+            self.photoData = mArr
+            
+            self.tableView.reloadData()
+            self.tableView.headerEndRefreshing()
+            
+            }) { (operation, error) in
+               print("照片墙页面出错了\(error)")
+        }
+        
         
     }
 
@@ -61,11 +89,20 @@ class PhotoViewController: BaseViewController, UITableViewDelegate, UITableViewD
     
     //MARK:UITableViewDelegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.photoData != nil {
+            return self.photoData.count
+        }
         return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
+        var cell = tableView.dequeueReusableCellWithIdentifier("photoCell") as? PhotoViewCell
+        if cell == nil {
+            cell = NSBundle.mainBundle().loadNibNamed("PhotoViewCell", owner: self, options: nil).last as? PhotoViewCell
+            
+        }
+        cell!.photoModel = self.photoData[indexPath.row] as? PhotoModel
+        return cell!
     }
     
 

@@ -183,6 +183,10 @@
 		78896D861C9AD7D100A229FA /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78896D851C9AD7D100A229FA /* Constant.swift */; };
 		78896D8A1C9AE77B00A229FA /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78896D891C9AE77B00A229FA /* HomeModel.swift */; };
 		789219261CA2A25F00AEAB30 /* HeaderSellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789219251CA2A25F00AEAB30 /* HeaderSellController.swift */; };
+		78D3B98D1CA7EB580024BF3E /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D3B98C1CA7EB580024BF3E /* PhotoModel.swift */; };
+		78D860281CA8CC8E0075128B /* FationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D860271CA8CC8E0075128B /* FationController.swift */; };
+		78D8602B1CA8D3FC0075128B /* FationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D860291CA8D3FC0075128B /* FationTableViewCell.swift */; };
+		78D8602C1CA8D3FC0075128B /* FationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78D8602A1CA8D3FC0075128B /* FationTableViewCell.xib */; };
 		78E9F7B41C9FECBE00C71D66 /* HeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E9F7B31C9FECBE00C71D66 /* HeaderCollectionViewCell.swift */; };
 		78E9F7B61C9FF3DD00C71D66 /* DrawLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E9F7B51C9FF3DD00C71D66 /* DrawLabel.swift */; };
 		78E9F7B81C9FFE3C00C71D66 /* HomeHerderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E9F7B71C9FFE3C00C71D66 /* HomeHerderModel.swift */; };
@@ -438,6 +442,10 @@
 		78896D851C9AD7D100A229FA /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		78896D891C9AE77B00A229FA /* HomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		789219251CA2A25F00AEAB30 /* HeaderSellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderSellController.swift; sourceTree = "<group>"; };
+		78D3B98C1CA7EB580024BF3E /* PhotoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
+		78D860271CA8CC8E0075128B /* FationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FationController.swift; sourceTree = "<group>"; };
+		78D860291CA8D3FC0075128B /* FationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FationTableViewCell.swift; sourceTree = "<group>"; };
+		78D8602A1CA8D3FC0075128B /* FationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FationTableViewCell.xib; sourceTree = "<group>"; };
 		78E9F7B31C9FECBE00C71D66 /* HeaderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		78E9F7B51C9FF3DD00C71D66 /* DrawLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawLabel.swift; sourceTree = "<group>"; };
 		78E9F7B71C9FFE3C00C71D66 /* HomeHerderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHerderModel.swift; sourceTree = "<group>"; };
@@ -863,6 +871,7 @@
 				789219251CA2A25F00AEAB30 /* HeaderSellController.swift */,
 				78087F341CA522350060616E /* HeaderWebController.swift */,
 				78087F361CA524240060616E /* PhotoViewController.swift */,
+				78D860271CA8CC8E0075128B /* FationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -872,6 +881,7 @@
 			children = (
 				78896D891C9AE77B00A229FA /* HomeModel.swift */,
 				78E9F7B71C9FFE3C00C71D66 /* HomeHerderModel.swift */,
+				78D3B98C1CA7EB580024BF3E /* PhotoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -884,6 +894,8 @@
 				78E9F7B31C9FECBE00C71D66 /* HeaderCollectionViewCell.swift */,
 				78087F381CA52BF10060616E /* PhotoViewCell.swift */,
 				78087F391CA52BF10060616E /* PhotoViewCell.xib */,
+				78D860291CA8D3FC0075128B /* FationTableViewCell.swift */,
+				78D8602A1CA8D3FC0075128B /* FationTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1098,6 +1110,7 @@
 				7862574A1C97B37D0073DD62 /* newView@2x.png in Resources */,
 				786257571C97B37D0073DD62 /* shareButton@2x.png in Resources */,
 				786257591C97B37D0073DD62 /* shoppingCar@2x.png in Resources */,
+				78D8602C1CA8D3FC0075128B /* FationTableViewCell.xib in Resources */,
 				786256FB1C97B37D0073DD62 /* 001.png in Resources */,
 				786257221C97B37D0073DD62 /* currentPageDot@2x.png in Resources */,
 				7862575D1C97B37D0073DD62 /* shoucang_red@2x.png in Resources */,
@@ -1218,6 +1231,7 @@
 				7862567B1C97B1BE0073DD62 /* UIScrollView+MJExtension.m in Sources */,
 				78896D8A1C9AE77B00A229FA /* HomeModel.swift in Sources */,
 				78F70B2C1CA39048000694FB /* FinderViewController.swift in Sources */,
+				78D860281CA8CC8E0075128B /* FationController.swift in Sources */,
 				786256661C97B1BE0073DD62 /* AFSecurityPolicy.m in Sources */,
 				786256621C97B1BE0073DD62 /* AFHTTPRequestOperation.m in Sources */,
 				7862566A1C97B1BE0073DD62 /* AFURLSessionManager.m in Sources */,
@@ -1235,6 +1249,7 @@
 				786256871C97B1BE0073DD62 /* UIButton+WebCache.m in Sources */,
 				786256881C97B1BE0073DD62 /* UIImage+GIF.m in Sources */,
 				786256701C97B1BE0073DD62 /* UIProgressView+AFNetworking.m in Sources */,
+				78D3B98D1CA7EB580024BF3E /* PhotoModel.swift in Sources */,
 				786256641C97B1BE0073DD62 /* AFHTTPSessionManager.m in Sources */,
 				7862566B1C97B1BE0073DD62 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				7862568F1C97B1BE0073DD62 /* UIView+FindViewController.m in Sources */,
@@ -1247,6 +1262,7 @@
 				7862568A1C97B1BE0073DD62 /* UIImage+WebP.m in Sources */,
 				784516F51C990BCA007FE225 /* HomeCell.swift in Sources */,
 				7862567A1C97B1BE0073DD62 /* MJRefreshHeaderView.m in Sources */,
+				78D8602B1CA8D3FC0075128B /* FationTableViewCell.swift in Sources */,
 				786256711C97B1BE0073DD62 /* UIRefreshControl+AFNetworking.m in Sources */,
 				78896D861C9AD7D100A229FA /* Constant.swift in Sources */,
 				7862567D1C97B1BE0073DD62 /* UIView+MJExtension.m in Sources */,

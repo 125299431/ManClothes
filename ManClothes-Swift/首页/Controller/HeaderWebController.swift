@@ -12,6 +12,8 @@ class HeaderWebController: BaseViewController {
 
     var webView:UIWebView!
     var urlStr:NSString!
+    var isTianmao:Bool?
+    
     
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {

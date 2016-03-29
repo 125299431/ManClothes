@@ -189,15 +189,17 @@ class HomeHeaderView: UICollectionReusableView , UICollectionViewDataSource, UIC
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         switch indexPath.row {
-        case (self.scrollerData?.count)! - 2:
+        case (self.scrollerData?.count)! - 1:
             //卖场
             let headerSellVC = HeaderSellController()
             let nav = UINavigationController(rootViewController: headerSellVC)
             self.viewController().presentViewController(nav, animated: true, completion: nil)
             break
-        case (self.scrollerData?.count)! - 1:
+        case (self.scrollerData?.count)!:
             //照片墙
-            
+            let photoVC = PhotoViewController()
+            let nav = UINavigationController(rootViewController: photoVC)
+            self.viewController().presentViewController(nav, animated: true, completion: nil)
             break
         default:
             break

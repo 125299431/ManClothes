@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="399.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h89-d5-t36">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plaseholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="h89-d5-t36">
                         <rect key="frame" x="8" y="8" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="AAj-PA-UYy"/>
@@ -43,8 +43,14 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6o-6r-tFA">
-                        <rect key="frame" x="8" y="77" width="398" height="68"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plaseholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="hDa-X9-gN0">
+                        <rect key="frame" x="19" y="122" width="377" height="269.5"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="描述" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6o-6r-tFA">
+                        <rect key="frame" x="19" y="77" width="377" height="37"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="L6o-6r-tFA" secondAttribute="height" multiplier="377:37" id="qE5-XK-rZL"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -52,14 +58,32 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="leadingMargin" secondItem="h89-d5-t36" secondAttribute="leading" id="0ya-Ko-3rt"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="hDa-X9-gN0" secondAttribute="trailing" constant="10" id="7MW-Pu-pd3"/>
+                    <constraint firstItem="L6o-6r-tFA" firstAttribute="top" secondItem="h89-d5-t36" secondAttribute="bottom" constant="19" id="INK-k9-4v6"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="hDa-X9-gN0" secondAttribute="bottom" id="ROB-a0-zdx"/>
                     <constraint firstItem="KPv-3m-1nK" firstAttribute="top" secondItem="DWB-hF-LhX" secondAttribute="bottom" constant="1" id="U8a-Fi-2vJ"/>
+                    <constraint firstItem="hDa-X9-gN0" firstAttribute="top" secondItem="L6o-6r-tFA" secondAttribute="bottom" constant="8" id="V5l-Dk-odb"/>
                     <constraint firstAttribute="topMargin" secondItem="DWB-hF-LhX" secondAttribute="top" id="aqx-2k-VRY"/>
                     <constraint firstItem="DWB-hF-LhX" firstAttribute="leading" secondItem="h89-d5-t36" secondAttribute="trailing" constant="15" id="cU1-76-PxA"/>
+                    <constraint firstItem="L6o-6r-tFA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="11" id="fXh-1O-o1V"/>
                     <constraint firstItem="KPv-3m-1nK" firstAttribute="leading" secondItem="DWB-hF-LhX" secondAttribute="leading" id="gMN-bn-mof"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="L6o-6r-tFA" secondAttribute="trailing" constant="10" id="rnt-9q-O35"/>
+                    <constraint firstItem="hDa-X9-gN0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="11" id="vVu-yZ-P39"/>
                     <constraint firstAttribute="topMargin" secondItem="h89-d5-t36" secondAttribute="top" id="wmE-Gt-myg"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="descriptionLabel" destination="L6o-6r-tFA" id="4Hb-gz-YCF"/>
+                <outlet property="image_y" destination="V5l-Dk-odb" id="irj-Lc-XnX"/>
+                <outlet property="photoImage" destination="hDa-X9-gN0" id="VCT-sj-7Oq"/>
+                <outlet property="timeLabel" destination="KPv-3m-1nK" id="5H8-0P-icz"/>
+                <outlet property="userImageView" destination="h89-d5-t36" id="KTi-7W-cCq"/>
+                <outlet property="userName" destination="DWB-hF-LhX" id="qVQ-2x-FoP"/>
+            </connections>
             <point key="canvasLocation" x="275" y="243"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="plaseholder.png" width="354" height="348"/>
+    </resources>
 </document>
