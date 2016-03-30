@@ -11,6 +11,12 @@
 		78087F371CA524240060616E /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78087F361CA524240060616E /* PhotoViewController.swift */; };
 		78087F3A1CA52BF10060616E /* PhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78087F381CA52BF10060616E /* PhotoViewCell.swift */; };
 		78087F3B1CA52BF10060616E /* PhotoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78087F391CA52BF10060616E /* PhotoViewCell.xib */; };
+		7832429C1CAB792F009ACFD9 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832429B1CAB792F009ACFD9 /* BuyViewController.swift */; };
+		7832429E1CABA28B009ACFD9 /* UILabelStrikeThrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832429D1CABA28B009ACFD9 /* UILabelStrikeThrough.swift */; };
+		783242A01CABAB35009ACFD9 /* SellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832429F1CABAB35009ACFD9 /* SellModel.swift */; };
+		783242A31CABB21A009ACFD9 /* BuyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783242A11CABB21A009ACFD9 /* BuyTableViewCell.swift */; };
+		783242A41CABB21A009ACFD9 /* BuyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 783242A21CABB21A009ACFD9 /* BuyTableViewCell.xib */; };
+		783242A81CABCBF1009ACFD9 /* IssuseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783242A71CABCBF1009ACFD9 /* IssuseModel.swift */; };
 		784516F51C990BCA007FE225 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784516F41C990BCA007FE225 /* HomeCell.swift */; };
 		784516F71C993265007FE225 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784516F61C993265007FE225 /* HomeHeaderView.swift */; };
 		784516F91C995FFC007FE225 /* DataSerive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784516F81C995FFC007FE225 /* DataSerive.swift */; };
@@ -187,6 +193,7 @@
 		789F07731CAA695A005D390A /* UIButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789F07721CAA695A005D390A /* UIButtonCustom.swift */; };
 		789F07751CAA6EE4005D390A /* DailyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789F07741CAA6EE4005D390A /* DailyModel.swift */; };
 		789F07771CAA716B005D390A /* DailySellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789F07761CAA716B005D390A /* DailySellViewController.swift */; };
+		78B23E081CABD8BB008C2884 /* IssuseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B23E071CABD8BB008C2884 /* IssuseCell.swift */; };
 		78D3B98D1CA7EB580024BF3E /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D3B98C1CA7EB580024BF3E /* PhotoModel.swift */; };
 		78D860281CA8CC8E0075128B /* FationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D860271CA8CC8E0075128B /* FationController.swift */; };
 		78D8602B1CA8D3FC0075128B /* FationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D860291CA8D3FC0075128B /* FationTableViewCell.swift */; };
@@ -219,6 +226,12 @@
 		78087F361CA524240060616E /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		78087F381CA52BF10060616E /* PhotoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewCell.swift; sourceTree = "<group>"; };
 		78087F391CA52BF10060616E /* PhotoViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewCell.xib; sourceTree = "<group>"; };
+		7832429B1CAB792F009ACFD9 /* BuyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
+		7832429D1CABA28B009ACFD9 /* UILabelStrikeThrough.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelStrikeThrough.swift; sourceTree = "<group>"; };
+		7832429F1CABAB35009ACFD9 /* SellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellModel.swift; sourceTree = "<group>"; };
+		783242A11CABB21A009ACFD9 /* BuyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyTableViewCell.swift; sourceTree = "<group>"; };
+		783242A21CABB21A009ACFD9 /* BuyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyTableViewCell.xib; sourceTree = "<group>"; };
+		783242A71CABCBF1009ACFD9 /* IssuseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssuseModel.swift; sourceTree = "<group>"; };
 		784516F41C990BCA007FE225 /* HomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		784516F61C993265007FE225 /* HomeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		784516F81C995FFC007FE225 /* DataSerive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSerive.swift; sourceTree = "<group>"; };
@@ -450,6 +463,7 @@
 		789F07721CAA695A005D390A /* UIButtonCustom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonCustom.swift; sourceTree = "<group>"; };
 		789F07741CAA6EE4005D390A /* DailyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyModel.swift; sourceTree = "<group>"; };
 		789F07761CAA716B005D390A /* DailySellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailySellViewController.swift; sourceTree = "<group>"; };
+		78B23E071CABD8BB008C2884 /* IssuseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssuseCell.swift; sourceTree = "<group>"; };
 		78D3B98C1CA7EB580024BF3E /* PhotoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		78D860271CA8CC8E0075128B /* FationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FationController.swift; sourceTree = "<group>"; };
 		78D860291CA8D3FC0075128B /* FationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FationTableViewCell.swift; sourceTree = "<group>"; };
@@ -882,6 +896,7 @@
 				789F07701CAA65FC005D390A /* DailyViewController.swift */,
 				78D860271CA8CC8E0075128B /* FationController.swift */,
 				789F07761CAA716B005D390A /* DailySellViewController.swift */,
+				7832429B1CAB792F009ACFD9 /* BuyViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -893,6 +908,7 @@
 				78E9F7B71C9FFE3C00C71D66 /* HomeHerderModel.swift */,
 				78D3B98C1CA7EB580024BF3E /* PhotoModel.swift */,
 				789F07741CAA6EE4005D390A /* DailyModel.swift */,
+				7832429F1CABAB35009ACFD9 /* SellModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -907,6 +923,8 @@
 				78087F391CA52BF10060616E /* PhotoViewCell.xib */,
 				78D860291CA8D3FC0075128B /* FationTableViewCell.swift */,
 				78D8602A1CA8D3FC0075128B /* FationTableViewCell.xib */,
+				783242A11CABB21A009ACFD9 /* BuyTableViewCell.swift */,
+				783242A21CABB21A009ACFD9 /* BuyTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -964,6 +982,7 @@
 		786257E01C97B5A70073DD62 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				783242A71CABCBF1009ACFD9 /* IssuseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -971,6 +990,7 @@
 		786257E11C97B5A70073DD62 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				78B23E071CABD8BB008C2884 /* IssuseCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -986,6 +1006,7 @@
 				78896D851C9AD7D100A229FA /* Constant.swift */,
 				78E9F7B51C9FF3DD00C71D66 /* DrawLabel.swift */,
 				789F07721CAA695A005D390A /* UIButtonCustom.swift */,
+				7832429D1CABA28B009ACFD9 /* UILabelStrikeThrough.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1126,6 +1147,7 @@
 				786256FB1C97B37D0073DD62 /* 001.png in Resources */,
 				786257221C97B37D0073DD62 /* currentPageDot@2x.png in Resources */,
 				7862575D1C97B37D0073DD62 /* shoucang_red@2x.png in Resources */,
+				783242A41CABB21A009ACFD9 /* BuyTableViewCell.xib in Resources */,
 				7862574D1C97B37D0073DD62 /* pageDot@2x.png in Resources */,
 				786257161C97B37D0073DD62 /* AppIcon76x76~ipad.png in Resources */,
 				786256FD1C97B37D0073DD62 /* 001@3x.png in Resources */,
@@ -1240,10 +1262,12 @@
 				784516F71C993265007FE225 /* HomeHeaderView.swift in Sources */,
 				7862566D1C97B1BE0073DD62 /* UIAlertView+AFNetworking.m in Sources */,
 				786256771C97B1BE0073DD62 /* MJRefreshBaseView.m in Sources */,
+				7832429E1CABA28B009ACFD9 /* UILabelStrikeThrough.swift in Sources */,
 				7862567B1C97B1BE0073DD62 /* UIScrollView+MJExtension.m in Sources */,
 				78896D8A1C9AE77B00A229FA /* HomeModel.swift in Sources */,
 				78F70B2C1CA39048000694FB /* FinderViewController.swift in Sources */,
 				78D860281CA8CC8E0075128B /* FationController.swift in Sources */,
+				783242A01CABAB35009ACFD9 /* SellModel.swift in Sources */,
 				786256661C97B1BE0073DD62 /* AFSecurityPolicy.m in Sources */,
 				786256621C97B1BE0073DD62 /* AFHTTPRequestOperation.m in Sources */,
 				7862566A1C97B1BE0073DD62 /* AFURLSessionManager.m in Sources */,
@@ -1251,6 +1275,7 @@
 				786256861C97B1BE0073DD62 /* SDWebImagePrefetcher.m in Sources */,
 				786258551C97B7640073DD62 /* IssuseViewController.swift in Sources */,
 				7862567C1C97B1BE0073DD62 /* UIScrollView+MJRefresh.m in Sources */,
+				78B23E081CABD8BB008C2884 /* IssuseCell.swift in Sources */,
 				78087F3A1CA52BF10060616E /* PhotoViewCell.swift in Sources */,
 				786256691C97B1BE0073DD62 /* AFURLResponseSerialization.m in Sources */,
 				786256781C97B1BE0073DD62 /* MJRefreshConst.m in Sources */,
@@ -1268,9 +1293,11 @@
 				7862568F1C97B1BE0073DD62 /* UIView+FindViewController.m in Sources */,
 				786256631C97B1BE0073DD62 /* AFHTTPRequestOperationManager.m in Sources */,
 				7862566F1C97B1BE0073DD62 /* UIImageView+AFNetworking.m in Sources */,
+				783242A31CABB21A009ACFD9 /* BuyTableViewCell.swift in Sources */,
 				786256801C97B1BE0073DD62 /* SDImageCache.m in Sources */,
 				7862566E1C97B1BE0073DD62 /* UIButton+AFNetworking.m in Sources */,
 				786256851C97B1BE0073DD62 /* SDWebImageManager.m in Sources */,
+				7832429C1CAB792F009ACFD9 /* BuyViewController.swift in Sources */,
 				786258511C97B62A0073DD62 /* BaseViewController.swift in Sources */,
 				7862568A1C97B1BE0073DD62 /* UIImage+WebP.m in Sources */,
 				784516F51C990BCA007FE225 /* HomeCell.swift in Sources */,
@@ -1282,6 +1309,7 @@
 				786256901C97B1BE0073DD62 /* UIViewExt.m in Sources */,
 				786256721C97B1BE0073DD62 /* UIWebView+AFNetworking.m in Sources */,
 				7862568C1C97B1BE0073DD62 /* UIImageView+WebCache.m in Sources */,
+				783242A81CABCBF1009ACFD9 /* IssuseModel.swift in Sources */,
 				789F07771CAA716B005D390A /* DailySellViewController.swift in Sources */,
 				786256831C97B1BE0073DD62 /* SDWebImageDownloader.m in Sources */,
 				7862585B1C97B7970073DD62 /* MineViewController.swift in Sources */,
