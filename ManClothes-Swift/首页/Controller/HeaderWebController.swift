@@ -33,12 +33,23 @@ class HeaderWebController: BaseViewController {
     }
     
     func _initView() {
+        if self.isTianmao == true {
+            let leftBtn = UIButton(type: .Custom)
+            leftBtn.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
+            leftBtn.setImage(UIImage(named: "Tmall_back.png"), forState: .Normal)
+            leftBtn.addTarget(self, action: #selector(HeaderWebController.backClick(_:)), forControlEvents: .TouchUpInside)
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
+        }
         self.webView = UIWebView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - 64))
         let request = NSMutableURLRequest(URL: NSURL(string: self.urlStr as String)!)
         self.webView.loadRequest(request)
         self.view.addSubview(self.webView)
         //屏幕自适应
         self.webView.scalesPageToFit = true
+    }
+    
+    func backClick(btn:UIButton) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

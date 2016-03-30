@@ -21,6 +21,8 @@ class HomeCell: UICollectionViewCell {
     var byImgView:UIImageView!
     //是否包邮
     var isBaoyou:Bool?
+    
+    var isRightRangle:Bool?
 
     
     override init(frame: CGRect) {
@@ -82,6 +84,12 @@ class HomeCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        if self.isRightRangle == false {
+            self.layer.cornerRadius = 7
+            self.layer.masksToBounds = true
+        }
+        
         //图片
         imgView?.sd_setImageWithURL(NSURL(string: self.homeModel!.pic_url!))
         

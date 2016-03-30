@@ -16,11 +16,36 @@ class FationTableViewCell: UITableViewCell {
     
     @IBOutlet weak var typeLabel: UILabel!
     
-    
     @IBOutlet weak var priceLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    var homeModel:HomeModel? {
+        
+        willSet(newValue){
+            self.setNeedsLayout()
+        }
+        
+        didSet(oldValue) {
+            
+        }
+    
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        //图片
+        self.pictureView.sd_setImageWithURL(NSURL(string: (self.homeModel?.pic_url)!))
+        //title
+        self.descriptionLabel.text = self.homeModel?.title
+        //类型
+        self.typeLabel.text = self.homeModel?.cloth_description
+        //价格
+        self.priceLabel.text = "¥" + "\(self.homeModel?.coupon_price)"
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

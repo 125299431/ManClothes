@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FationController: BaseViewController {
+class FationController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
     var tableView:UITableView!
     var fationData:NSArray!
@@ -20,21 +20,38 @@ class FationController: BaseViewController {
         // Do any additional setup after loading the view.
         
         self.title = "潮品专区"
-        
         self._initView()
-        
+        self._loadData()
     }
     
     func _initView() {
         self.tableView = UITableView(frame: self.view.bounds, style: .Plain)
-//        self.tableView.delegate = self
-//        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         self.tableView.rowHeight = 400
         self.view.addSubview(self.tableView)
     }
     
     func _loadData() {
-        
+        let params = ["campaignType":"chaopin", "page":"1"]
+        DataSerive.requireDataWithURL(campaign, params: params, method: "GET", successBlock: { (operation, resust) in
+            let itemDic = resust["data"] as! NSDictionary
+            let jsonArr = itemDic["itemDetail"] as! NSArray
+            let mArr = NSMutableArray()
+            for dic in jsonArr {
+                var homeModel = HomeModel()
+                homeModel = homeModel.initContentWithDic(dic as! NSDictionary) as! HomeModel
+                mArr.addObject(homeModel)
+            }
+            
+            self.fationData = mArr
+            self.tableView.reloadData()
+            self.tableView.headerEndRefreshing()
+            
+            
+            }) { (operation, error) in
+                print("潮品页请求出错了\(error)")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,17 +59,24 @@ class FationController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK:UITableViewDelegate
-//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if self.fationData.count != 0 {
-//            return self.fationData.count
-//        }
-//        return 0
-//    }
-//    
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        return
-//    }
+//    MARK:UITableViewDelegate
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.fationData != nil {
+            return self.fationData.count
+        }
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier("fationCell") as? FationTableViewCell
+        if cell == nil {
+            cell = NSBundle.mainBundle().loadNibNamed("FationTableViewCell", owner: nil, options: nil).last as? FationTableViewCell
+        }
+        
+        cell?.homeModel = self.fationData[indexPath.row] as? HomeModel
+        
+        return cell!
+    }
     
 
     /*

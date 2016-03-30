@@ -183,6 +183,10 @@
 		78896D861C9AD7D100A229FA /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78896D851C9AD7D100A229FA /* Constant.swift */; };
 		78896D8A1C9AE77B00A229FA /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78896D891C9AE77B00A229FA /* HomeModel.swift */; };
 		789219261CA2A25F00AEAB30 /* HeaderSellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789219251CA2A25F00AEAB30 /* HeaderSellController.swift */; };
+		789F07711CAA65FC005D390A /* DailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789F07701CAA65FC005D390A /* DailyViewController.swift */; };
+		789F07731CAA695A005D390A /* UIButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789F07721CAA695A005D390A /* UIButtonCustom.swift */; };
+		789F07751CAA6EE4005D390A /* DailyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789F07741CAA6EE4005D390A /* DailyModel.swift */; };
+		789F07771CAA716B005D390A /* DailySellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789F07761CAA716B005D390A /* DailySellViewController.swift */; };
 		78D3B98D1CA7EB580024BF3E /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D3B98C1CA7EB580024BF3E /* PhotoModel.swift */; };
 		78D860281CA8CC8E0075128B /* FationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D860271CA8CC8E0075128B /* FationController.swift */; };
 		78D8602B1CA8D3FC0075128B /* FationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D860291CA8D3FC0075128B /* FationTableViewCell.swift */; };
@@ -442,6 +446,10 @@
 		78896D851C9AD7D100A229FA /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		78896D891C9AE77B00A229FA /* HomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		789219251CA2A25F00AEAB30 /* HeaderSellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderSellController.swift; sourceTree = "<group>"; };
+		789F07701CAA65FC005D390A /* DailyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DailyViewController.swift; path = ../View/DailyViewController.swift; sourceTree = "<group>"; };
+		789F07721CAA695A005D390A /* UIButtonCustom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonCustom.swift; sourceTree = "<group>"; };
+		789F07741CAA6EE4005D390A /* DailyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyModel.swift; sourceTree = "<group>"; };
+		789F07761CAA716B005D390A /* DailySellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailySellViewController.swift; sourceTree = "<group>"; };
 		78D3B98C1CA7EB580024BF3E /* PhotoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		78D860271CA8CC8E0075128B /* FationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FationController.swift; sourceTree = "<group>"; };
 		78D860291CA8D3FC0075128B /* FationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FationTableViewCell.swift; sourceTree = "<group>"; };
@@ -871,7 +879,9 @@
 				789219251CA2A25F00AEAB30 /* HeaderSellController.swift */,
 				78087F341CA522350060616E /* HeaderWebController.swift */,
 				78087F361CA524240060616E /* PhotoViewController.swift */,
+				789F07701CAA65FC005D390A /* DailyViewController.swift */,
 				78D860271CA8CC8E0075128B /* FationController.swift */,
+				789F07761CAA716B005D390A /* DailySellViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -882,6 +892,7 @@
 				78896D891C9AE77B00A229FA /* HomeModel.swift */,
 				78E9F7B71C9FFE3C00C71D66 /* HomeHerderModel.swift */,
 				78D3B98C1CA7EB580024BF3E /* PhotoModel.swift */,
+				789F07741CAA6EE4005D390A /* DailyModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -974,6 +985,7 @@
 				78896D441C9A570000A229FA /* BaseModel.swift */,
 				78896D851C9AD7D100A229FA /* Constant.swift */,
 				78E9F7B51C9FF3DD00C71D66 /* DrawLabel.swift */,
+				789F07721CAA695A005D390A /* UIButtonCustom.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1245,6 +1257,7 @@
 				784516F91C995FFC007FE225 /* DataSerive.swift in Sources */,
 				786256891C97B1BE0073DD62 /* UIImage+MultiFormat.m in Sources */,
 				786256791C97B1BE0073DD62 /* MJRefreshFooterView.m in Sources */,
+				789F07711CAA65FC005D390A /* DailyViewController.swift in Sources */,
 				786256751C97B1BE0073DD62 /* MBProgressHUD.m in Sources */,
 				786256871C97B1BE0073DD62 /* UIButton+WebCache.m in Sources */,
 				786256881C97B1BE0073DD62 /* UIImage+GIF.m in Sources */,
@@ -1269,8 +1282,10 @@
 				786256901C97B1BE0073DD62 /* UIViewExt.m in Sources */,
 				786256721C97B1BE0073DD62 /* UIWebView+AFNetworking.m in Sources */,
 				7862568C1C97B1BE0073DD62 /* UIImageView+WebCache.m in Sources */,
+				789F07771CAA716B005D390A /* DailySellViewController.swift in Sources */,
 				786256831C97B1BE0073DD62 /* SDWebImageDownloader.m in Sources */,
 				7862585B1C97B7970073DD62 /* MineViewController.swift in Sources */,
+				789F07751CAA6EE4005D390A /* DailyModel.swift in Sources */,
 				78E9F7B61C9FF3DD00C71D66 /* DrawLabel.swift in Sources */,
 				786256651C97B1BE0073DD62 /* AFNetworkReachabilityManager.m in Sources */,
 				7862567E1C97B1BE0073DD62 /* MKAnnotationView+WebCache.m in Sources */,
@@ -1285,6 +1300,7 @@
 				7862567F1C97B1BE0073DD62 /* NSData+ImageContentType.m in Sources */,
 				78896D451C9A570000A229FA /* BaseModel.swift in Sources */,
 				78E9F7B41C9FECBE00C71D66 /* HeaderCollectionViewCell.swift in Sources */,
+				789F07731CAA695A005D390A /* UIButtonCustom.swift in Sources */,
 				7862584D1C97B5F70073DD62 /* MainTabbarController.swift in Sources */,
 				7862566C1C97B1BE0073DD62 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				78087F371CA524240060616E /* PhotoViewController.swift in Sources */,

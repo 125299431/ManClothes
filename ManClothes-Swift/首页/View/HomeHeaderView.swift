@@ -97,9 +97,13 @@ class HomeHeaderView: UICollectionReusableView , UICollectionViewDataSource, UIC
     func themeButtonAction(btn:UIButton) {
         if btn.tag == 2016 {
             //潮品专区
-            
+            let fationVC = FationController()
+            self.viewController().navigationController?.pushViewController(fationVC, animated: true)
         }else {
             //日常专区
+            let dailyVC = DailyViewController()
+            let nav = UINavigationController(rootViewController: dailyVC)
+            self.viewController().presentViewController(nav, animated: true, completion: nil)
         }
         
     }
