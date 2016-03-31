@@ -36,17 +36,18 @@ class BuyTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.pinpaiLabel.text = "品牌名称：" + String(self.sellModel.brand)
-        self.caizhiLabel.text = "材质：" + String(self.sellModel.material)
-        self.styleLabel.text = "基础风格：" + String(self.sellModel.style)
+        self.pinpaiLabel.text = "品牌名称：" + self.sellModel.brand
+        self.caizhiLabel.text = "材质：" + self.sellModel.material
+        self.styleLabel.text = "基础风格：" + self.sellModel.style
         self.huohaoLabel.text = "货号：" + String(self.sellModel.num_iid)
-        self.colorLabel.text = "款式颜色：" + String(self.sellModel.color)
-        self.jijieLabel.text = "使用季节：" + String(self.sellModel.season)
+        self.colorLabel.text = "款式颜色：" + self.sellModel.color
+        self.jijieLabel.text = "使用季节：" + self.sellModel.season
         
     }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.selectionStyle = .None
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

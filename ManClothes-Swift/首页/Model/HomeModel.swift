@@ -40,7 +40,7 @@ class HomeModel: BaseModel {
     var _id:NSNumber?
     var pic_url:String?
     var title:String?
-    var coupon_price:NSNumber?
+    var coupon_price:String?
     var price:NSNumber?
     var saveCount:NSNumber?
     var cloth_description:String?

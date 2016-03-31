@@ -79,7 +79,7 @@ class DailyViewController: BaseViewController {
     func buttonClick(btn:UIButton) {
         let dailySellVC = DailySellViewController()
         let dailyModel = self.buttonImageData[btn.tag - 2016] as! DailyModel
-        dailySellVC.title = dailyModel.kind_name as? String
+        dailySellVC.title = dailyModel.kind_name 
         dailySellVC.kind_id = dailyModel.kind_id
         let nav = UINavigationController(rootViewController: dailySellVC)
         self.presentViewController(nav, animated: true, completion: nil)

@@ -78,6 +78,13 @@ class FationController: BaseViewController, UITableViewDelegate, UITableViewData
         return cell!
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let buyVC = BuyViewController()
+        let homeModel = self.fationData[indexPath.row] as! HomeModel
+        buyVC.itemID = homeModel._id
+        self.presentViewController(buyVC, animated: true, completion: nil)
+    }
+    
 
     /*
     // MARK: - Navigation

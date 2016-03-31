@@ -159,6 +159,13 @@ class HomeViewController: BaseViewController , UICollectionViewDataSource, UICol
         return cell
     }
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let buyVC = BuyViewController()
+        let homeModel = self.data[indexPath.row] 
+        buyVC.itemID = homeModel._id
+        self.presentViewController(buyVC, animated: true, completion: nil)
+    }
+    
 
 
 

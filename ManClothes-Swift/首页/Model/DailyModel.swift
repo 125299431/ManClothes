@@ -19,7 +19,7 @@ import UIKit
 class DailyModel: BaseModel {
     
     var kind_id:NSNumber?
-    var kind_icon:NSString?
-    var kind_name:NSString?
+    var kind_icon:String?
+    var kind_name:String?
 
 }

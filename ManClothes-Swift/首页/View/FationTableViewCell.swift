@@ -45,7 +45,7 @@ class FationTableViewCell: UITableViewCell {
         //类型
         self.typeLabel.text = self.homeModel?.cloth_description
         //价格
-        self.priceLabel.text = "¥" + "\(self.homeModel?.coupon_price)"
+        self.priceLabel.text = "¥" + (self.homeModel?.coupon_price)!
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

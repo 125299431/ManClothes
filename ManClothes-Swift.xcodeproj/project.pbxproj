@@ -20,6 +20,11 @@
 		784516F51C990BCA007FE225 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784516F41C990BCA007FE225 /* HomeCell.swift */; };
 		784516F71C993265007FE225 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784516F61C993265007FE225 /* HomeHeaderView.swift */; };
 		784516F91C995FFC007FE225 /* DataSerive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784516F81C995FFC007FE225 /* DataSerive.swift */; };
+		785BDB5C1CAD0AC200952CAE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785BDB5B1CAD0AC200952CAE /* SearchViewController.swift */; };
+		785BDB5E1CAD111A00952CAE /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785BDB5D1CAD111A00952CAE /* SearchResultViewController.swift */; };
+		785BDB601CAD1ADE00952CAE /* DetailIssuseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785BDB5F1CAD1ADE00952CAE /* DetailIssuseController.swift */; };
+		785BDB621CAD1BA000952CAE /* ZoomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785BDB611CAD1BA000952CAE /* ZoomImageView.swift */; };
+		785BDB641CAD2A3700952CAE /* DetailCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785BDB631CAD2A3700952CAE /* DetailCollectionView.swift */; };
 		786255CC1C97A6230073DD62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786255CB1C97A6230073DD62 /* AppDelegate.swift */; };
 		786255D31C97A6230073DD62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 786255D21C97A6230073DD62 /* Assets.xcassets */; };
 		786255D61C97A6230073DD62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 786255D41C97A6230073DD62 /* LaunchScreen.storyboard */; };
@@ -235,6 +240,11 @@
 		784516F41C990BCA007FE225 /* HomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		784516F61C993265007FE225 /* HomeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		784516F81C995FFC007FE225 /* DataSerive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSerive.swift; sourceTree = "<group>"; };
+		785BDB5B1CAD0AC200952CAE /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		785BDB5D1CAD111A00952CAE /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		785BDB5F1CAD1ADE00952CAE /* DetailIssuseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailIssuseController.swift; sourceTree = "<group>"; };
+		785BDB611CAD1BA000952CAE /* ZoomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomImageView.swift; sourceTree = "<group>"; };
+		785BDB631CAD2A3700952CAE /* DetailCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCollectionView.swift; sourceTree = "<group>"; };
 		786255C81C97A6230073DD62 /* ManClothes-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ManClothes-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		786255CB1C97A6230073DD62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		786255D21C97A6230073DD62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -975,6 +985,9 @@
 			isa = PBXGroup;
 			children = (
 				786258541C97B7640073DD62 /* IssuseViewController.swift */,
+				785BDB5B1CAD0AC200952CAE /* SearchViewController.swift */,
+				785BDB5D1CAD111A00952CAE /* SearchResultViewController.swift */,
+				785BDB5F1CAD1ADE00952CAE /* DetailIssuseController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -991,6 +1004,7 @@
 			isa = PBXGroup;
 			children = (
 				78B23E071CABD8BB008C2884 /* IssuseCell.swift */,
+				785BDB631CAD2A3700952CAE /* DetailCollectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1007,6 +1021,7 @@
 				78E9F7B51C9FF3DD00C71D66 /* DrawLabel.swift */,
 				789F07721CAA695A005D390A /* UIButtonCustom.swift */,
 				7832429D1CABA28B009ACFD9 /* UILabelStrikeThrough.swift */,
+				785BDB611CAD1BA000952CAE /* ZoomImageView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1264,6 +1279,8 @@
 				786256771C97B1BE0073DD62 /* MJRefreshBaseView.m in Sources */,
 				7832429E1CABA28B009ACFD9 /* UILabelStrikeThrough.swift in Sources */,
 				7862567B1C97B1BE0073DD62 /* UIScrollView+MJExtension.m in Sources */,
+				785BDB5E1CAD111A00952CAE /* SearchResultViewController.swift in Sources */,
+				785BDB621CAD1BA000952CAE /* ZoomImageView.swift in Sources */,
 				78896D8A1C9AE77B00A229FA /* HomeModel.swift in Sources */,
 				78F70B2C1CA39048000694FB /* FinderViewController.swift in Sources */,
 				78D860281CA8CC8E0075128B /* FationController.swift in Sources */,
@@ -1274,6 +1291,7 @@
 				786256841C97B1BE0073DD62 /* SDWebImageDownloaderOperation.m in Sources */,
 				786256861C97B1BE0073DD62 /* SDWebImagePrefetcher.m in Sources */,
 				786258551C97B7640073DD62 /* IssuseViewController.swift in Sources */,
+				785BDB641CAD2A3700952CAE /* DetailCollectionView.swift in Sources */,
 				7862567C1C97B1BE0073DD62 /* UIScrollView+MJRefresh.m in Sources */,
 				78B23E081CABD8BB008C2884 /* IssuseCell.swift in Sources */,
 				78087F3A1CA52BF10060616E /* PhotoViewCell.swift in Sources */,
@@ -1282,6 +1300,7 @@
 				784516F91C995FFC007FE225 /* DataSerive.swift in Sources */,
 				786256891C97B1BE0073DD62 /* UIImage+MultiFormat.m in Sources */,
 				786256791C97B1BE0073DD62 /* MJRefreshFooterView.m in Sources */,
+				785BDB5C1CAD0AC200952CAE /* SearchViewController.swift in Sources */,
 				789F07711CAA65FC005D390A /* DailyViewController.swift in Sources */,
 				786256751C97B1BE0073DD62 /* MBProgressHUD.m in Sources */,
 				786256871C97B1BE0073DD62 /* UIButton+WebCache.m in Sources */,
@@ -1293,6 +1312,7 @@
 				7862568F1C97B1BE0073DD62 /* UIView+FindViewController.m in Sources */,
 				786256631C97B1BE0073DD62 /* AFHTTPRequestOperationManager.m in Sources */,
 				7862566F1C97B1BE0073DD62 /* UIImageView+AFNetworking.m in Sources */,
+				785BDB601CAD1ADE00952CAE /* DetailIssuseController.swift in Sources */,
 				783242A31CABB21A009ACFD9 /* BuyTableViewCell.swift in Sources */,
 				786256801C97B1BE0073DD62 /* SDImageCache.m in Sources */,
 				7862566E1C97B1BE0073DD62 /* UIButton+AFNetworking.m in Sources */,

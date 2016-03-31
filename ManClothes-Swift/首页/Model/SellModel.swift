@@ -10,26 +10,26 @@ import UIKit
 
 class SellModel: BaseModel {
 
-    var _id:NSNumber?
-    var item_id:NSNumber?
-    var pic_url:NSString?
-    var title:NSString?
-    var coupon_price:NSString?
-    var price:NSString?
-    var saveCount:NSNumber?
-    var brand:NSString?
-    var num_iid:NSNumber?
-    var purchaseLink:NSString?
-    var style:NSString?
-    var material:NSString?
-    var color:NSString?
-    var season:NSString?
-    var size:NSString?
-    var cloth_description:NSString?
+    var _id:NSNumber!
+    var item_id:NSNumber!
+    var pic_url:String!
+    var title:String!
+    var coupon_price:String!
+    var price:String!
+    var saveCount:NSNumber!
+    var brand:String!
+    var num_iid:NSNumber!
+    var purchaseLink:String!
+    var style:String!
+    var material:String!
+    var color:String!
+    var season:String!
+    var size:String!
+    var cloth_description:String!
     
     override func initContentWithDic(jsonDic: NSDictionary) -> AnyObject {
         super.initContentWithDic(jsonDic)
-        self.cloth_description = jsonDic.objectForKey("description") as? NSString
+        self.cloth_description = jsonDic.objectForKey("description")  as? String
         return self
     }
 }

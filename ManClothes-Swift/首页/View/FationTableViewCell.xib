@@ -3,44 +3,74 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="400" id="KGk-i7-Jjw" customClass="FationTableViewCell" customModule="ManClothes_Swift" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="400" id="KGk-i7-Jjw" customClass="FationTableViewCell" customModule="ManClothes_Swift" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="414" height="399.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="衣服的描述" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQ0-8d-SxG">
-                        <rect key="frame" x="8" y="347" width="141" height="25"/>
-                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="衣服的描述" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQ0-8d-SxG">
+                        <rect key="frame" x="8" y="347" width="280" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="AQi-r0-3FB"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="衣服的类型" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEq-hT-cFW">
-                        <rect key="frame" x="31" y="370" width="156" height="21.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="衣服的类型" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEq-hT-cFW">
+                        <rect key="frame" x="31" y="370" width="257" height="21.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="in8-Fi-fCu">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="in8-Fi-fCu">
                         <rect key="frame" x="319" y="347" width="2" height="43"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="2" id="siO-pT-3JC"/>
+                            <constraint firstAttribute="height" constant="43" id="zb7-kq-aOI"/>
+                        </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="¥298.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BoK-CM-vXC">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥298.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BoK-CM-vXC">
                         <rect key="frame" x="324" y="358" width="90" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="90" id="P2S-OL-hN4"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plaseholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hmt-0G-Eau">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plaseholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hmt-0G-Eau">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="339"/>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="BoK-CM-vXC" secondAttribute="trailing" id="87j-qU-7AR"/>
+                    <constraint firstItem="BoK-CM-vXC" firstAttribute="top" secondItem="Hmt-0G-Eau" secondAttribute="bottom" constant="19" id="A9O-8t-lRO"/>
+                    <constraint firstItem="sQ0-8d-SxG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="AYh-q7-9rW"/>
+                    <constraint firstItem="bEq-hT-cFW" firstAttribute="top" secondItem="Hmt-0G-Eau" secondAttribute="bottom" constant="31" id="C6h-0B-6OO"/>
+                    <constraint firstAttribute="trailing" secondItem="Hmt-0G-Eau" secondAttribute="trailing" id="FoM-NB-9Hv"/>
+                    <constraint firstItem="sQ0-8d-SxG" firstAttribute="top" secondItem="Hmt-0G-Eau" secondAttribute="bottom" constant="8" id="KPc-LE-Y60"/>
+                    <constraint firstAttribute="bottom" secondItem="BoK-CM-vXC" secondAttribute="bottom" constant="16.5" id="KyX-AK-FtZ"/>
+                    <constraint firstItem="in8-Fi-fCu" firstAttribute="leading" secondItem="bEq-hT-cFW" secondAttribute="trailing" constant="31" id="TY6-jQ-t7Z"/>
+                    <constraint firstItem="Hmt-0G-Eau" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="XB3-nJ-XKA"/>
+                    <constraint firstItem="bEq-hT-cFW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="31" id="cpr-ht-0jM"/>
+                    <constraint firstItem="sQ0-8d-SxG" firstAttribute="top" secondItem="Hmt-0G-Eau" secondAttribute="bottom" constant="8" id="fn7-X8-O9q"/>
+                    <constraint firstItem="Hmt-0G-Eau" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gTp-OV-Icx"/>
+                    <constraint firstAttribute="bottom" secondItem="bEq-hT-cFW" secondAttribute="bottom" constant="8" id="i3H-iQ-Fab"/>
+                    <constraint firstItem="in8-Fi-fCu" firstAttribute="leading" secondItem="sQ0-8d-SxG" secondAttribute="trailing" constant="31" id="mP2-8f-LJp"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="in8-Fi-fCu" secondAttribute="bottom" constant="1.5" id="qU3-O4-Qrd"/>
+                    <constraint firstItem="BoK-CM-vXC" firstAttribute="leading" secondItem="in8-Fi-fCu" secondAttribute="trailing" constant="3" id="qea-nQ-X8A"/>
+                    <constraint firstAttribute="bottom" secondItem="sQ0-8d-SxG" secondAttribute="bottom" constant="22.5" id="sJk-EB-qI9"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="descriptionLabel" destination="sQ0-8d-SxG" id="l4x-ve-9fl"/>

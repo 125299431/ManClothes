@@ -14,7 +14,7 @@ class BuyViewController: BaseViewController, UITableViewDelegate, UITableViewDat
 //    var sizeView:UIView!//推荐框
     var itemID:NSNumber!
     
-    var sellModel:SellModel!
+    var sellModel:SellModel?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -36,8 +36,8 @@ class BuyViewController: BaseViewController, UITableViewDelegate, UITableViewDat
     func _initView() {
         self.tableView = UITableView(frame: self.view.bounds, style: .Grouped)
         self.view.addSubview(self.tableView)
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+//        self.tableView.delegate = self
+//        self.tableView.dataSource = self
         
         //返回按钮
         let backBtn = UIButton(type: .Custom)
@@ -141,7 +141,11 @@ class BuyViewController: BaseViewController, UITableViewDelegate, UITableViewDat
         
         DataSerive.requireDataWithURL(items, params: params, method: "GET", successBlock: { (operation, resust) in
             let jsonData = resust["data"] as! NSDictionary
-            self.sellModel = self.sellModel.initContentWithDic(jsonData) as! SellModel
+            
+            self.sellModel = SellModel()
+            self.sellModel = self.sellModel?.initContentWithDic(jsonData) as? SellModel
+            self.tableView.delegate = self
+            self.tableView.dataSource = self
             self.tableView.reloadData()
             }) { (operation, error) in
                 print("卖场信息出错了\(error)")
@@ -175,7 +179,7 @@ class BuyViewController: BaseViewController, UITableViewDelegate, UITableViewDat
                     let priceLabel1 = UILabel(frame: CGRect(x: coupon_priceLable.right, y: coupon_priceLable.top, width: 100, height: 20))
                     priceLabel1.tag = 2015
                     priceLabel1.textColor = UIColor.redColor()
-                    cell?.contentView.addSubview(priceLabel1)
+                    cell!.contentView.addSubview(priceLabel1)
                     
                     //原价
                     let priceLabel2 = UILabelStrikeThrough(frame: CGRect(x: priceLabel1.right + 10, y: priceLabel1.top, width: 50, height: 20))
@@ -183,21 +187,16 @@ class BuyViewController: BaseViewController, UITableViewDelegate, UITableViewDat
                     priceLabel2.isWithStrikeThrough = true
                     priceLabel2.textAlignment = .Center
                     priceLabel2.textColor = UIColor.blackColor()
-                    cell?.contentView.addSubview(priceLabel2)
+                    cell!.contentView.addSubview(priceLabel2)
                     
                     //推荐框
 //                    self.sizeView = UIView(frame: CGRect(x: (kScreenWidth - 250) / 2, y: coupon_priceLable.bottom + 5, width: 250, height: 50)
 //                    cell?.contentView.addSubview(self.sizeView)
-                    let sizeLabel = UILabel(frame: CGRect(x: (kScreenWidth - 250) / 2, y: coupon_priceLable.bottom + 5, width: 250, height: 50))
+                    let sizeLabel = UILabel(frame: CGRect(x: (kScreenWidth - 300) / 2, y: coupon_priceLable.bottom + 5, width: 300, height: 50))
                     sizeLabel.textAlignment = .Center
                     sizeLabel.tag = 2017
-                    let text = "小编推荐 衣服尺码:M，仅供参考"
-                    let atttibutedText = NSMutableAttributedString(string: text)
-                    atttibutedText.setAttributes([NSFontAttributeName:UIFont.boldSystemFontOfSize(20), NSForegroundColorAttributeName: UIColor.blueColor()], range: NSMakeRange(0, 5))
-                    atttibutedText.setAttributes([NSForegroundColorAttributeName: UIColor.blackColor(), NSFontAttributeName: UIFont.systemFontOfSize(16)], range: NSMakeRange(5, 5))
-                    atttibutedText.setAttributes([NSForegroundColorAttributeName: UIColor.cyanColor(), NSFontAttributeName: UIFont.boldSystemFontOfSize(16)], range: NSMakeRange(10, 1))
-                    atttibutedText.setAttributes([NSForegroundColorAttributeName: UIColor.blackColor(), NSFontAttributeName: UIFont.boldSystemFontOfSize(16)], range: NSMakeRange(11, 5))
-                    sizeLabel.attributedText = atttibutedText
+//                    let text = "小编推荐 衣服尺码:M，仅供参考"
+                    cell!.contentView.addSubview(sizeLabel)
                 }else if(indexPath.row == 1) {
                     let descriptionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 50))
                     descriptionLabel.layer.borderColor = UIColor.blackColor().CGColor
@@ -210,20 +209,32 @@ class BuyViewController: BaseViewController, UITableViewDelegate, UITableViewDat
                 }
             }
             
-            let sizeLabel = cell?.contentView.viewWithTag(2017) as! UILabel
-            if self.sellModel.size != nil && self.sellModel.size?.length > 0 {
-                sizeLabel.hidden = false
-            }else {
-                sizeLabel.hidden = true
+//            print(cell?.contentView.subviews)
+            
+            if indexPath.row == 0 {
+                let sizeLabel1 = cell!.contentView.viewWithTag(2017) as! UILabel
+                if self.sellModel?.size != nil && self.sellModel?.size?.characters.count > 0 {
+                    sizeLabel1.hidden = false
+                }else {
+                    sizeLabel1.hidden = true
+                }
+                let text = "小编推荐 衣服尺码:\((self.sellModel?.size)!)，仅供参考"
+                let count = self.sellModel?.size.characters.count
+                let atttibutedText = NSMutableAttributedString(string: text)
+               atttibutedText.setAttributes([NSFontAttributeName:UIFont.boldSystemFontOfSize(20), NSForegroundColorAttributeName: UIColor.blueColor()], range: NSMakeRange(0, 5))
+                atttibutedText.setAttributes([NSForegroundColorAttributeName: UIColor.blackColor(), NSFontAttributeName: UIFont.systemFontOfSize(16)], range: NSMakeRange(5, 5))
+                atttibutedText.setAttributes([NSForegroundColorAttributeName: UIColor.cyanColor(), NSFontAttributeName: UIFont.boldSystemFontOfSize(16)], range: NSMakeRange(10, count!))
+                atttibutedText.setAttributes([NSForegroundColorAttributeName: UIColor.blackColor(), NSFontAttributeName: UIFont.boldSystemFontOfSize(16)], range: NSMakeRange(10 + count!, 5))
+                sizeLabel1.attributedText = atttibutedText
+                
+                let priceLabel1 = cell?.contentView.viewWithTag(2015) as! UILabel
+                priceLabel1.text = "¥" + (self.sellModel?.coupon_price)!
+                
+                let priceLabel2 = cell?.contentView.viewWithTag(2016) as! UILabel
+                priceLabel2.text = "\(NSString.init(string: (self.sellModel?.price)!).floatValue)"
+//                    NSString(format: "%.2\((self.sellModel?.price))") as String
             }
-            
-            sizeLabel.text = String(self.sellModel.size)
-            
-            let priceLabel1 = cell?.contentView.viewWithTag(2015) as! UILabel
-            priceLabel1.text = "¥" + String(self.sellModel.coupon_price)
-            
-            let priceLabel2 = cell?.contentView.viewWithTag(2016) as! UILabel
-            priceLabel2.text = NSString(format: "%.2\(self.sellModel.price?.floatValue)") as String
+            cell!.selectionStyle = .None
             return cell!
         }else{
             let cell = NSBundle.mainBundle().loadNibNamed("BuyTableViewCell", owner: nil, options: nil).last as! BuyTableViewCell
@@ -235,7 +246,7 @@ class BuyViewController: BaseViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            if self.sellModel.size?.length > 0 {
+            if self.sellModel?.size != nil && self.sellModel?.size.characters.count > 0 {
                 return 110
             }else {
                 return 60
@@ -253,13 +264,13 @@ class BuyViewController: BaseViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 400))
-        imageView.sd_setImageWithURL(NSURL(string: (self.sellModel.pic_url)! as String))
+        imageView.sd_setImageWithURL(NSURL(string: (self.sellModel?.pic_url)!))
         let label = UILabel(frame: CGRect(x: 0, y: 350, width: kScreenWidth, height: 50))
         label.backgroundColor = UIColor.cyanColor()
         label.font = UIFont.systemFontOfSize(15)
         label.numberOfLines = 2
         label.alpha = 0.5
-        label.text = String(self.sellModel.title)
+        label.text = self.sellModel?.title
         imageView.addSubview(label)
         return imageView
     }
