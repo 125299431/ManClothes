@@ -76,7 +76,7 @@ class SearchResultViewController: BaseViewController, UICollectionViewDelegateFl
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        <#code#>
+
     }
     
 

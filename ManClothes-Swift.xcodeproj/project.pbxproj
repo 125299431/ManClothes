@@ -193,6 +193,9 @@
 		78896D451C9A570000A229FA /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78896D441C9A570000A229FA /* BaseModel.swift */; };
 		78896D861C9AD7D100A229FA /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78896D851C9AD7D100A229FA /* Constant.swift */; };
 		78896D8A1C9AE77B00A229FA /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78896D891C9AE77B00A229FA /* HomeModel.swift */; };
+		788D5E621CAE47730080B97D /* IssuseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788D5E611CAE47730080B97D /* IssuseHeaderView.swift */; };
+		788D5E641CAE655B0080B97D /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788D5E631CAE655B0080B97D /* DetailModel.swift */; };
+		788D5E661CAE68510080B97D /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788D5E651CAE68510080B97D /* ProductModel.swift */; };
 		789219261CA2A25F00AEAB30 /* HeaderSellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789219251CA2A25F00AEAB30 /* HeaderSellController.swift */; };
 		789F07711CAA65FC005D390A /* DailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789F07701CAA65FC005D390A /* DailyViewController.swift */; };
 		789F07731CAA695A005D390A /* UIButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789F07721CAA695A005D390A /* UIButtonCustom.swift */; };
@@ -468,6 +471,9 @@
 		78896D441C9A570000A229FA /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		78896D851C9AD7D100A229FA /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		78896D891C9AE77B00A229FA /* HomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		788D5E611CAE47730080B97D /* IssuseHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssuseHeaderView.swift; sourceTree = "<group>"; };
+		788D5E631CAE655B0080B97D /* DetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
+		788D5E651CAE68510080B97D /* ProductModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		789219251CA2A25F00AEAB30 /* HeaderSellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderSellController.swift; sourceTree = "<group>"; };
 		789F07701CAA65FC005D390A /* DailyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DailyViewController.swift; path = ../View/DailyViewController.swift; sourceTree = "<group>"; };
 		789F07721CAA695A005D390A /* UIButtonCustom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonCustom.swift; sourceTree = "<group>"; };
@@ -996,6 +1002,8 @@
 			isa = PBXGroup;
 			children = (
 				783242A71CABCBF1009ACFD9 /* IssuseModel.swift */,
+				788D5E631CAE655B0080B97D /* DetailModel.swift */,
+				788D5E651CAE68510080B97D /* ProductModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1004,6 +1012,7 @@
 			isa = PBXGroup;
 			children = (
 				78B23E071CABD8BB008C2884 /* IssuseCell.swift */,
+				788D5E611CAE47730080B97D /* IssuseHeaderView.swift */,
 				785BDB631CAD2A3700952CAE /* DetailCollectionView.swift */,
 			);
 			path = View;
@@ -1274,6 +1283,7 @@
 				786256681C97B1BE0073DD62 /* AFURLRequestSerialization.m in Sources */,
 				786256671C97B1BE0073DD62 /* AFURLConnectionOperation.m in Sources */,
 				786258591C97B7880073DD62 /* DiscoverViewController.swift in Sources */,
+				788D5E661CAE68510080B97D /* ProductModel.swift in Sources */,
 				784516F71C993265007FE225 /* HomeHeaderView.swift in Sources */,
 				7862566D1C97B1BE0073DD62 /* UIAlertView+AFNetworking.m in Sources */,
 				786256771C97B1BE0073DD62 /* MJRefreshBaseView.m in Sources */,
@@ -1288,6 +1298,7 @@
 				786256661C97B1BE0073DD62 /* AFSecurityPolicy.m in Sources */,
 				786256621C97B1BE0073DD62 /* AFHTTPRequestOperation.m in Sources */,
 				7862566A1C97B1BE0073DD62 /* AFURLSessionManager.m in Sources */,
+				788D5E641CAE655B0080B97D /* DetailModel.swift in Sources */,
 				786256841C97B1BE0073DD62 /* SDWebImageDownloaderOperation.m in Sources */,
 				786256861C97B1BE0073DD62 /* SDWebImagePrefetcher.m in Sources */,
 				786258551C97B7640073DD62 /* IssuseViewController.swift in Sources */,
@@ -1300,6 +1311,7 @@
 				784516F91C995FFC007FE225 /* DataSerive.swift in Sources */,
 				786256891C97B1BE0073DD62 /* UIImage+MultiFormat.m in Sources */,
 				786256791C97B1BE0073DD62 /* MJRefreshFooterView.m in Sources */,
+				788D5E621CAE47730080B97D /* IssuseHeaderView.swift in Sources */,
 				785BDB5C1CAD0AC200952CAE /* SearchViewController.swift in Sources */,
 				789F07711CAA65FC005D390A /* DailyViewController.swift in Sources */,
 				786256751C97B1BE0073DD62 /* MBProgressHUD.m in Sources */,

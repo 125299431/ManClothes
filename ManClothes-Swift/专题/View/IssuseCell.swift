@@ -24,13 +24,14 @@ class IssuseCell: UICollectionViewCell {
     }
     
     func _initView() {
-        self.imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.width, height: self.height))
+        self.imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.width, height: self.width))
         self.imgView.image = UIImage(named: "plaseholder.png")
         self.imgView.layer.cornerRadius = 30
         self.imgView.layer.masksToBounds = true
         self.contentView.addSubview(self.imgView)
         
         self.titleLabel = UILabel(frame: CGRect(x: 0, y: self.imgView.bottom + 5, width: self.imgView.width, height: 30))
+        self.titleLabel.textAlignment = .Center
         self.titleLabel.font = UIFont.systemFontOfSize(12)
         self.titleLabel.numberOfLines = 2
         self.contentView.addSubview(self.titleLabel)
@@ -53,7 +54,7 @@ class IssuseCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.imgView.sd_setImageWithURL(NSURL(string: self.issuseModel.img as! String))
-        self.titleLabel.text = String(self.issuseModel.title)
+        self.titleLabel.text = self.issuseModel.title
     }
 
     

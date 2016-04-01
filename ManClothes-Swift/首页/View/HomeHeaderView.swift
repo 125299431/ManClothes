@@ -206,6 +206,10 @@ class HomeHeaderView: UICollectionReusableView , UICollectionViewDataSource, UIC
             self.viewController().presentViewController(nav, animated: true, completion: nil)
             break
         default:
+            let webVC = HeaderWebController()
+            let headerModel = self.maxData![indexPath.row] as! HomeHerderModel
+            webVC.urlStr = headerModel.theme_link
+            self.viewController().navigationController?.pushViewController(webVC, animated: true)
             break
             
         }

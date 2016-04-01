@@ -97,7 +97,7 @@ class HomeCell: UICollectionViewCell {
         self.descriptionLabel.text = self.homeModel?.title
         
         //价格
-        self.priceLabel.text =  "¥" + String(stringInterpolationSegment: Int((self.homeModel?.coupon_price)!))
+        self.priceLabel.text =  "¥" +  (self.homeModel?.coupon_price)!
         
         if self.isBaoyou == true {
             self.byImgView.hidden = false

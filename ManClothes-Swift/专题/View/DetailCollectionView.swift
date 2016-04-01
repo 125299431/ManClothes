@@ -12,6 +12,7 @@ class DetailCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout
 
     var productArr:NSArray!
     
+    
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumLineSpacing = 10
@@ -40,6 +41,7 @@ class DetailCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout
 //        imgView.sd_setImageWithURL(<#T##url: NSURL!##NSURL!#>, placeholderImage: <#T##UIImage!#>)
         
         cell.contentView.addSubview(imgView)
+        return cell
     }
     
     

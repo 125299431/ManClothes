@@ -97,7 +97,10 @@ class SearchViewController: BaseViewController, UICollectionViewDelegateFlowLayo
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        <#code#>
+        let searchResultVC = SearchResultViewController()
+        searchResultVC.typeStr = self.data[indexPath.row] as! String
+        let nav = UINavigationController(rootViewController: searchResultVC)
+        self.presentViewController(nav, animated: true, completion: nil)
     }
 
     /*
