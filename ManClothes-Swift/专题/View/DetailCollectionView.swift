@@ -37,9 +37,8 @@ class DetailCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout
         let imgView = UIImageView(frame: cell.contentView.bounds)
         imgView.layer.cornerRadius = 5
         imgView.layer.masksToBounds = true
-        
-//        imgView.sd_setImageWithURL(<#T##url: NSURL!##NSURL!#>, placeholderImage: <#T##UIImage!#>)
-        
+        let productModel = self.productArr[indexPath.row] as! ProductModel
+        imgView.sd_setImageWithURL(NSURL(string: productModel.img), placeholderImage: UIImage(named: "plaseholder.png"))
         cell.contentView.addSubview(imgView)
         return cell
     }

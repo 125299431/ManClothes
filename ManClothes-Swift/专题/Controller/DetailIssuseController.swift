@@ -19,9 +19,9 @@ class DetailIssuseController: BaseViewController, UITableViewDelegate, UITableVi
     //主题
     var headerTitle:String!
     //id
-    var albumId:String!
+    var albumId:NSNumber?
     
-    var album_type:NSNumber!
+    var album_type:NSNumber?
     
     var issueModel:IssuseModel!
     
@@ -43,33 +43,40 @@ class DetailIssuseController: BaseViewController, UITableViewDelegate, UITableVi
         self.navigationItem.backBarButtonItem = backItem
         self._initView()
         
+        self._loadData()
+        
     }
     
     func _initView() {
         //表视图的头视图
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 200))
         headerView.backgroundColor = UIColor.clearColor()
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: headerView.height - 10 - 30, height: 40))
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: headerView.height - 10 - 30, width: kScreenWidth, height: 40))
+        
         titleLabel.text = self.headerTitle
         titleLabel.numberOfLines = 2
-        titleLabel.font = UIFont.systemFontOfSize(17.0)
+        titleLabel.font = UIFont.boldSystemFontOfSize(17)
         headerView.addSubview(titleLabel)
         
         self.tableView = UITableView(frame: self.view.bounds, style: .Plain)
         self.tableView.separatorStyle = .None
+        self.tableView.delegate = self
         self.tableView.tableHeaderView = headerView
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.view.addSubview(self.tableView)
         
         let bgImageView = UIImageView(frame: self.view.bounds)
         bgImageView.alpha = 0.5
         bgImageView.sd_setImageWithURL(NSURL(string: self.bgImg!))
+        self.tableView.backgroundView = bgImageView
         
         self.imgView = UIImageView()
         
         //四个按钮
         let buttonImgArr = ["backButton.png", "shareButton.png", "search_white", "topic_uncollect"]
         var m = 0
-        for i in 0...2 {
-            for j in 0...2 {
+        for i in 0...1 {
+            for j in 0...1 {
                 let button = UIButton(type: .Custom)
                 button.tag = 2015 + m
                 button.backgroundColor = UIColor.blackColor()
@@ -96,10 +103,12 @@ class DetailIssuseController: BaseViewController, UITableViewDelegate, UITableVi
     func buttonClick(btn:UIButton) {
         switch (btn.tag - 2015) {
         case 0:
+            self.btnClick()
             break
         case 1:
             break
         case 2:
+            self.searchForItem()
             break
         case 3:
             break
@@ -121,8 +130,8 @@ class DetailIssuseController: BaseViewController, UITableViewDelegate, UITableVi
     func _loadData() {
         let params = NSMutableDictionary()
         params.setObject("detail", forKey: "action")
-        params.setObject(self.albumId, forKey: "albumId")
-        params.setObject(self.album_type, forKey: "album_type")
+        params.setObject(self.albumId!, forKey: "albumId")
+        params.setObject(self.album_type!, forKey: "album_type")
         DataSerive.requireDataWithURL(json_rm, params: params, method: "GET", successBlock: { (operation, resust) in
             let jsonArr = resust["data"] as! NSArray
             let mArr = NSMutableArray()
@@ -132,7 +141,6 @@ class DetailIssuseController: BaseViewController, UITableViewDelegate, UITableVi
                 mArr.addObject(issuseModel)
             }
             self.data = mArr
-            self.tableView.delegate = self
             self.tableView.dataSource = self
             self.tableView.reloadData()
             
@@ -149,7 +157,11 @@ class DetailIssuseController: BaseViewController, UITableViewDelegate, UITableVi
     
     //MARK:UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (self.data?.count)!
+        
+        if self.data != nil {
+            return (self.data?.count)!
+        }
+        return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -174,7 +186,7 @@ class DetailIssuseController: BaseViewController, UITableViewDelegate, UITableVi
             imgView.addTapZoomImageViewWithImageUrl(issuseModel.article as! String)
             imgView.sd_setImageWithURL(NSURL(string: issuseModel.article! as String), placeholderImage: UIImage(named: "plaseholder.png"))
             //根据图片的大小显示单元格的大小
-            let imgHeight = 1.2 * (imgView.image?.size.width)! * kScreenWidth / (imgView.image?.size.height)!
+            let imgHeight = 1.2 * (imgView.image?.size.height)! * kScreenWidth / (imgView.image?.size.width)!
             imgView.height = imgHeight
             
             return cell!
@@ -228,15 +240,17 @@ class DetailIssuseController: BaseViewController, UITableViewDelegate, UITableVi
         let block_type = issuseModel?.block_type?.intValue
         if block_type == 3 {
             //图片
-            self.imgView.sd_setImageWithURL(NSURL(string: issuseModel?.article as! String))
-            let imageHeight = 1.2 * (self.imgView.image?.size.height)! * kScreenWidth / (self.imgView.image?.size.width)!
+            self.imgView.sd_setImageWithURL(NSURL(string: issuseModel?.article as! String), placeholderImage: UIImage(named: "plaseholder.png"))
+//            sd_setImageWithURL(NSURL(string: issuseModel?.article as! String))
+            print(self.imgView.image?.size.height)
+            let imageHeight = 1.2 * (self.imgView.image!.size.height) * kScreenWidth / (self.imgView.image!.size.width)
             rowHeight += imageHeight
         }else if(block_type == 4) {
             //文字
             rowHeight += tableView.rowHeight
         }else {
             if detailModel.productArr?.count != 0 {
-                if (detailModel.productArr?.count)! % 2 == 0 {
+                if ((detailModel.productArr?.count)! % 2 == 0) {
                     //偶数
                     rowHeight += CGFloat((detailModel.productArr?.count)! / 2) * kScreenWidth / 2
                 }else {

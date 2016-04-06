@@ -15,6 +15,7 @@ class IssuseHeaderView: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = UIColor.lightGrayColor()
         self._initView()
     }
     

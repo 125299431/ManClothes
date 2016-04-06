@@ -76,7 +76,6 @@ class ZoomImageView: UIImageView {
                 self.fullImageView = nil
                 self.scrollView?.removeFromSuperview()
                 self.scrollView = nil
-                self.removeFromSuperview()
         }
     }
     

@@ -53,7 +53,7 @@ class IssuseCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.imgView.sd_setImageWithURL(NSURL(string: self.issuseModel.img as! String))
+        self.imgView.sd_setImageWithURL(NSURL(string: self.issuseModel.img!))
         self.titleLabel.text = self.issuseModel.title
     }
 

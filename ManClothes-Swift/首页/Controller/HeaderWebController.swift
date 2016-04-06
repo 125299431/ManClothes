@@ -7,12 +7,13 @@
 //
 
 import UIKit
-
+import WebKit
 class HeaderWebController: BaseViewController {
 
-    var webView:UIWebView!
+    var webView:WKWebView!
     var urlStr:NSString!
     var isTianmao:Bool?
+    var progressView:UIProgressView!
     
     
     
@@ -40,13 +41,38 @@ class HeaderWebController: BaseViewController {
             leftBtn.addTarget(self, action: #selector(HeaderWebController.backClick(_:)), forControlEvents: .TouchUpInside)
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
         }
-        self.webView = UIWebView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - 64))
+        self.webView = WKWebView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - 64))
         let request = NSMutableURLRequest(URL: NSURL(string: self.urlStr as String)!)
         self.webView.loadRequest(request)
         self.view.addSubview(self.webView)
+        
+        self.progressView = UIProgressView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 2))
+        self.progressView.trackTintColor = UIColor.whiteColor()
+//        self.progressView.progress = 0.5
+        self.view.addSubview(self.progressView)
+        //监听进度条的变化
+        self.webView.addObserver(self, forKeyPath: "estimatedProgress", options: .New, context: nil)
         //屏幕自适应
-        self.webView.scalesPageToFit = true
+//        self.webView.scalesPageToFit = true
     }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if keyPath == "estimatedProgress" {
+            self.progressView.progress = Float(self.webView.estimatedProgress)
+            self.progressView.alpha = 1
+            if self.progressView.progress >= 1 {
+                UIView.animateWithDuration(0.35, animations: {
+                    self.progressView.alpha = 0
+                    self.progressView.removeFromSuperview()
+                })
+            }
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.webView.removeObserver(self, forKeyPath: "estimatedProgress", context: nil)
+    }
+    
     
     func backClick(btn:UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)

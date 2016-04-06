@@ -21,8 +21,8 @@ class DetailModel: BaseModel {
             self.issuseModel = IssuseModel()
             self.issuseModel = self.issuseModel?.initContentWithDic(issuseDic) as? IssuseModel
         }
-        
-        if jsonDic["product"]?.isKindOfClass(NSNull.self) == true{
+        print("\(jsonDic)")
+        if jsonDic["product"]?.isKindOfClass(NSNull.self) == false{
             if jsonDic["product"]?.isKindOfClass(NSArray.self) == true {
                 //有数据且为可用数据
                 let proArr = jsonDic["product"] as! NSArray
@@ -33,8 +33,6 @@ class DetailModel: BaseModel {
                     mArr.addObject(productModel)
                 }
                 self.productArr = mArr
-            }else if(jsonDic["product"]?.isEqualToString("") == false) {
-                self.productArr = nil
             }
         }
         

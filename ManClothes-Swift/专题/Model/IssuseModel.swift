@@ -13,7 +13,7 @@ class IssuseModel: BaseModel {
     var albumId:NSNumber?
     var album_type:NSNumber?
     var title:String?
-    var img:NSString?
+    var img:String?
     
     var block_type:NSNumber?
     var article:NSString?

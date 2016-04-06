@@ -82,9 +82,10 @@ class IssuseViewController: BaseViewController, UICollectionViewDelegateFlowLayo
             
             self.data = mArr;
             self.collectionView.reloadData()
+            self.collectionView.headerEndRefreshing()
             
             }) { (operation, error) in
-                
+              self.collectionView.headerEndRefreshing()  
         }
     }
     
@@ -119,6 +120,18 @@ class IssuseViewController: BaseViewController, UICollectionViewDelegateFlowLayo
         headerView.content = self.content
         headerView.link = self.link
         return headerView
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let detailVC = DetailIssuseController()
+        let issuseModel = self.data[indexPath.row] as! IssuseModel
+        detailVC.issueModel = issuseModel
+        detailVC.bgImg = issuseModel.img
+        detailVC.headerTitle = issuseModel.title
+        detailVC.albumId = issuseModel.albumId
+        detailVC.album_type = issuseModel.album_type
+        self.navigationController?.pushViewController(detailVC, animated: true)
+        
     }
     
 

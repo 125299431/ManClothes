@@ -35,6 +35,7 @@ class BuyViewController: BaseViewController, UITableViewDelegate, UITableViewDat
     
     func _initView() {
         self.tableView = UITableView(frame: self.view.bounds, style: .Grouped)
+        self.tableView.contentInset = UIEdgeInsetsMake(-40, 0, 0, 0)
         self.view.addSubview(self.tableView)
 //        self.tableView.delegate = self
 //        self.tableView.dataSource = self
