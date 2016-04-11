@@ -43,6 +43,29 @@ class DetailCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout
         return cell
     }
     
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        //判断单元格的数量
+        if self.productArr.count % 2 == 0 {
+            //偶数
+            return CGSize(width: (kScreenWidth - 50) / 2, height: (kScreenWidth - 50) / 2)
+        }else {
+            //基数
+            if indexPath.row == 0 {
+                return CGSize(width: kScreenWidth - 60, height: kScreenWidth - 60)
+            }else {
+                return CGSize(width: (kScreenWidth - 50) / 2, height: (kScreenWidth - 50) / 2)
+            }
+        }
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let productModel = self.productArr[indexPath.row] as! ProductModel
+        let webVC = HeaderWebController()
+        webVC.urlStr = productModel.url
+        webVC.title = "商品详情"
+        self.viewController().navigationController?.pushViewController(webVC, animated: true)
+    }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

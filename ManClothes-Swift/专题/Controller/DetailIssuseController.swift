@@ -62,7 +62,6 @@ class DetailIssuseController: BaseViewController, UITableViewDelegate, UITableVi
         self.tableView.separatorStyle = .None
         self.tableView.delegate = self
         self.tableView.tableHeaderView = headerView
-        self.tableView.rowHeight = UITableViewAutomaticDimension
         self.view.addSubview(self.tableView)
         
         let bgImageView = UIImageView(frame: self.view.bounds)
@@ -196,9 +195,17 @@ class DetailIssuseController: BaseViewController, UITableViewDelegate, UITableVi
             var cell = tableView.dequeueReusableCellWithIdentifier(idetifier)
             if cell == nil {
                 cell = UITableViewCell(style: .Default, reuseIdentifier: idetifier)
+                cell?.selectionStyle = .None
+                let textLabel = UILabel(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 0))
+                textLabel.numberOfLines = 0
+                textLabel.tag = 2016
+                textLabel.font = UIFont.systemFontOfSize(16)
+                cell?.contentView.addSubview(textLabel)
             }
-            cell?.textLabel?.text = issuseModel.article as? String
-            cell?.textLabel?.numberOfLines = 0
+            let textLabel = cell?.contentView.viewWithTag(2016) as! UILabel
+            let rect = issuseModel.article?.boundingRectWithSize(CGSizeMake(kScreenWidth, 1000), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(16)], context: nil)
+            textLabel.height = (rect?.size.height)!
+            textLabel.text = issuseModel.article as? String
             return cell!
         }else {
             let idetifier = "DetailCell"
@@ -234,33 +241,37 @@ class DetailIssuseController: BaseViewController, UITableViewDelegate, UITableVi
     
     //动态返回单元格的高度
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        var rowHeight:CGFloat = 0
+//        var rowHeight:CGFloat = 0
         let detailModel = self.data![indexPath.row] as! DetailModel
         let issuseModel = detailModel.issuseModel
         let block_type = issuseModel?.block_type?.intValue
         if block_type == 3 {
             //图片
             self.imgView.sd_setImageWithURL(NSURL(string: issuseModel?.article as! String), placeholderImage: UIImage(named: "plaseholder.png"))
-//            sd_setImageWithURL(NSURL(string: issuseModel?.article as! String))
-            print(self.imgView.image?.size.height)
             let imageHeight = 1.2 * (self.imgView.image!.size.height) * kScreenWidth / (self.imgView.image!.size.width)
-            rowHeight += imageHeight
+            return imageHeight;
+//            rowHeight += imageHeight
         }else if(block_type == 4) {
             //文字
-            rowHeight += tableView.rowHeight
+//            rowHeight += tableView.rowHeight
+            print(issuseModel?.article)
+            let rect = issuseModel?.article?.boundingRectWithSize(CGSizeMake(kScreenWidth, 1000), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(16)], context: nil)
+            print(rect?.size.height)
+            return (rect?.size.height)!
+//            return tableView.rowHeight;
         }else {
             if detailModel.productArr?.count != 0 {
                 if ((detailModel.productArr?.count)! % 2 == 0) {
                     //偶数
-                    rowHeight += CGFloat((detailModel.productArr?.count)! / 2) * kScreenWidth / 2
+                    return CGFloat((detailModel.productArr?.count)! / 2) * kScreenWidth / 2
                 }else {
                     //基数
-                    rowHeight +=  CGFloat((detailModel.productArr?.count)! / 2) * kScreenWidth / 2 + kScreenWidth - 60
+                    return  CGFloat((detailModel.productArr?.count)! / 2) * kScreenWidth / 2 + kScreenWidth - 60
                 }
             }
         }
+        return 0
         
-        return rowHeight
     }
     
     

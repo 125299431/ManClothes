@@ -52,6 +52,7 @@ class ZoomImageView: UIImageView {
         if self.scrollView == nil {
             self.scrollView = UIScrollView(frame: UIScreen.mainScreen().bounds)
             let tapToSamll = UITapGestureRecognizer(target: self, action: #selector(ZoomImageView.tapToSmall))
+            self.scrollView?.backgroundColor = UIColor.blackColor()
             self.scrollView?.addGestureRecognizer(tapToSamll)
             self.window?.addSubview(self.scrollView!)
         }

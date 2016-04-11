@@ -20,45 +20,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManClothes-Swift/&#x4e13;&#x9898;/Controller/DetailIssuseController.swift"
-            timestampString = "481641655.672482"
+            timestampString = "481729191.722621"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
             landmarkName = "tableView(_:heightForRowAtIndexPath:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ManClothes_Swift.DetailIssuseController.tableView (__ObjC.UITableView, heightForRowAtIndexPath : __ObjC.NSIndexPath) -&gt; CoreGraphics.CGFloat"
-                  moduleName = "ManClothes-Swift"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhenghongye/Desktop/%E4%B8%AA%E4%BA%BA/ManClothes-Swift/ManClothes-Swift/%E4%B8%93%E9%A2%98/Controller/DetailIssuseController.swift"
-                  timestampString = "481641540.457971"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "254"
-                  endingLineNumber = "254"
-                  offsetFromSymbolStart = "3437">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ManClothes_Swift.DetailIssuseController.tableView (__ObjC.UITableView, heightForRowAtIndexPath : __ObjC.NSIndexPath) -&gt; CoreGraphics.CGFloat"
-                  moduleName = "ManClothes-Swift"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhenghongye/Desktop/%E4%B8%AA%E4%BA%BA/ManClothes-Swift/ManClothes-Swift/%E4%B8%93%E9%A2%98/Controller/DetailIssuseController.swift"
-                  timestampString = "481641540.458098"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "254"
-                  endingLineNumber = "254"
-                  offsetFromSymbolStart = "4364">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
