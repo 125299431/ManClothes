@@ -31,6 +31,9 @@ class SearchViewController: BaseViewController, UICollectionViewDelegateFlowLayo
         leftBtn.addTarget(self, action: #selector(SearchViewController.backClick), forControlEvents: .TouchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
         
+        let rightItem = UIBarButtonItem(title: "搜索", style: .Done, target: self, action: #selector(SearchViewController.searchClick))
+        self.navigationItem.rightBarButtonItem = rightItem
+        
         //搜索栏
         self.textFiled = UITextField(frame: CGRect(x: 0, y: 0, width: kScreenWidth - 120, height: 40))
         self.textFiled.placeholder = "请输入感兴趣的内容"
@@ -65,6 +68,13 @@ class SearchViewController: BaseViewController, UICollectionViewDelegateFlowLayo
     
     func backClick() {
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func searchClick() {
+        let searchResultVC = SearchResultViewController()
+        searchResultVC.typeStr = textFiled.text
+        let nav = UINavigationController(rootViewController: searchResultVC)
+        self.presentViewController(nav, animated: false, completion: nil)
     }
     
     func _loadData() {

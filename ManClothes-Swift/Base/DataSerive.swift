@@ -27,12 +27,12 @@ class DataSerive: NSObject {
         if method.isEqualToString("GET") {
             operation = manager.GET(urlStr as String, parameters: params, success: { (operation, responseObject) -> Void in
                 print("请求成功！")
-                NSNotificationCenter.defaultCenter().postNotificationName("HoddenLoadView", object: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName("HiddenLoadView", object: nil)
                 successBlock(operation: operation, resust: responseObject)
                 
                 }, failure: { (operation, error) -> Void in
                    print("请求失败！")
-                   NSNotificationCenter.defaultCenter().postNotificationName("HoddenLoadView", object: nil)
+                   NSNotificationCenter.defaultCenter().postNotificationName("HiddenLoadView", object: nil)
                    failueBlock(operation: operation, error: error)
                     
             })

@@ -60,14 +60,10 @@ class HomeHeaderView: UICollectionReusableView , UICollectionViewDataSource, UIC
         
         //分页视图
         self.pageControl = UIPageControl(frame: CGRect(x: 0, y: 180, width: self.bgView.width, height: 20))
-        self.pageControl.numberOfPages = 8
         self.pageControl.currentPage = 0
         self.pageControl.pageIndicatorTintColor = UIColor.redColor()
         self.bgView.addSubview(self.pageControl)
         
-        //定时器
-//        self.timer = NSTimer(timeInterval: 2, target: self, selector: "scrollToNextPage:", userInfo: nil, repeats: true)
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(HomeHeaderView.scrollToNextPage(_:)), userInfo: nil, repeats: true)
         
         //分割线
         let lineView = UIView(frame: CGRect(x: (kScreenWidth - 1) / 2, y: self.collectionView.bottom + 3, width: 1, height: 30 - 6))
@@ -147,6 +143,10 @@ class HomeHeaderView: UICollectionReusableView , UICollectionViewDataSource, UIC
             self.collectionView.reloadData()
             self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 1, inSection: 0), atScrollPosition: .CenteredHorizontally, animated: false)
             self.collectionView.hidden = false
+            //定时器
+            if self.timer == nil {
+                self.timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(HomeHeaderView.scrollToNextPage(_:)), userInfo: nil, repeats: true)
+            }
             
         }
         

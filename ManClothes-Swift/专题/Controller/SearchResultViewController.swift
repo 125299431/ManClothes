@@ -23,6 +23,7 @@ class SearchResultViewController: BaseViewController, UICollectionViewDelegateFl
         self.navigationController?.navigationBar.translucent = false
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont.systemFontOfSize(15), NSForegroundColorAttributeName: UIColor.blueColor()]
         self._initView()
+        self._loadData()
     }
     
     func _initView() {
@@ -54,6 +55,51 @@ class SearchResultViewController: BaseViewController, UICollectionViewDelegateFl
     func backClick() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    
+    func _loadData() {
+        if self.typeStr.characters.count == 0 {
+            self.emptyItem()
+            return
+        }
+        let params = NSMutableDictionary()
+        params.setObject("list", forKey: "action")
+        params.setObject("10", forKey: "ver")
+        params.setObject("0", forKey: "page")
+        params.setObject("nanren", forKey: "category")
+        let category2 = "%2F" + self.typeStr
+        params.setObject(category2, forKey: "category2")
+        params.setObject("24", forKey: "pageSize")
+        DataSerive.requireDataWithURL(json_rm, params: params, method: "GET", successBlock: { (operation, resust) in
+            
+            let jsonArr = resust["data"] as! NSArray
+            if jsonArr.count == 0 {
+                self.emptyItem()
+                return
+            }
+            let mArr = NSMutableArray()
+            for dic in jsonArr {
+                var issuseModel = IssuseModel()
+                issuseModel = issuseModel.initContentWithDic(dic as! NSDictionary) as! IssuseModel
+                mArr.addObject(issuseModel)
+            }
+            self.data = mArr
+            self.collectionView.reloadData()
+            
+            }) { (operation, error) in
+                print("搜索失败！")
+        }
+    }
+    
+    func emptyItem() {
+        if self.messagelabel == nil {
+            self.messagelabel = UILabel(frame: CGRect(x: (kScreenWidth - 200) / 2, y: (kScreenHeight - 50 - 64) / 2, width: 200, height: 50))
+            self.messagelabel.textAlignment = .Center
+            self.messagelabel.text = "无相关消息"
+            self.messagelabel.font = UIFont.systemFontOfSize(18)
+        }
+        self.view.addSubview(self.messagelabel)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -76,6 +122,14 @@ class SearchResultViewController: BaseViewController, UICollectionViewDelegateFl
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        let detailVC = DetailIssuseController()
+        let issuseModel = self.data[indexPath.row] as! IssuseModel
+        detailVC.bgImg = issuseModel.img
+        detailVC.headerTitle = issuseModel.title
+        detailVC.albumId = issuseModel.albumId
+        detailVC.album_type = issuseModel.album_type
+        self.navigationController?.pushViewController(detailVC, animated: true)
 
     }
     
