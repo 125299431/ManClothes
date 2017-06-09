@@ -24,18 +24,18 @@ class HeaderSellController: BaseViewController, UICollectionViewDelegateFlowLayo
     }
     
     func _init() {
-        let button = UIButton(type: .Custom)
+        let button = UIButton(type: .custom)
         button.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
-        button.setImage(UIImage(named: "backButton_blue.png"), forState: .Normal)
-        button.addTarget(self, action: #selector(HeaderSellController.backClick(_:)), forControlEvents: .TouchUpInside)
+        button.setImage(UIImage(named: "backButton_blue.png"), for: UIControlState())
+        button.addTarget(self, action: #selector(HeaderSellController.backClick(_:)), for: .touchUpInside)
         let buttonItem = UIBarButtonItem(customView: button)
         self.navigationItem.leftBarButtonItem = buttonItem
-        self.navigationController?.navigationBar.barTintColor = UIColor.redColor()
+        self.navigationController?.navigationBar.barTintColor = UIColor.red
         
     }
     
-    func backClick(btn:UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func backClick(_ btn:UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     //创建分段控件
@@ -47,15 +47,15 @@ class HeaderSellController: BaseViewController, UICollectionViewDelegateFlowLayo
         segementedControl.frame = CGRect(x: 0, y: 0, width: 250, height: 30)
         //默认选中按钮
         segementedControl.selectedSegmentIndex = 0
-        segementedControl.tintColor = UIColor.whiteColor()
+        segementedControl.tintColor = UIColor.white
         segementedControl.setTitleTextAttributes([NSFontAttributeName:
-        UIFont.systemFontOfSize(15)],forState: .Normal)
-        segementedControl.addTarget(self, action: #selector(HeaderSellController.segmentedCtrlAction(_:)), forControlEvents: .ValueChanged)
+        UIFont.systemFont(ofSize: 15)],for: UIControlState())
+        segementedControl.addTarget(self, action: #selector(HeaderSellController.segmentedCtrlAction(_:)), for: .valueChanged)
         self.navigationItem.titleView = segementedControl
         
     }
     
-    func segmentedCtrlAction(segemented:UISegmentedControl) {
+    func segmentedCtrlAction(_ segemented:UISegmentedControl) {
         switch segemented.selectedSegmentIndex {
         case 0:
             self._loadData(9.9)
@@ -86,22 +86,22 @@ class HeaderSellController: BaseViewController, UICollectionViewDelegateFlowLayo
         self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowLayout)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        self.collectionView.backgroundColor = UIColor.lightGrayColor()
+        self.collectionView.backgroundColor = UIColor.lightGray
         self.view.addSubview(self.collectionView)
         //注册单元格
-        self.collectionView.registerClass(HomeCell.self, forCellWithReuseIdentifier: "HomeCell")
+        self.collectionView.register(HomeCell.self, forCellWithReuseIdentifier: "HomeCell")
     }
     
     //加载数据
-    func _loadData(price:CGFloat) {
+    func _loadData(_ price:CGFloat) {
         let params = NSMutableDictionary()
-        params.setObject("0", forKey: "campaignId")
-        params.setObject("\(price)", forKey: "campaignType")
-        params.setObject("15243", forKey: "member_id")
-        params.setObject("member", forKey: "member_type")
-        params.setObject("1", forKey: "page")
-        params.setObject("24255", forKey: "random_key")
-        DataSerive.requireDataWithURL(campaign, params: params, method: "GET", successBlock: { (operation, resust) in
+        params.setObject("0", forKey: "campaignId" as NSCopying)
+        params.setObject("\(price)", forKey: "campaignType" as NSCopying)
+        params.setObject("15243", forKey: "member_id" as NSCopying)
+        params.setObject("member", forKey: "member_type" as NSCopying)
+        params.setObject("1", forKey: "page" as NSCopying)
+        params.setObject("24255", forKey: "random_key" as NSCopying)
+        DataSerive.requireDataWithURL(campaign as NSString, params: params, method: "GET", successBlock: { (operation, resust) in
             
             let jsonDic = resust["data"] as! NSDictionary
             let itemDetailArr = jsonDic["itemDetail"] as! NSArray
@@ -127,15 +127,15 @@ class HeaderSellController: BaseViewController, UICollectionViewDelegateFlowLayo
     
     
     //MARK:UICollectionViewDataSource
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if ((self.itemData?.count) != nil) {
             return (self.itemData?.count)!
         }
         return 0
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("HomeCell", forIndexPath: indexPath) as! HomeCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCell", for: indexPath) as! HomeCell
         cell.isBaoyou = true
         cell.homeModel = self.itemData![indexPath.row]
         return cell

@@ -10,22 +10,22 @@ import UIKit
 
 class SpaceLabel: UILabel {
 
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
         
         let context = UIGraphicsGetCurrentContext()
         
-        CGContextMoveToPoint(context, 20, self.height - 1)
+        context?.move(to: CGPoint(x: 20, y: self.height - 1))
         
-        CGContextAddLineToPoint(context, self.width - 20, self.height - 1)
+        context?.addLine(to: CGPoint(x: self.width - 20, y: self.height - 1))
         
         //设置颜色
-        CGContextSetFillColorWithColor(context, UIColor.grayColor().CGColor)
+        context?.setFillColor(UIColor.gray.cgColor)
         
         //设置画笔宽度
-        CGContextSetLineWidth(context, 1)
+        context?.setLineWidth(1)
         
-        CGContextDrawPath(context, .Stroke)
+        context?.drawPath(using: .stroke)
         
     }
 

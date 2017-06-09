@@ -38,19 +38,19 @@ class MainTabbarController: UITabBarController {
         
         self.tabBar.tintColor = UIColor.init(red: 86/255.0, green: 171/255.0, blue: 228/255.0, alpha: 1)
         
-        let homeTabBarItem = UITabBarItem(title: "首页", image: UIImage(named: "tabBar_home_nor")?.imageWithRenderingMode(.AlwaysOriginal), selectedImage: UIImage(named: "tabBar_home_sel")?.imageWithRenderingMode(.AlwaysOriginal))
+        let homeTabBarItem = UITabBarItem(title: "首页", image: UIImage(named: "tabBar_home_nor")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "tabBar_home_sel")?.withRenderingMode(.alwaysOriginal))
         homeVC.tabBarItem = homeTabBarItem
         
-        let issuseTabBarItem = UITabBarItem(title: "专题", image: UIImage(named: "tabBar_issuse_nor")?.imageWithRenderingMode(.AlwaysOriginal), selectedImage: UIImage(named: "tabBar_issuse_sel")?.imageWithRenderingMode(.AlwaysOriginal))
+        let issuseTabBarItem = UITabBarItem(title: "专题", image: UIImage(named: "tabBar_issuse_nor")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "tabBar_issuse_sel")?.withRenderingMode(.alwaysOriginal))
         issuseVC.tabBarItem = issuseTabBarItem
         
-        let matchedTabBarItem = UITabBarItem(title: "搭配", image: UIImage(named: "tabBar_match_nor")?.imageWithRenderingMode(.AlwaysOriginal), selectedImage: UIImage(named: "tabBar_match_sel")?.imageWithRenderingMode(.AlwaysOriginal))
+        let matchedTabBarItem = UITabBarItem(title: "搭配", image: UIImage(named: "tabBar_match_nor")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "tabBar_match_sel")?.withRenderingMode(.alwaysOriginal))
         matchedVC.tabBarItem = matchedTabBarItem
         
-        let discoverTabBarItem = UITabBarItem(title: "发现", image: UIImage(named: "tabBar_discover_nor")?.imageWithRenderingMode(.AlwaysOriginal), selectedImage: UIImage(named: "tabBar_discover_sel")?.imageWithRenderingMode(.AlwaysOriginal))
+        let discoverTabBarItem = UITabBarItem(title: "发现", image: UIImage(named: "tabBar_discover_nor")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "tabBar_discover_sel")?.withRenderingMode(.alwaysOriginal))
         discovedVC.tabBarItem = discoverTabBarItem
         
-        let mineTabBarItem = UITabBarItem(title: "我的", image: UIImage(named: "tabBar_mine_nor")?.imageWithRenderingMode(.AlwaysOriginal), selectedImage: UIImage(named: "tabBar_mine_sel")?.imageWithRenderingMode(.AlwaysOriginal))
+        let mineTabBarItem = UITabBarItem(title: "我的", image: UIImage(named: "tabBar_mine_nor")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "tabBar_mine_sel")?.withRenderingMode(.alwaysOriginal))
         mineVC.tabBarItem = mineTabBarItem
         
         

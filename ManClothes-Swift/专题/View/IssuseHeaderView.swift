@@ -15,7 +15,7 @@ class IssuseHeaderView: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.lightGrayColor()
+        self.backgroundColor = UIColor.lightGray
         self._initView()
     }
     
@@ -25,20 +25,20 @@ class IssuseHeaderView: UICollectionReusableView {
     
     func _initView() {
         self.imgView = UIImageView(frame: self.bounds)
-        self.userInteractionEnabled = true
+        self.isUserInteractionEnabled = true
         self.addSubview(self.imgView)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(IssuseHeaderView.tapForTianM(_:)))
         self.imgView.addGestureRecognizer(tap)
     }
     
-    func tapForTianM(tap:UITapGestureRecognizer) {
+    func tapForTianM(_ tap:UITapGestureRecognizer) {
         if self.link != nil {
             let webVC = HeaderWebController()
-            webVC.urlStr = self.link
+            webVC.urlStr = self.link as NSString!
             webVC.title = "聚划算"
             let nav = UINavigationController(rootViewController: webVC)
-            self.viewController().presentViewController(nav, animated: true, completion: nil)
+            self.viewController().present(nav, animated: true, completion: nil)
         }
     }
     
@@ -55,7 +55,7 @@ class IssuseHeaderView: UICollectionReusableView {
     override func layoutSubviews() {
         super.layoutSubviews()
         if self.content != nil {
-            self.imgView.sd_setImageWithURL(NSURL(string: self.content!))
+            self.imgView.sd_setImage(with: URL(string: self.content!))
         }
         
     }

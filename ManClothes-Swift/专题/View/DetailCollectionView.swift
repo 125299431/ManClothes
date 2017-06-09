@@ -19,31 +19,31 @@ class DetailCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout
         flowLayout.minimumInteritemSpacing = 10
         flowLayout.sectionInset = UIEdgeInsetsMake(0, 20, 0, 20)
         super.init(frame: frame, collectionViewLayout: flowLayout)
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.white
         self.delegate = self
         self.dataSource = self
-        self.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "DetailCell")
+        self.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "DetailCell")
         
     }
     
     
     //MARK:UICollectionViewDataSource
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.productArr.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("DetailCell", forIndexPath: indexPath)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailCell", for: indexPath)
         let imgView = UIImageView(frame: cell.contentView.bounds)
         imgView.layer.cornerRadius = 5
         imgView.layer.masksToBounds = true
         let productModel = self.productArr[indexPath.row] as! ProductModel
-        imgView.sd_setImageWithURL(NSURL(string: productModel.img), placeholderImage: UIImage(named: "plaseholder.png"))
+        imgView.sd_setImage(with: URL(string: productModel.img), placeholderImage: UIImage(named: "plaseholder.png"))
         cell.contentView.addSubview(imgView)
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         //判断单元格的数量
         if self.productArr.count % 2 == 0 {
             //偶数
@@ -58,10 +58,10 @@ class DetailCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout
         }
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let productModel = self.productArr[indexPath.row] as! ProductModel
         let webVC = HeaderWebController()
-        webVC.urlStr = productModel.url
+        webVC.urlStr = productModel.url as NSString!
         webVC.title = "商品详情"
         self.viewController().navigationController?.pushViewController(webVC, animated: true)
     }

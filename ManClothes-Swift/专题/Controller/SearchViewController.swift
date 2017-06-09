@@ -25,27 +25,27 @@ class SearchViewController: BaseViewController, UICollectionViewDelegateFlowLayo
     }
     
     func _initView() {
-        let leftBtn = UIButton(type: .Custom)
+        let leftBtn = UIButton(type: .custom)
         leftBtn.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
-        leftBtn.setImage(UIImage(named: "Tmall_back.png"), forState: .Normal)
-        leftBtn.addTarget(self, action: #selector(SearchViewController.backClick), forControlEvents: .TouchUpInside)
+        leftBtn.setImage(UIImage(named: "Tmall_back.png"), for: UIControlState())
+        leftBtn.addTarget(self, action: #selector(SearchViewController.backClick), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
         
-        let rightItem = UIBarButtonItem(title: "搜索", style: .Done, target: self, action: #selector(SearchViewController.searchClick))
+        let rightItem = UIBarButtonItem(title: "搜索", style: .done, target: self, action: #selector(SearchViewController.searchClick))
         self.navigationItem.rightBarButtonItem = rightItem
         
         //搜索栏
         self.textFiled = UITextField(frame: CGRect(x: 0, y: 0, width: kScreenWidth - 120, height: 40))
         self.textFiled.placeholder = "请输入感兴趣的内容"
-        self.textFiled.borderStyle = .RoundedRect
-        self.textFiled.backgroundColor = UIColor.whiteColor()
-        self.textFiled.tintColor = UIColor.redColor()
-        self.textFiled.clearButtonMode = .WhileEditing
+        self.textFiled.borderStyle = .roundedRect
+        self.textFiled.backgroundColor = UIColor.white
+        self.textFiled.tintColor = UIColor.red
+        self.textFiled.clearButtonMode = .whileEditing
         self.navigationItem.titleView = self.textFiled
         
         let textImageView = UIImageView(image: UIImage(named: "search_red.png"))
         self.textFiled.leftView = textImageView
-        self.textFiled.leftViewMode = .Always
+        self.textFiled.leftViewMode = .always
         
         //collectionView
         let flowLayout = UICollectionViewFlowLayout()
@@ -55,26 +55,26 @@ class SearchViewController: BaseViewController, UICollectionViewDelegateFlowLayo
         flowLayout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10)
         
         self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowLayout)
-        self.collectionView.backgroundColor = UIColor.whiteColor()
+        self.collectionView.backgroundColor = UIColor.white
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        self.collectionView.scrollEnabled = false
+        self.collectionView.isScrollEnabled = false
         self.collectionView.contentInset = UIEdgeInsetsMake(30, 0, 0, 0)
         self.view.addSubview(self.collectionView)
         
         //注册单元格
-        self.collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "SearchCell")
+        self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "SearchCell")
     }
     
     func backClick() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func searchClick() {
         let searchResultVC = SearchResultViewController()
         searchResultVC.typeStr = textFiled.text
         let nav = UINavigationController(rootViewController: searchResultVC)
-        self.presentViewController(nav, animated: false, completion: nil)
+        self.present(nav, animated: false, completion: nil)
     }
     
     func _loadData() {
@@ -88,29 +88,29 @@ class SearchViewController: BaseViewController, UICollectionViewDelegateFlowLayo
     }
     
     //MARK:UICollectionViewDataSource
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.data.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SearchCell", forIndexPath: indexPath)
-        cell.backgroundColor = UIColor.clearColor()
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCell", for: indexPath)
+        cell.backgroundColor = UIColor.clear
         cell.contentView.layer.cornerRadius = 5
         cell.contentView.layer.masksToBounds = true
-        cell.contentView.layer.borderColor = UIColor.blueColor().CGColor
+        cell.contentView.layer.borderColor = UIColor.blue.cgColor
         cell.contentView.layer.borderWidth = 1
         let label = UILabel(frame: cell.contentView.bounds)
-        label.textAlignment = .Center
+        label.textAlignment = .center
         label.text = self.data[indexPath.row] as? String
         cell.contentView.addSubview(label)
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let searchResultVC = SearchResultViewController()
         searchResultVC.typeStr = self.data[indexPath.row] as! String
         let nav = UINavigationController(rootViewController: searchResultVC)
-        self.presentViewController(nav, animated: true, completion: nil)
+        self.present(nav, animated: true, completion: nil)
     }
 
     /*

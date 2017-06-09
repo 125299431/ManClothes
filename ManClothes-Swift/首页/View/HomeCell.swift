@@ -33,7 +33,7 @@ class HomeCell: UICollectionViewCell {
     
     func _initView() {
         //颜色与边框
-        self.contentView.backgroundColor = UIColor.whiteColor()
+        self.contentView.backgroundColor = UIColor.white
 //        //图片
         self.imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.contentView.width, height: self.contentView.height * 3 / 4 - 10))
         self.imgView.image = UIImage(named: "plaseholder.png")
@@ -44,24 +44,24 @@ class HomeCell: UICollectionViewCell {
 //        self.descriptionLabel.backgroundColor = UIColor.redColor()
         self.descriptionLabel.text = "【秋季上新】男士新款"
         self.descriptionLabel.numberOfLines = 2
-        self.descriptionLabel.font = UIFont.systemFontOfSize(12)
+        self.descriptionLabel.font = UIFont.systemFont(ofSize: 12)
         self.contentView.addSubview(self.descriptionLabel)
         
         //分界线
         self.spaceView = UIView(frame: CGRect(x: (self.contentView.width - self.contentView.width * 4 / 5) / 2, y: self.descriptionLabel.bottom, width: self.contentView.width * 4 / 5, height: 0.5))
-        self.spaceView.backgroundColor = UIColor.blackColor()
+        self.spaceView.backgroundColor = UIColor.black
         self.contentView.addSubview(self.spaceView)
         
         //价格
         self.priceLabel = UILabel(frame: CGRect(x: 0, y: self.spaceView.bottom, width: self.contentView.width, height: self.contentView.height - self.spaceView.bottom))
         self.priceLabel.text = "¥100.00"
-        self.priceLabel.font = UIFont.systemFontOfSize(17.0)
-        self.priceLabel.textColor = UIColor.redColor()
+        self.priceLabel.font = UIFont.systemFont(ofSize: 17.0)
+        self.priceLabel.textColor = UIColor.red
         self.contentView.addSubview(self.priceLabel)
         
         //包邮图标
         self.byImgView = UIImageView(frame: CGRect(x: self.width - 45, y: self.spaceView.bottom + 5, width: 32, height: 20))
-        self.byImgView.hidden = true
+        self.byImgView.isHidden = true
         self.byImgView.image = UIImage(named: "baoyou.png")
         self.contentView.addSubview(self.byImgView)
     }
@@ -91,7 +91,7 @@ class HomeCell: UICollectionViewCell {
         }
         
         //图片
-        imgView?.sd_setImageWithURL(NSURL(string: self.homeModel!.pic_url!))
+        imgView?.sd_setImage(with: URL(string: self.homeModel!.pic_url!))
         
         //描述
         self.descriptionLabel.text = self.homeModel?.title
@@ -100,7 +100,7 @@ class HomeCell: UICollectionViewCell {
         self.priceLabel.text =  "¥" +  (self.homeModel?.coupon_price)!
         
         if self.isBaoyou == true {
-            self.byImgView.hidden = false
+            self.byImgView.isHidden = false
         }
         
         

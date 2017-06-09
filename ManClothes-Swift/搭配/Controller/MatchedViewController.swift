@@ -36,7 +36,7 @@ class MatchedViewController: BaseViewController, UICollectionViewDelegateFlowLay
         self.view.addSubview(self.collectionView)
         
         //注册头视图
-        self.collectionView.registerClass(MatchedHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "MatchedHeader")
+        self.collectionView.register(MatchedHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "MatchedHeader")
         //注册单元格
 //        self.collectionView.registerClass(<#T##viewClass: AnyClass?##AnyClass?#>, forSupplementaryViewOfKind: <#T##String#>, withReuseIdentifier: <#T##String#>)
     }
@@ -51,21 +51,24 @@ class MatchedViewController: BaseViewController, UICollectionViewDelegateFlowLay
     }
     
     
-    //MARK:UICollectionViewDataSource
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.itemData.count
+    //MARK: - UICollectionViewDataSource
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if self.itemData != nil {
+            return self.itemData.count
+        }
+        return 0;
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         //2列瀑布流
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MatchedCell", forIndexPath: indexPath) as! MatchedCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MatchedCell", for: indexPath) as! MatchedCell
         //当前列
         let remaineder:Int = indexPath.row % 2
         //当前行数
         let currentRow:Int = indexPath.row / 2
         
         //取出单元格的高度
-        let currentHeight = self.hArr[indexPath.row].floatValue
+        let currentHeight = (self.hArr[indexPath.row] as AnyObject).floatValue
         //算出cell的x的起始坐标
         let positonX = (kScreenWidth / 2 - 8) * CGFloat(remaineder) + 5 * (CGFloat(remaineder) + 1)
         //算出cell的y的起始位置
@@ -74,30 +77,30 @@ class MatchedViewController: BaseViewController, UICollectionViewDelegateFlowLay
         for i in 0...currentRow - 1 {
             //遍历出此列的单元格之前的所有的单元格的下标，然后将其对应的高度相加，求出高度
             let positon = remaineder + i * 2
-            positionY += self.hArr[positon].floatValue
+            positionY += (self.hArr[positon] as AnyObject).floatValue
         }
         
         //从新定义单元格的位置以及高度
-        cell.frame = CGRect(x: positonX, y: 250 - 75 + CGFloat(positionY), width: kScreenWidth / 2 - 8, height: CGFloat(currentHeight))
+        cell.frame = CGRect(x: positonX, y: 250 - 75 + CGFloat(positionY), width: kScreenWidth / 2 - 8, height: CGFloat(currentHeight!))
         cell.itemModel = self.itemData[indexPath.row] as! MatchedItemModel
         return cell;
     }
     
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let matchedHeaderView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "MatchedHeader", forIndexPath: indexPath) as! MatchedHeaderView
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let matchedHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "MatchedHeader", for: indexPath) as! MatchedHeaderView
         return matchedHeaderView
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = self.hArr[indexPath.row] as! NSNumber
         return CGSize(width: kScreenWidth / 2 - 8, height: CGFloat(height.floatValue))
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(0, 0, -self.edgHeight, 0)
     }
     

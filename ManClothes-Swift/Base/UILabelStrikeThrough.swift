@@ -12,17 +12,17 @@ class UILabelStrikeThrough: UILabel {
 
     var isWithStrikeThrough:Bool?
     
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
         if self.isWithStrikeThrough == true {
             let context = UIGraphicsGetCurrentContext()
-            CGContextMoveToPoint(context, 0, (self.height - 1) / 2)
-            CGContextAddLineToPoint(context, self.width, (self.height - 1) / 2)
+            context?.move(to: CGPoint(x: 0, y: (self.height - 1) / 2))
+            context?.addLine(to: CGPoint(x: self.width, y: (self.height - 1) / 2))
             //设置颜色
-            CGContextSetStrokeColorWithColor(context, UIColor.blackColor().CGColor)
+            context?.setStrokeColor(UIColor.black.cgColor)
             //设置画笔宽度
-            CGContextSetLineWidth(context, 1)
-            CGContextDrawPath(context, .Stroke)
+            context?.setLineWidth(1)
+            context?.drawPath(using: .stroke)
         }
     }
     

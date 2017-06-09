@@ -25,10 +25,10 @@ class IssuseViewController: BaseViewController, UICollectionViewDelegateFlowLayo
     }
     
     func _initView() {
-        let searchBtn = UIButton(type: .Custom)
+        let searchBtn = UIButton(type: .custom)
         searchBtn.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        searchBtn.setBackgroundImage(UIImage(named: "searchDot.png"), forState: .Normal)
-        searchBtn.addTarget(self, action: #selector(IssuseViewController.searchItem), forControlEvents: .TouchUpInside)
+        searchBtn.setBackgroundImage(UIImage(named: "searchDot.png"), for: UIControlState())
+        searchBtn.addTarget(self, action: #selector(IssuseViewController.searchItem), for: .touchUpInside)
         let rightItem = UIBarButtonItem(customView: searchBtn)
         self.navigationItem.rightBarButtonItem = rightItem
         
@@ -40,29 +40,29 @@ class IssuseViewController: BaseViewController, UICollectionViewDelegateFlowLayo
         flowLayout.sectionInset = UIEdgeInsetsMake(10, 12, 0, 12)
         
         self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowLayout)
-        self.collectionView.backgroundColor = UIColor.whiteColor()
+        self.collectionView.backgroundColor = UIColor.white
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, 64, 0)
         self.view.addSubview(self.collectionView)
         
         //注册头视图
-        self.collectionView.registerClass(IssuseHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "IssuseHeader")
+        self.collectionView.register(IssuseHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "IssuseHeader")
         //注册单元格
-        self.collectionView.registerClass(IssuseCell.self, forCellWithReuseIdentifier: "IssuseCell")
+        self.collectionView.register(IssuseCell.self, forCellWithReuseIdentifier: "IssuseCell")
         //下拉刷新
-        self.collectionView.addHeaderWithTarget(self, action: #selector(IssuseViewController._loadData))
+        self.collectionView.addHeader(withTarget: self, action: #selector(IssuseViewController._loadData))
     }
     
     func _loadData() {
         let params = NSMutableDictionary()
-        params.setObject("list", forKey: "action")
-        params.setObject("10", forKey: "ver")
-        params.setObject("0", forKey: "page")
-        params.setObject("nanren", forKey: "category")
-        params.setObject("24", forKey: "pagesize")
+        params.setObject("list", forKey: "action" as NSCopying)
+        params.setObject("10", forKey: "ver" as NSCopying)
+        params.setObject("0", forKey: "page" as NSCopying)
+        params.setObject("nanren", forKey: "category" as NSCopying)
+        params.setObject("24", forKey: "pagesize" as NSCopying)
         
-        DataSerive.requireDataWithURL(json_rm, params: params, method: "GET", successBlock: { (operation, resust) in
+        DataSerive.requireDataWithURL(json_rm as NSString, params: params, method: "GET", successBlock: { (operation, resust) in
             let headerDic = resust["top"] as! NSDictionary
             let headerArr = headerDic["data"] as! NSArray
             if headerArr.count != 0 {
@@ -77,7 +77,7 @@ class IssuseViewController: BaseViewController, UICollectionViewDelegateFlowLayo
             for dic in jsonArr{
                 var issuseModel = IssuseModel()
                 issuseModel = issuseModel.initContentWithDic(dic as! NSDictionary) as! IssuseModel
-                mArr.addObject(issuseModel)
+                mArr.add(issuseModel)
             }
             
             self.data = mArr;
@@ -100,7 +100,7 @@ class IssuseViewController: BaseViewController, UICollectionViewDelegateFlowLayo
     }
     
     //MARK:UICollectionViewDataSource
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if self.data != nil {
             return self.data.count
         }
@@ -108,21 +108,21 @@ class IssuseViewController: BaseViewController, UICollectionViewDelegateFlowLayo
         return 0
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("IssuseCell", forIndexPath: indexPath) as! IssuseCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssuseCell", for: indexPath) as! IssuseCell
         cell.issuseModel = self.data[indexPath.row] as! IssuseModel
         return cell
         
     }
     
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "IssuseHeader", forIndexPath: indexPath) as! IssuseHeaderView
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "IssuseHeader", for: indexPath) as! IssuseHeaderView
         headerView.content = self.content
         headerView.link = self.link
         return headerView
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailVC = DetailIssuseController()
         let issuseModel = self.data[indexPath.row] as! IssuseModel
         detailVC.issueModel = issuseModel

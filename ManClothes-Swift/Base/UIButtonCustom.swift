@@ -27,22 +27,22 @@ class UIButtonCustom: UIButton {
     
     func _initView() {
         self.layer.borderWidth = 0.5
-        self.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.layer.borderColor = UIColor.lightGray.cgColor
         
         self.imgView = UIImageView(frame: CGRect(x: (self.width - 80) / 2, y: (self.height - 80) / 2 - 10, width: 80, height: 80))
         self.addSubview(self.imgView)
         
         self.titleLa = UILabel(frame: CGRect(x: 0, y: self.imgView.bottom - 10, width: self.width, height: 50))
-        self.titleLa.textAlignment = .Center
-        self.titleLa.textColor = UIColor.blueColor()
-        self.titleLa.font = UIFont.systemFontOfSize(14)
+        self.titleLa.textAlignment = .center
+        self.titleLa.textColor = UIColor.blue
+        self.titleLa.font = UIFont.systemFont(ofSize: 14)
         self.addSubview(self.titleLa)
         
     }
     
     var imgName:NSString! {
         willSet(newValue){
-            self.imgView.sd_setImageWithURL(NSURL(string: newValue as String))
+            self.imgView.sd_setImage(with: URL(string: newValue as String))
         }
         
         didSet(oldValue) {

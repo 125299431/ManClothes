@@ -16,7 +16,7 @@ class BaseViewController: UIViewController {
         var bgImage = UIImage(named: "Home_background.png")
         //拉伸图片
         UIGraphicsBeginImageContext(CGSize(width: kScreenWidth, height: kScreenHeight))
-        bgImage?.drawInRect(CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight))
+        bgImage?.draw(in: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight))
         bgImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         

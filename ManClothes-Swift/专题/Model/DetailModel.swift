@@ -13,7 +13,7 @@ class DetailModel: BaseModel {
     var issuseModel:IssuseModel?
     var productArr:NSArray?
     
-    override func initContentWithDic(jsonDic: NSDictionary) -> AnyObject {
+    override func initContentWithDic(_ jsonDic: NSDictionary) -> AnyObject {
         super.initContentWithDic(jsonDic)
         
         if jsonDic["block"] != nil{
@@ -22,15 +22,15 @@ class DetailModel: BaseModel {
             self.issuseModel = self.issuseModel?.initContentWithDic(issuseDic) as? IssuseModel
         }
         print("\(jsonDic)")
-        if jsonDic["product"]?.isKindOfClass(NSNull.self) == false{
-            if jsonDic["product"]?.isKindOfClass(NSArray.self) == true {
+        if (jsonDic["product"] as AnyObject).isKind(of: NSNull.self) == false{
+            if (jsonDic["product"] as AnyObject).isKind(of: NSArray.self) == true {
                 //有数据且为可用数据
                 let proArr = jsonDic["product"] as! NSArray
                 let mArr = NSMutableArray()
                 for dic in proArr {
                     var productModel = ProductModel()
                     productModel = productModel.initContentWithDic(dic as! NSDictionary) as! ProductModel
-                    mArr.addObject(productModel)
+                    mArr.add(productModel)
                 }
                 self.productArr = mArr
             }

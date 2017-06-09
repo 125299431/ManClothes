@@ -10,12 +10,12 @@ import UIKit
 
 class BaseModel: NSObject {
     
-    func initContentWithDic(jsonDic: NSDictionary) -> AnyObject {
+    func initContentWithDic(_ jsonDic: NSDictionary) -> AnyObject {
         self.setAttributes(jsonDic)
         return self
     }
     
-    func setAttributes(jsonDic: NSDictionary) {
+    func setAttributes(_ jsonDic: NSDictionary) {
         /*
         key: json字典中的key名
         value: model对象的属性名
@@ -26,20 +26,20 @@ class BaseModel: NSObject {
         for jsonKey in mapDic.allKeys {
             //modelAttr:"newsId"
             //josnKey: "id"
-            let modelAttr = mapDic.objectForKey(jsonKey) as! String
+            let modelAttr = mapDic.object(forKey: jsonKey) as! String
             let seletor = self.stringToSel(modelAttr)
             
             //self 是否有seletor方法
-            if self.respondsToSelector(seletor) {
+            if self.responds(to: seletor) {
                 //json字典中的value
-                var value = jsonDic.objectForKey(jsonKey)
-                let isnull = value!.isKindOfClass(NSNull.self)
+                var value = jsonDic.object(forKey: jsonKey)
+                let isnull = (value! as AnyObject).isKind(of: NSNull.self)
                 if isnull {
                     value = ""
                 }
                 
                 //调用属性的设置器方法，参数是json的value
-                self.performSelector(seletor, withObject: value)
+                self.perform(seletor, with: value)
                 
             }
             
@@ -47,11 +47,12 @@ class BaseModel: NSObject {
     }
     
     
-    private func stringToSel(attName:String) -> Selector{
+    fileprivate func stringToSel(_ attName:String) -> Selector{
         //截取首字母
-        let index = attName.startIndex.advancedBy(1)
-        let firstStr = attName.substringToIndex(index).uppercaseString
-        let endStr = attName.substringFromIndex(index)
+        let index = attName.characters.index(attName.startIndex, offsetBy: 1)
+//        let firstStr = attName.substringToIndex(index).uppercased()
+        let firstStr = attName.substring(to: index).uppercased()
+        let endStr = attName.substring(from: index)
         
         let setMethod = "set" + firstStr + endStr + ":"
         
@@ -65,10 +66,10 @@ class BaseModel: NSObject {
      key: json字典的key名
      value: model对象的属性名
      */
-    func attributeMapDictionary(jsonDic: NSDictionary) -> NSDictionary {
+    func attributeMapDictionary(_ jsonDic: NSDictionary) -> NSDictionary {
         let mapDic = NSMutableDictionary()
         for key in jsonDic.allKeys {
-            mapDic.setObject(key, forKey: key as! String)
+            mapDic.setObject(key, forKey: key as! String as NSCopying)
         }
         
         return mapDic

@@ -40,7 +40,7 @@ class HeaderCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.imageView.sd_setImageWithURL(NSURL(string: self.urlStr!))
+        self.imageView.sd_setImage(with: URL(string: self.urlStr!))
     }
   
     

@@ -15,9 +15,9 @@ class ZoomImageView: UIImageView {
     var fullImageUrl:String?//图片的地址
     var tap:UITapGestureRecognizer?//放大的手势
     
-    func addTapZoomImageViewWithImageUrl(urlStr:String) {
+    func addTapZoomImageViewWithImageUrl(_ urlStr:String) {
         self.fullImageUrl = urlStr
-        self.userInteractionEnabled = true
+        self.isUserInteractionEnabled = true
         //创建手势
         if self.tap == nil {
             self.tap = UITapGestureRecognizer(target: self, action: #selector(ZoomImageView.tapToZoomBig))
@@ -29,38 +29,38 @@ class ZoomImageView: UIImageView {
         //判断图片是否为空
         self._initView()
         //image
-        let rect = self.convertRect(self.frame, toView: self.window)
+        let rect = self.convert(self.frame, to: self.window)
         self.fullImageView?.frame = rect
         
         //计算出图片的真实长度
         let realHeight = kScreenWidth / ((self.image?.size.width)! / (self.image?.size.height)!)
         self.scrollView?.contentSize = CGSize(width: kScreenWidth, height: realHeight)
         
-        UIView.animateWithDuration(0.35, animations: { 
+        UIView.animate(withDuration: 0.35, animations: { 
              self.fullImageView?.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: max(realHeight, kScreenHeight))
-            }) { (finished) in
+            }, completion: { (finished) in
                 if self.fullImageUrl == nil {
                     return
                 }
                 
-                self.fullImageView?.sd_setImageWithURL(NSURL(string: self.fullImageUrl!), placeholderImage: self.image)
-        }
+                self.fullImageView?.sd_setImage(with: URL(string: self.fullImageUrl!), placeholderImage: self.image)
+        }) 
        
     }
     
     func _initView() {
         if self.scrollView == nil {
-            self.scrollView = UIScrollView(frame: UIScreen.mainScreen().bounds)
+            self.scrollView = UIScrollView(frame: UIScreen.main.bounds)
             let tapToSamll = UITapGestureRecognizer(target: self, action: #selector(ZoomImageView.tapToSmall))
-            self.scrollView?.backgroundColor = UIColor.blackColor()
+            self.scrollView?.backgroundColor = UIColor.black
             self.scrollView?.addGestureRecognizer(tapToSamll)
             self.window?.addSubview(self.scrollView!)
         }
         
         if self.fullImageView == nil {
-            self.fullImageView = UIImageView(frame: CGRectZero)
+            self.fullImageView = UIImageView(frame: CGRect.zero)
             self.fullImageView?.image = self.image
-            self.fullImageView?.contentMode = .ScaleAspectFit
+            self.fullImageView?.contentMode = .scaleAspectFit
             self.scrollView?.addSubview(self.fullImageView!)
         }
         
@@ -68,16 +68,16 @@ class ZoomImageView: UIImageView {
     
     
     func tapToSmall() {
-        UIView.animateWithDuration(0.35, animations: { 
+        UIView.animate(withDuration: 0.35, animations: { 
             //缩小到原来的位置
-            self.fullImageView?.frame = self.convertRect(self.frame, toView: self.window)
-            self.scrollView?.backgroundColor = UIColor.clearColor()
-            }) { (finished) in
+            self.fullImageView?.frame = self.convert(self.frame, to: self.window)
+            self.scrollView?.backgroundColor = UIColor.clear
+            }, completion: { (finished) in
                 self.fullImageView?.removeFromSuperview()
                 self.fullImageView = nil
                 self.scrollView?.removeFromSuperview()
                 self.scrollView = nil
-        }
+        }) 
     }
     
     

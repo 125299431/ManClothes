@@ -19,7 +19,7 @@ class DailySellViewController: BaseViewController, UICollectionViewDelegateFlowL
 
         // Do any additional setup after loading the view.
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont.systemFontOfSize(15), NSForegroundColorAttributeName: UIColor.blueColor()]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont.systemFont(ofSize: 15), NSForegroundColorAttributeName: UIColor.blue]
         
         self._initView()
         self._creatCollectionView()
@@ -28,15 +28,15 @@ class DailySellViewController: BaseViewController, UICollectionViewDelegateFlowL
     }
     
     func _initView() {
-        let leftBtn = UIButton(type: .Custom)
+        let leftBtn = UIButton(type: .custom)
         leftBtn.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
-        leftBtn.setImage(UIImage(named: "backButton_blue.png"), forState: .Normal)
-        leftBtn.addTarget(self, action: #selector(DailySellViewController.backClick(_:)), forControlEvents: .TouchUpInside)
+        leftBtn.setImage(UIImage(named: "backButton_blue.png"), for: UIControlState())
+        leftBtn.addTarget(self, action: #selector(DailySellViewController.backClick(_:)), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
     }
     
-    func backClick(btn:UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func backClick(_ btn:UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     func _creatCollectionView() {
@@ -53,22 +53,22 @@ class DailySellViewController: BaseViewController, UICollectionViewDelegateFlowL
         
         self.view.addSubview(self.collectionView)
         
-        self.collectionView.registerClass(HomeCell.self, forCellWithReuseIdentifier: "HomeCell")
+        self.collectionView.register(HomeCell.self, forCellWithReuseIdentifier: "HomeCell")
         
         //下拉刷新
-        self.collectionView.addHeaderWithTarget(self, action: #selector(DailySellViewController._loadData))
+        self.collectionView.addHeader(withTarget: self, action: #selector(DailySellViewController._loadData))
     }
     
     
     func _loadData() {
-        let params = ["page":"1", "kind_id": self.kind_id]
-        DataSerive.requireDataWithURL(daily_items, params: params, method: "GET", successBlock: { (operation, resust) in
+        let params = ["page":"1", "kind_id": self.kind_id] as [String : Any]
+        DataSerive.requireDataWithURL(daily_items as NSString, params: params as NSDictionary, method: "GET", successBlock: { (operation, resust) in
             let itemDetailArr = resust["data"] as! NSArray
             let mArr = NSMutableArray()
             for dic in itemDetailArr {
                 var homeModel = HomeModel()
                 homeModel = homeModel.initContentWithDic(dic as! NSDictionary) as! HomeModel
-                mArr.addObject(homeModel)
+                mArr.add(homeModel)
             }
             
             self.itemData = mArr
@@ -88,28 +88,28 @@ class DailySellViewController: BaseViewController, UICollectionViewDelegateFlowL
     
     
     //MARK:UICollectionViewDataSource
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if self.itemData != nil{
             return self.itemData.count
         }
         return 0
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("HomeCell", forIndexPath: indexPath) as! HomeCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCell", for: indexPath) as! HomeCell
         cell.homeModel = self.itemData[indexPath.row] as? HomeModel
         cell.isRightRangle = true
         return cell
     }
     
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let webVC = HeaderWebController()
         webVC.title = "宝贝详情"
         let homeModel = self.itemData[indexPath.row] as! HomeModel
-        webVC.urlStr = homeModel.purchaseLink
+        webVC.urlStr = homeModel.purchaseLink as NSString!
         let nav = UINavigationController(rootViewController: webVC)
-        self.presentViewController(nav, animated: true, completion: nil)
+        self.present(nav, animated: true, completion: nil)
     }
 
     /*

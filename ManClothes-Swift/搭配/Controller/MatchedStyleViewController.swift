@@ -23,14 +23,14 @@ class MatchedStyleViewController: BaseViewController , UICollectionViewDelegateF
     }
     
     func _initView() {
-        let button = UIButton(type: .Custom)
+        let button = UIButton(type: .custom)
         button.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
-        button.setImage(UIImage(named: "backButton_blue.png"), forState: .Normal)
-        button.addTarget(self, action: #selector(MatchedStyleViewController.backClick), forControlEvents: .TouchUpInside)
+        button.setImage(UIImage(named: "backButton_blue.png"), for: UIControlState())
+        button.addTarget(self, action: #selector(MatchedStyleViewController.backClick), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
         
-        self.navigationController?.navigationBar.translucent = false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont.systemFontOfSize(16), NSForegroundColorAttributeName: UIColor.redColor()]
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont.systemFont(ofSize: 16), NSForegroundColorAttributeName: UIColor.red]
         
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumLineSpacing = 10
@@ -39,16 +39,16 @@ class MatchedStyleViewController: BaseViewController , UICollectionViewDelegateF
         flowLayout.sectionInset = UIEdgeInsetsMake(0, 20, 0, 20)
         
         self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowLayout)
-        self.collectionView.backgroundColor = UIColor.lightGrayColor()
+        self.collectionView.backgroundColor = UIColor.lightGray
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, 64, 0)
         self.view.addSubview(self.collectionView)
         
         //注册单元格
-        self.collectionView.registerClass(MatchedCell.self, forCellWithReuseIdentifier: "MatchedCell")
+        self.collectionView.register(MatchedCell.self, forCellWithReuseIdentifier: "MatchedCell")
         //下拉刷新
-        self.collectionView.addHeaderWithTarget(self, action: #selector(MatchedStyleViewController._loadData))
+        self.collectionView.addHeader(withTarget: self, action: #selector(MatchedStyleViewController._loadData))
     }
     
     func backClick() {
@@ -66,19 +66,19 @@ class MatchedStyleViewController: BaseViewController , UICollectionViewDelegateF
     
     
     //MARK:UICollectionViewDataSource
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.itemData.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let matchedCell = collectionView.dequeueReusableCellWithReuseIdentifier("MatchedCell", forIndexPath: indexPath) as! MatchedCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let matchedCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MatchedCell", for: indexPath) as! MatchedCell
         matchedCell.isItem = true
         matchedCell.itemModel = self.itemData[indexPath.row] as! MatchedItemModel
         
         return matchedCell
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
     }
     

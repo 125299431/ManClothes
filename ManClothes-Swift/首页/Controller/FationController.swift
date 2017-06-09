@@ -25,7 +25,7 @@ class FationController: BaseViewController, UITableViewDelegate, UITableViewData
     }
     
     func _initView() {
-        self.tableView = UITableView(frame: self.view.bounds, style: .Plain)
+        self.tableView = UITableView(frame: self.view.bounds, style: .plain)
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.rowHeight = 400
@@ -34,14 +34,14 @@ class FationController: BaseViewController, UITableViewDelegate, UITableViewData
     
     func _loadData() {
         let params = ["campaignType":"chaopin", "page":"1"]
-        DataSerive.requireDataWithURL(campaign, params: params, method: "GET", successBlock: { (operation, resust) in
+        DataSerive.requireDataWithURL(campaign as NSString, params: params as NSDictionary, method: "GET", successBlock: { (operation, resust) in
             let itemDic = resust["data"] as! NSDictionary
             let jsonArr = itemDic["itemDetail"] as! NSArray
             let mArr = NSMutableArray()
             for dic in jsonArr {
                 var homeModel = HomeModel()
                 homeModel = homeModel.initContentWithDic(dic as! NSDictionary) as! HomeModel
-                mArr.addObject(homeModel)
+                mArr.add(homeModel)
             }
             
             self.fationData = mArr
@@ -60,17 +60,17 @@ class FationController: BaseViewController, UITableViewDelegate, UITableViewData
     }
     
 //    MARK:UITableViewDelegate
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.fationData != nil {
             return self.fationData.count
         }
         return 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("fationCell") as? FationTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "fationCell") as? FationTableViewCell
         if cell == nil {
-            cell = NSBundle.mainBundle().loadNibNamed("FationTableViewCell", owner: nil, options: nil).last as? FationTableViewCell
+            cell = Bundle.main.loadNibNamed("FationTableViewCell", owner: nil, options: nil)?.last as? FationTableViewCell
         }
         
         cell?.homeModel = self.fationData[indexPath.row] as? HomeModel
@@ -78,11 +78,11 @@ class FationController: BaseViewController, UITableViewDelegate, UITableViewData
         return cell!
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let buyVC = BuyViewController()
         let homeModel = self.fationData[indexPath.row] as! HomeModel
         buyVC.itemID = homeModel._id
-        self.presentViewController(buyVC, animated: true, completion: nil)
+        self.present(buyVC, animated: true, completion: nil)
     }
     
 

@@ -9,31 +9,31 @@
 import UIKit
 
 //成功调用的block
-typealias SuccessDidBlock = (operation:AFHTTPRequestOperation, resust:AnyObject) -> Void
-typealias FailurDidBlock = (operation:AFHTTPRequestOperation, error:NSError) -> Void
+typealias SuccessDidBlock = (_ operation:AFHTTPRequestOperation, _ resust:AnyObject) -> Void
+typealias FailurDidBlock = (_ operation:AFHTTPRequestOperation, _ error:NSError) -> Void
 
 class DataSerive: NSObject {
     
-    class func requireDataWithURL(urlStr:NSString, params:NSDictionary, method:NSString, successBlock:SuccessDidBlock, failueBlock:FailurDidBlock) -> AFHTTPRequestOperation{
+    class func requireDataWithURL(_ urlStr:NSString, params:NSDictionary, method:NSString, successBlock:@escaping SuccessDidBlock, failueBlock:@escaping FailurDidBlock) -> AFHTTPRequestOperation{
         //发通知
-        NSNotificationCenter.defaultCenter().postNotificationName("ShowLoadView", object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "ShowLoadView"), object: nil)
         
         let manager = AFHTTPRequestOperationManager()
         //请求解析方式
         manager.requestSerializer = AFHTTPRequestSerializer()
         //响应的解析方式
-        manager.responseSerializer = AFJSONResponseSerializer(readingOptions: .MutableContainers)
+        manager.responseSerializer = AFJSONResponseSerializer(readingOptions: .mutableContainers)
         var operation:AFHTTPRequestOperation?
-        if method.isEqualToString("GET") {
-            operation = manager.GET(urlStr as String, parameters: params, success: { (operation, responseObject) -> Void in
+        if method.isEqual(to: "GET") {
+            operation = manager.get(urlStr as String, parameters: params, success: { (operation, responseObject) -> Void in
                 print("请求成功！")
-                NSNotificationCenter.defaultCenter().postNotificationName("HiddenLoadView", object: nil)
-                successBlock(operation: operation, resust: responseObject)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "HiddenLoadView"), object: nil)
+                successBlock(operation!, responseObject as AnyObject)
                 
                 }, failure: { (operation, error) -> Void in
                    print("请求失败！")
-                   NSNotificationCenter.defaultCenter().postNotificationName("HiddenLoadView", object: nil)
-                   failueBlock(operation: operation, error: error)
+                   NotificationCenter.default.post(name: Notification.Name(rawValue: "HiddenLoadView"), object: nil)
+                   failueBlock(operation!, error as! NSError)
                     
             })
         }

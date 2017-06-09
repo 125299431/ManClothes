@@ -31,8 +31,8 @@ class IssuseCell: UICollectionViewCell {
         self.contentView.addSubview(self.imgView)
         
         self.titleLabel = UILabel(frame: CGRect(x: 0, y: self.imgView.bottom + 5, width: self.imgView.width, height: 30))
-        self.titleLabel.textAlignment = .Center
-        self.titleLabel.font = UIFont.systemFontOfSize(12)
+        self.titleLabel.textAlignment = .center
+        self.titleLabel.font = UIFont.systemFont(ofSize: 12)
         self.titleLabel.numberOfLines = 2
         self.contentView.addSubview(self.titleLabel)
     }
@@ -53,7 +53,7 @@ class IssuseCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.imgView.sd_setImageWithURL(NSURL(string: self.issuseModel.img!))
+        self.imgView.sd_setImage(with: URL(string: self.issuseModel.img!))
         self.titleLabel.text = self.issuseModel.title
     }
 

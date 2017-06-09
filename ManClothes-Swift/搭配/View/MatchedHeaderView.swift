@@ -22,22 +22,22 @@ class MatchedHeaderView: UICollectionReusableView {
     
     func _initView() {
         self.bgView = UIView(frame: CGRect(x: 0, y: 10, width: kScreenWidth, height: 250))
-        self.bgView.backgroundColor = UIColor.whiteColor()
+        self.bgView.backgroundColor = UIColor.white
         //主题label
         let themeLabel = UILabel(frame: CGRect(x: 10, y: 5, width: 150, height: 30))
         themeLabel.tag = 200
-        themeLabel.font = UIFont.systemFontOfSize(15.0)
+        themeLabel.font = UIFont.systemFont(ofSize: 15.0)
         themeLabel.text = "主题名称"
-        self.bgView.addSubview(self.bgView)
+        self.bgView.addSubview(themeLabel)
         
         //button
         var m:Int = 0
         for i in 0...1 {
             for j in 0...3 {
-                let button = UIButton(type: .Custom)
+                let button = UIButton(type: .custom)
                 button.layer.cornerRadius = 30
                 button.layer.masksToBounds = true
-                button.backgroundColor = UIColor.redColor()
+                button.backgroundColor = UIColor.red
                 button.tag = 300 + m
                 button.frame = CGRect(x: 15 + CGFloat(j) * kScreenWidth / 4, y: 40 + CGFloat(i) * self.bgView.height, width: 60, height: 60)
                 self.bgView.addSubview(button)
@@ -46,8 +46,8 @@ class MatchedHeaderView: UICollectionReusableView {
                 let titleLabel = UILabel(frame: CGRect(x: button.left, y: button.bottom, width: button.width, height: 20))
                 titleLabel.tag = 400 + m
                 titleLabel.text = "风格"
-                titleLabel.font = UIFont.systemFontOfSize(12)
-                titleLabel.textAlignment = .Center
+                titleLabel.font = UIFont.systemFont(ofSize: 12)
+                titleLabel.textAlignment = .center
                 self.bgView.addSubview(titleLabel)
                 m += 1
             }
@@ -70,18 +70,18 @@ class MatchedHeaderView: UICollectionReusableView {
     override func layoutSubviews() {
         super.layoutSubviews()
         let themeLabel = self.bgView.viewWithTag(200) as! UILabel
-        themeLabel.text = self.headerModel.name
+        themeLabel.text = self.headerModel?.name
         for i in 0...7 {
             let button = self.bgView.viewWithTag(300 + i) as! UIButton
-            let itemModel = self.headerModel.header_items[i] as! HeaderItemModel
-            button.sd_setBackgroundImageWithURL(NSURL(string: itemModel.classify_icon), forState: .Normal)
-            button.addTarget(self, action: #selector(MatchedHeaderView.btnClick(_:)), forControlEvents: .TouchUpInside)
+            let itemModel = self.headerModel?.header_items[i] as! HeaderItemModel
+            button.sd_setBackgroundImage(with: URL(string: itemModel.classify_icon), for: UIControlState())
+            button.addTarget(self, action: #selector(MatchedHeaderView.btnClick(_:)), for: .touchUpInside)
             let titleLabel = self.bgView.viewWithTag(400 + i) as! UILabel
             titleLabel.text = itemModel.classify_name
         }
     }
     
-    func btnClick(btn:UIButton) {
+    func btnClick(_ btn:UIButton) {
 //        let styleVC = 
 //        let itemModel = self.headerModel.header_items[btn.tag - 300] as! HeaderItemModel
         

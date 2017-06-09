@@ -7,6 +7,30 @@
 //
 
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class BuyViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -16,7 +40,7 @@ class BuyViewController: BaseViewController, UITableViewDelegate, UITableViewDat
     
     var sellModel:SellModel?
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.hidesBottomBarWhenPushed = true
     }
@@ -34,55 +58,55 @@ class BuyViewController: BaseViewController, UITableViewDelegate, UITableViewDat
     }
     
     func _initView() {
-        self.tableView = UITableView(frame: self.view.bounds, style: .Grouped)
+        self.tableView = UITableView(frame: self.view.bounds, style: .grouped)
         self.tableView.contentInset = UIEdgeInsetsMake(-40, 0, 0, 0)
         self.view.addSubview(self.tableView)
 //        self.tableView.delegate = self
 //        self.tableView.dataSource = self
         
         //返回按钮
-        let backBtn = UIButton(type: .Custom)
-        backBtn.backgroundColor = UIColor.blackColor()
+        let backBtn = UIButton(type: .custom)
+        backBtn.backgroundColor = UIColor.black
         backBtn.layer.cornerRadius = 16
         backBtn.layer.masksToBounds = true
         backBtn.alpha = 0.6
         backBtn.frame = CGRect(x: 30, y: 40, width: 32, height: 32)
-        backBtn.setImage(UIImage(named: "backButton.png"), forState: .Normal)
-        backBtn.addTarget(self, action: #selector(BuyViewController.btnClick(_:)), forControlEvents: .TouchUpInside)
+        backBtn.setImage(UIImage(named: "backButton.png"), for: UIControlState())
+        backBtn.addTarget(self, action: #selector(BuyViewController.btnClick(_:)), for: .touchUpInside)
         self.view.addSubview(backBtn)
         
         //分享按钮
-        let shareBtn = UIButton(type: .Custom)
-        shareBtn.backgroundColor = UIColor.blackColor()
+        let shareBtn = UIButton(type: .custom)
+        shareBtn.backgroundColor = UIColor.black
         shareBtn.layer.cornerRadius = 16
         shareBtn.layer.masksToBounds = true
         shareBtn.alpha = 0.6
         shareBtn.frame = CGRect(x: kScreenWidth - 30 - 32, y: 40, width: 32, height: 32)
-        shareBtn.setImage(UIImage(named: "shareButton.png"), forState: .Normal)
-        shareBtn.addTarget(self, action: #selector(BuyViewController.userLogin), forControlEvents: .TouchUpInside)
+        shareBtn.setImage(UIImage(named: "shareButton.png"), for: UIControlState())
+        shareBtn.addTarget(self, action: #selector(BuyViewController.userLogin), for: .touchUpInside)
         self.view.addSubview(shareBtn)
         
         //工具栏
         let tabBarView = UIView(frame: CGRect(x: 0, y: kScreenHeight - 50, width: kScreenWidth, height: 50))
         tabBarView.layer.borderWidth = 0.5
-        tabBarView.layer.borderColor = UIColor.blackColor().CGColor
-        tabBarView.backgroundColor = UIColor.whiteColor()
+        tabBarView.layer.borderColor = UIColor.black.cgColor
+        tabBarView.backgroundColor = UIColor.white
         self.view.addSubview(tabBarView)
         
         //收藏
-        let collectionBtn = UIButton(type: .Custom)
-        collectionBtn.setImage(UIImage(named: "uncollect.png"), forState: .Normal)
-        collectionBtn.setImage(UIImage(named: "collected.png"), forState: .Selected)
-        collectionBtn.addTarget(self, action: #selector(BuyViewController.collectionClick(_:)), forControlEvents: .TouchUpInside)
+        let collectionBtn = UIButton(type: .custom)
+        collectionBtn.setImage(UIImage(named: "uncollect.png"), for: UIControlState())
+        collectionBtn.setImage(UIImage(named: "collected.png"), for: .selected)
+        collectionBtn.addTarget(self, action: #selector(BuyViewController.collectionClick(_:)), for: .touchUpInside)
         collectionBtn.frame = CGRect(x: 20, y: 10, width: 32, height: 32)
         tabBarView.addSubview(collectionBtn)
         
         //天猫购买
-        let buyBtn = UIButton(type: .Custom)
-        buyBtn.backgroundColor = UIColor.redColor()
-        buyBtn.setTitle("天猫购买", forState: .Normal)
-        buyBtn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        buyBtn.addTarget(self, action: #selector(BuyViewController.tianmaoClick), forControlEvents: .TouchUpInside)
+        let buyBtn = UIButton(type: .custom)
+        buyBtn.backgroundColor = UIColor.red
+        buyBtn.setTitle("天猫购买", for: UIControlState())
+        buyBtn.setTitleColor(UIColor.white, for: UIControlState())
+        buyBtn.addTarget(self, action: #selector(BuyViewController.tianmaoClick), for: .touchUpInside)
         buyBtn.frame = CGRect(x: kScreenWidth - 150, y: 0, width: 100, height: tabBarView.height)
         tabBarView.addSubview(buyBtn)
     }
@@ -91,36 +115,36 @@ class BuyViewController: BaseViewController, UITableViewDelegate, UITableViewDat
     
 
     
-    func btnClick(btn:UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func btnClick(_ btn:UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     func userLogin() {
         
     }
     
-    func collectionClick(btn:UIButton) {
-        btn.selected = !btn.selected
-        if btn.selected {
+    func collectionClick(_ btn:UIButton) {
+        btn.isSelected = !btn.isSelected
+        if btn.isSelected {
             //收藏
-            let collectionCtrl = UIAlertController(title: nil, message: "收藏成功", preferredStyle: .Alert)
-            let enterAction = UIAlertAction(title: "确定", style: .Default, handler: { (alterCtrl) in
+            let collectionCtrl = UIAlertController(title: nil, message: "收藏成功", preferredStyle: .alert)
+            let enterAction = UIAlertAction(title: "确定", style: .default, handler: { (alterCtrl) in
                 
             })
             collectionCtrl.addAction(enterAction)
             
-            self.presentViewController(collectionCtrl, animated: true, completion: nil)
+            self.present(collectionCtrl, animated: true, completion: nil)
             
         }else {
             //取消收藏
-            let unCollectionCtrl = UIAlertController(title: nil, message: "取消收藏", preferredStyle: .Alert)
-            let enterCtrl = UIAlertAction(title: "确定", style: .Default, handler: { (alterCtrl) in
+            let unCollectionCtrl = UIAlertController(title: nil, message: "取消收藏", preferredStyle: .alert)
+            let enterCtrl = UIAlertAction(title: "确定", style: .default, handler: { (alterCtrl) in
                 
             })
             
             unCollectionCtrl.addAction(enterCtrl)
             
-            self.presentViewController(unCollectionCtrl, animated: true, completion: nil)
+            self.present(unCollectionCtrl, animated: true, completion: nil)
         }
     }
     
@@ -130,17 +154,17 @@ class BuyViewController: BaseViewController, UITableViewDelegate, UITableViewDat
     
     func _loadData() {
         let params = NSMutableDictionary()
-        params.setObject("23", forKey: "age")
-        params.setObject("175", forKey: "height")
-        params.setObject(self.itemID, forKey: "item_id")
-        params.setObject("15243", forKey: "member_id")
-        params.setObject("member", forKey: "member_type")
-        params.setObject("90267", forKey: "random_key")
-        params.setObject("3", forKey: "skin_type")
-        params.setObject("1", forKey: "style")
-        params.setObject("76", forKey: "weight")
+        params.setObject("23", forKey: "age" as NSCopying)
+        params.setObject("175", forKey: "height" as NSCopying)
+        params.setObject(self.itemID, forKey: "item_id" as NSCopying)
+        params.setObject("15243", forKey: "member_id" as NSCopying)
+        params.setObject("member", forKey: "member_type" as NSCopying)
+        params.setObject("90267", forKey: "random_key" as NSCopying)
+        params.setObject("3", forKey: "skin_type" as NSCopying)
+        params.setObject("1", forKey: "style" as NSCopying)
+        params.setObject("76", forKey: "weight" as NSCopying)
         
-        DataSerive.requireDataWithURL(items, params: params, method: "GET", successBlock: { (operation, resust) in
+        DataSerive.requireDataWithURL(items as NSString, params: params, method: "GET", successBlock: { (operation, resust) in
             let jsonData = resust["data"] as! NSDictionary
             
             self.sellModel = SellModel()
@@ -159,16 +183,16 @@ class BuyViewController: BaseViewController, UITableViewDelegate, UITableViewDat
     }
     
     //MARK:UITableViewDataSource
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 1 || indexPath.row == 0 {
             let identifier = "Cell"
-            var cell = tableView.dequeueReusableCellWithIdentifier(identifier)
+            var cell = tableView.dequeueReusableCell(withIdentifier: identifier)
             if cell == nil {
-                cell = UITableViewCell(style: .Default, reuseIdentifier: identifier)
+                cell = UITableViewCell(style: .default, reuseIdentifier: identifier)
                 
                 if indexPath.row == 0 {
                     let coupon_priceLable = UILabel(frame: CGRect(x: 0, y: 20, width: 20, height: 20))
@@ -179,33 +203,33 @@ class BuyViewController: BaseViewController, UITableViewDelegate, UITableViewDat
                     //现价
                     let priceLabel1 = UILabel(frame: CGRect(x: coupon_priceLable.right, y: coupon_priceLable.top, width: 100, height: 20))
                     priceLabel1.tag = 2015
-                    priceLabel1.textColor = UIColor.redColor()
+                    priceLabel1.textColor = UIColor.red
                     cell!.contentView.addSubview(priceLabel1)
                     
                     //原价
                     let priceLabel2 = UILabelStrikeThrough(frame: CGRect(x: priceLabel1.right + 10, y: priceLabel1.top, width: 50, height: 20))
                     priceLabel2.tag = 2016
                     priceLabel2.isWithStrikeThrough = true
-                    priceLabel2.textAlignment = .Center
-                    priceLabel2.textColor = UIColor.blackColor()
+                    priceLabel2.textAlignment = .center
+                    priceLabel2.textColor = UIColor.black
                     cell!.contentView.addSubview(priceLabel2)
                     
                     //推荐框
 //                    self.sizeView = UIView(frame: CGRect(x: (kScreenWidth - 250) / 2, y: coupon_priceLable.bottom + 5, width: 250, height: 50)
 //                    cell?.contentView.addSubview(self.sizeView)
                     let sizeLabel = UILabel(frame: CGRect(x: (kScreenWidth - 300) / 2, y: coupon_priceLable.bottom + 5, width: 300, height: 50))
-                    sizeLabel.textAlignment = .Center
+                    sizeLabel.textAlignment = .center
                     sizeLabel.tag = 2017
 //                    let text = "小编推荐 衣服尺码:M，仅供参考"
                     cell!.contentView.addSubview(sizeLabel)
                 }else if(indexPath.row == 1) {
                     let descriptionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 50))
-                    descriptionLabel.layer.borderColor = UIColor.blackColor().CGColor
+                    descriptionLabel.layer.borderColor = UIColor.black.cgColor
                     descriptionLabel.layer.borderWidth = 1
-                    descriptionLabel.font = UIFont.systemFontOfSize(15)
-                    descriptionLabel.textColor = UIColor.blueColor()
+                    descriptionLabel.font = UIFont.systemFont(ofSize: 15)
+                    descriptionLabel.textColor = UIColor.blue
                     descriptionLabel.text = "产品信息"
-                    descriptionLabel.textAlignment = .Center
+                    descriptionLabel.textAlignment = .center
                     cell?.contentView.addSubview(descriptionLabel)
                 }
             }
@@ -215,17 +239,17 @@ class BuyViewController: BaseViewController, UITableViewDelegate, UITableViewDat
             if indexPath.row == 0 {
                 let sizeLabel1 = cell!.contentView.viewWithTag(2017) as! UILabel
                 if self.sellModel?.size != nil && self.sellModel?.size?.characters.count > 0 {
-                    sizeLabel1.hidden = false
+                    sizeLabel1.isHidden = false
                 }else {
-                    sizeLabel1.hidden = true
+                    sizeLabel1.isHidden = true
                 }
                 let text = "小编推荐 衣服尺码:\((self.sellModel?.size)!)，仅供参考"
                 let count = self.sellModel?.size.characters.count
                 let atttibutedText = NSMutableAttributedString(string: text)
-               atttibutedText.setAttributes([NSFontAttributeName:UIFont.boldSystemFontOfSize(20), NSForegroundColorAttributeName: UIColor.blueColor()], range: NSMakeRange(0, 5))
-                atttibutedText.setAttributes([NSForegroundColorAttributeName: UIColor.blackColor(), NSFontAttributeName: UIFont.systemFontOfSize(16)], range: NSMakeRange(5, 5))
-                atttibutedText.setAttributes([NSForegroundColorAttributeName: UIColor.cyanColor(), NSFontAttributeName: UIFont.boldSystemFontOfSize(16)], range: NSMakeRange(10, count!))
-                atttibutedText.setAttributes([NSForegroundColorAttributeName: UIColor.blackColor(), NSFontAttributeName: UIFont.boldSystemFontOfSize(16)], range: NSMakeRange(10 + count!, 5))
+               atttibutedText.setAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 20), NSForegroundColorAttributeName: UIColor.blue], range: NSMakeRange(0, 5))
+                atttibutedText.setAttributes([NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName: UIFont.systemFont(ofSize: 16)], range: NSMakeRange(5, 5))
+                atttibutedText.setAttributes([NSForegroundColorAttributeName: UIColor.cyan, NSFontAttributeName: UIFont.boldSystemFont(ofSize: 16)], range: NSMakeRange(10, count!))
+                atttibutedText.setAttributes([NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName: UIFont.boldSystemFont(ofSize: 16)], range: NSMakeRange(10 + count!, 5))
                 sizeLabel1.attributedText = atttibutedText
                 
                 let priceLabel1 = cell?.contentView.viewWithTag(2015) as! UILabel
@@ -235,17 +259,17 @@ class BuyViewController: BaseViewController, UITableViewDelegate, UITableViewDat
                 priceLabel2.text = "\(NSString.init(string: (self.sellModel?.price)!).floatValue)"
 //                    NSString(format: "%.2\((self.sellModel?.price))") as String
             }
-            cell!.selectionStyle = .None
+            cell!.selectionStyle = .none
             return cell!
         }else{
-            let cell = NSBundle.mainBundle().loadNibNamed("BuyTableViewCell", owner: nil, options: nil).last as! BuyTableViewCell
+            let cell = Bundle.main.loadNibNamed("BuyTableViewCell", owner: nil, options: nil)?.last as! BuyTableViewCell
             cell.sellModel = self.sellModel
             return cell
         }
         
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             if self.sellModel?.size != nil && self.sellModel?.size.characters.count > 0 {
                 return 110
@@ -259,16 +283,16 @@ class BuyViewController: BaseViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 400
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 400))
-        imageView.sd_setImageWithURL(NSURL(string: (self.sellModel?.pic_url)!))
+        imageView.sd_setImage(with: URL(string: (self.sellModel?.pic_url)!))
         let label = UILabel(frame: CGRect(x: 0, y: 350, width: kScreenWidth, height: 50))
-        label.backgroundColor = UIColor.cyanColor()
-        label.font = UIFont.systemFontOfSize(15)
+        label.backgroundColor = UIColor.cyan
+        label.font = UIFont.systemFont(ofSize: 15)
         label.numberOfLines = 2
         label.alpha = 0.5
         label.text = self.sellModel?.title

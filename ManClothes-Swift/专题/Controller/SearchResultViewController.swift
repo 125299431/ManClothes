@@ -20,17 +20,17 @@ class SearchResultViewController: BaseViewController, UICollectionViewDelegateFl
 
         // Do any additional setup after loading the view.
         self.title = "搜索结果"
-        self.navigationController?.navigationBar.translucent = false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont.systemFontOfSize(15), NSForegroundColorAttributeName: UIColor.blueColor()]
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont.systemFont(ofSize: 15), NSForegroundColorAttributeName: UIColor.blue]
         self._initView()
         self._loadData()
     }
     
     func _initView() {
-        let leftBtn = UIButton(type: .Custom)
+        let leftBtn = UIButton(type: .custom)
         leftBtn.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
-        leftBtn.setImage(UIImage(named: "backButton_blue.png"), forState: .Normal)
-        leftBtn.addTarget(self, action: #selector(SearchResultViewController.backClick), forControlEvents: .TouchUpInside)
+        leftBtn.setImage(UIImage(named: "backButton_blue.png"), for: UIControlState())
+        leftBtn.addTarget(self, action: #selector(SearchResultViewController.backClick), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
         
         //collectionView
@@ -41,19 +41,19 @@ class SearchResultViewController: BaseViewController, UICollectionViewDelegateFl
         flowLayout.sectionInset = UIEdgeInsetsMake(10, 12, 0, 12)
         
         self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowLayout)
-        self.collectionView.backgroundColor = UIColor.whiteColor()
+        self.collectionView.backgroundColor = UIColor.white
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, 64, 0)
         self.view.addSubview(self.collectionView)
         
         //注册单元格
-        self.collectionView.registerClass(IssuseCell.self, forCellWithReuseIdentifier: "SearchCell")
+        self.collectionView.register(IssuseCell.self, forCellWithReuseIdentifier: "SearchCell")
         
     }
     
     func backClick() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     
@@ -63,14 +63,14 @@ class SearchResultViewController: BaseViewController, UICollectionViewDelegateFl
             return
         }
         let params = NSMutableDictionary()
-        params.setObject("list", forKey: "action")
-        params.setObject("10", forKey: "ver")
-        params.setObject("0", forKey: "page")
-        params.setObject("nanren", forKey: "category")
+        params.setObject("list", forKey: "action" as NSCopying)
+        params.setObject("10", forKey: "ver" as NSCopying)
+        params.setObject("0", forKey: "page" as NSCopying)
+        params.setObject("nanren", forKey: "category" as NSCopying)
         let category2 = "%2F" + self.typeStr
-        params.setObject(category2, forKey: "category2")
-        params.setObject("24", forKey: "pageSize")
-        DataSerive.requireDataWithURL(json_rm, params: params, method: "GET", successBlock: { (operation, resust) in
+        params.setObject(category2, forKey: "category2" as NSCopying)
+        params.setObject("24", forKey: "pageSize" as NSCopying)
+        DataSerive.requireDataWithURL(json_rm as NSString, params: params, method: "GET", successBlock: { (operation, resust) in
             
             let jsonArr = resust["data"] as! NSArray
             if jsonArr.count == 0 {
@@ -81,7 +81,7 @@ class SearchResultViewController: BaseViewController, UICollectionViewDelegateFl
             for dic in jsonArr {
                 var issuseModel = IssuseModel()
                 issuseModel = issuseModel.initContentWithDic(dic as! NSDictionary) as! IssuseModel
-                mArr.addObject(issuseModel)
+                mArr.add(issuseModel)
             }
             self.data = mArr
             self.collectionView.reloadData()
@@ -94,9 +94,9 @@ class SearchResultViewController: BaseViewController, UICollectionViewDelegateFl
     func emptyItem() {
         if self.messagelabel == nil {
             self.messagelabel = UILabel(frame: CGRect(x: (kScreenWidth - 200) / 2, y: (kScreenHeight - 50 - 64) / 2, width: 200, height: 50))
-            self.messagelabel.textAlignment = .Center
+            self.messagelabel.textAlignment = .center
             self.messagelabel.text = "无相关消息"
-            self.messagelabel.font = UIFont.systemFontOfSize(18)
+            self.messagelabel.font = UIFont.systemFont(ofSize: 18)
         }
         self.view.addSubview(self.messagelabel)
     }
@@ -108,20 +108,20 @@ class SearchResultViewController: BaseViewController, UICollectionViewDelegateFl
     
     
     //MARK:UICollectionViewDataSource
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if self.data != nil {
             return self.data.count
         }
         return 0
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SearchCell", forIndexPath: indexPath) as! IssuseCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCell", for: indexPath) as! IssuseCell
         cell.issuseModel = self.data[indexPath.row] as! IssuseModel
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let detailVC = DetailIssuseController()
         let issuseModel = self.data[indexPath.row] as! IssuseModel

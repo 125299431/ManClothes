@@ -19,15 +19,14 @@ class HomeHeaderView: UICollectionReusableView , UICollectionViewDataSource, UIC
     //滑动的页数
     var pageNum:Int!
     //定时器
-    var timer:NSTimer?
+    var timer:Timer?
     //头视图滑动的大数组
     var maxData:[AnyObject]?
    
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.white
         self._initView()
         
     }
@@ -42,42 +41,42 @@ class HomeHeaderView: UICollectionReusableView , UICollectionViewDataSource, UIC
         flowLayout.minimumInteritemSpacing = 0
         flowLayout.minimumLineSpacing = 0
         flowLayout.itemSize = CGSize(width: kScreenWidth, height: 195)
-        flowLayout.scrollDirection = .Horizontal
+        flowLayout.scrollDirection = .horizontal
         
         self.collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 195), collectionViewLayout: flowLayout)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        self.collectionView.pagingEnabled = true
+        self.collectionView.isPagingEnabled = true
         self.collectionView.showsHorizontalScrollIndicator = false
         self.collectionView.showsVerticalScrollIndicator = false
         //滑到第二张图片的位置 实际是数组的第一个图片
         self.collectionView.scrollRectToVisible(CGRect(x: kScreenWidth, y: 0, width: kScreenWidth, height: 0), animated: false)
-        self.collectionView.hidden = true
+        self.collectionView.isHidden = true
         
         //注册单元格
-        self.collectionView.registerClass(HeaderCollectionViewCell.self, forCellWithReuseIdentifier: "pictureCell")
+        self.collectionView.register(HeaderCollectionViewCell.self, forCellWithReuseIdentifier: "pictureCell")
         self.bgView.addSubview(self.collectionView)
         
         //分页视图
         self.pageControl = UIPageControl(frame: CGRect(x: 0, y: 180, width: self.bgView.width, height: 20))
         self.pageControl.currentPage = 0
-        self.pageControl.pageIndicatorTintColor = UIColor.redColor()
+        self.pageControl.pageIndicatorTintColor = UIColor.red
         self.bgView.addSubview(self.pageControl)
         
         
         //分割线
         let lineView = UIView(frame: CGRect(x: (kScreenWidth - 1) / 2, y: self.collectionView.bottom + 3, width: 1, height: 30 - 6))
-        lineView.backgroundColor = UIColor.darkGrayColor()
+        lineView.backgroundColor = UIColor.darkGray
         self.bgView.addSubview(lineView)
         
         for index in 0...1 {
-            let button = UIButton(type: UIButtonType.Custom)
+            let button = UIButton(type: UIButtonType.custom)
             button.tag = 2016 + index
-            button.addTarget(self, action: #selector(HomeHeaderView.themeButtonAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            button.addTarget(self, action: #selector(HomeHeaderView.themeButtonAction(_:)), for: UIControlEvents.touchUpInside)
             let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
             button.addSubview(imageView)
             button.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0)
-            button.titleLabel?.font = UIFont.systemFontOfSize(15)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
             button.frame = CGRect(x: CGFloat(50 + Int(kScreenWidth / 2) * index), y: self.collectionView.bottom, width: 120, height: 30)
             self.bgView.addSubview(button)
         }
@@ -90,7 +89,7 @@ class HomeHeaderView: UICollectionReusableView , UICollectionViewDataSource, UIC
         
     }
     
-    func themeButtonAction(btn:UIButton) {
+    func themeButtonAction(_ btn:UIButton) {
         if btn.tag == 2016 {
             //潮品专区
             let fationVC = FationController()
@@ -99,12 +98,12 @@ class HomeHeaderView: UICollectionReusableView , UICollectionViewDataSource, UIC
             //日常专区
             let dailyVC = DailyViewController()
             let nav = UINavigationController(rootViewController: dailyVC)
-            self.viewController().presentViewController(nav, animated: true, completion: nil)
+            self.viewController().present(nav, animated: true, completion: nil)
         }
         
     }
     
-    func scrollToNextPage(timer:NSTimer) {
+    func scrollToNextPage(_ timer:Timer) {
         self.collectionView.setContentOffset(CGPoint(x: self.collectionView.contentOffset.x + self.collectionView.width, y: self.collectionView.contentOffset.y), animated: true)
         
         //计算出当前的页数
@@ -137,15 +136,16 @@ class HomeHeaderView: UICollectionReusableView , UICollectionViewDataSource, UIC
             //创建最终的滑动数组
             self.pageControl.numberOfPages = (newValue?.count)!
             self.maxData = NSMutableArray(array: newValue!) as [AnyObject]
-            self.maxData?.insert((newValue?.last)!, atIndex: 0)
+            self.maxData?.insert((newValue?.last)!, at: 0)
             self.maxData?.append(newValue![0])
+
             
             self.collectionView.reloadData()
-            self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 1, inSection: 0), atScrollPosition: .CenteredHorizontally, animated: false)
-            self.collectionView.hidden = false
+            self.collectionView.scrollToItem(at: IndexPath(item: 1, section: 0), at: .centeredHorizontally, animated: false)
+            self.collectionView.isHidden = false
             //定时器
             if self.timer == nil {
-                self.timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(HomeHeaderView.scrollToNextPage(_:)), userInfo: nil, repeats: true)
+                self.timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(HomeHeaderView.scrollToNextPage(_:)), userInfo: nil, repeats: true)
             }
             
         }
@@ -162,11 +162,11 @@ class HomeHeaderView: UICollectionReusableView , UICollectionViewDataSource, UIC
             let imageView = button.subviews[0] as! UIImageView
             if (self.themeData != nil) {
                 let headerModel = self.themeData?[index] as! HomeHerderModel
-                imageView.sd_setImageWithURL(NSURL(string: headerModel.theme_image!))
+                imageView.sd_setImage(with: URL(string: headerModel.theme_image!))
                 print(headerModel.theme_name!.characters.count)
                 imageView.right = imageView.right - CGFloat(headerModel.theme_name!.characters.count - 4)
-                button.setTitle(headerModel.theme_name, forState: .Normal)
-                button.setTitleColor(UIColor.blackColor(), forState: .Normal)
+                button.setTitle(headerModel.theme_name, for: UIControlState())
+                button.setTitleColor(UIColor.black, for: UIControlState())
             }
            
             
@@ -174,7 +174,7 @@ class HomeHeaderView: UICollectionReusableView , UICollectionViewDataSource, UIC
     }
     
     //MARK:UICollectionViewDataSource
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let count = self.maxData?.count {
             return count
         }else {
@@ -182,33 +182,33 @@ class HomeHeaderView: UICollectionReusableView , UICollectionViewDataSource, UIC
         }
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("pictureCell", forIndexPath: indexPath) as! HeaderCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pictureCell", for: indexPath) as! HeaderCollectionViewCell
         let headerModel = self.maxData![indexPath.row] as! HomeHerderModel
         cell.urlStr = headerModel.theme_image
         return cell
     }
     
     //点击单元格
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         switch indexPath.row {
         case (self.scrollerData?.count)! - 1:
             //卖场
             let headerSellVC = HeaderSellController()
             let nav = UINavigationController(rootViewController: headerSellVC)
-            self.viewController().presentViewController(nav, animated: true, completion: nil)
+            self.viewController().present(nav, animated: true, completion: nil)
             break
         case (self.scrollerData?.count)!:
             //照片墙
             let photoVC = PhotoViewController()
             let nav = UINavigationController(rootViewController: photoVC)
-            self.viewController().presentViewController(nav, animated: true, completion: nil)
+            self.viewController().present(nav, animated: true, completion: nil)
             break
         default:
             let webVC = HeaderWebController()
             let headerModel = self.maxData![indexPath.row] as! HomeHerderModel
-            webVC.urlStr = headerModel.theme_link
+            webVC.urlStr = headerModel.theme_link as NSString!
             self.viewController().navigationController?.pushViewController(webVC, animated: true)
             break
             
@@ -218,11 +218,11 @@ class HomeHeaderView: UICollectionReusableView , UICollectionViewDataSource, UIC
     
     //MARK:UIScrollViewDelegate
     
-    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         self.scrollViewDidEndDecelerating(self.collectionView)
     }
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageWidth = self.collectionView.width
         let pageHeight = self.collectionView.height
         let currentPage = Int(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1)
@@ -241,12 +241,12 @@ class HomeHeaderView: UICollectionReusableView , UICollectionViewDataSource, UIC
         self.pageControl.currentPage = currentPage - 1
     }
     
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.timer?.invalidate()
     }
     
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(HomeHeaderView.scrollToNextPage(_:)), userInfo: nil, repeats: true)
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        self.timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(HomeHeaderView.scrollToNextPage(_:)), userInfo: nil, repeats: true)
     }
         
 }

@@ -27,9 +27,9 @@ class SellModel: BaseModel {
     var size:String!
     var cloth_description:String!
     
-    override func initContentWithDic(jsonDic: NSDictionary) -> AnyObject {
+    override func initContentWithDic(_ jsonDic: NSDictionary) -> AnyObject {
         super.initContentWithDic(jsonDic)
-        self.cloth_description = jsonDic.objectForKey("description")  as? String
+        self.cloth_description = jsonDic.object(forKey: "description")  as? String
         return self
     }
 }

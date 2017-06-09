@@ -17,7 +17,7 @@ class HeaderWebController: BaseViewController {
     
     
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.hidesBottomBarWhenPushed = true
     }
@@ -35,33 +35,33 @@ class HeaderWebController: BaseViewController {
     
     func _initView() {
         if self.isTianmao == true {
-            let leftBtn = UIButton(type: .Custom)
+            let leftBtn = UIButton(type: .custom)
             leftBtn.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
-            leftBtn.setImage(UIImage(named: "Tmall_back.png"), forState: .Normal)
-            leftBtn.addTarget(self, action: #selector(HeaderWebController.backClick(_:)), forControlEvents: .TouchUpInside)
+            leftBtn.setImage(UIImage(named: "Tmall_back.png"), for: UIControlState())
+            leftBtn.addTarget(self, action: #selector(HeaderWebController.backClick(_:)), for: .touchUpInside)
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
         }
         self.webView = WKWebView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - 64))
-        let request = NSMutableURLRequest(URL: NSURL(string: self.urlStr as String)!)
-        self.webView.loadRequest(request)
+        let request = NSMutableURLRequest(url: URL(string: self.urlStr as String)!)
+        self.webView.load(request as URLRequest)
         self.view.addSubview(self.webView)
         
         self.progressView = UIProgressView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 2))
-        self.progressView.trackTintColor = UIColor.whiteColor()
+        self.progressView.trackTintColor = UIColor.white
 //        self.progressView.progress = 0.5
         self.view.addSubview(self.progressView)
         //监听进度条的变化
-        self.webView.addObserver(self, forKeyPath: "estimatedProgress", options: .New, context: nil)
+        self.webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
         //屏幕自适应
 //        self.webView.scalesPageToFit = true
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "estimatedProgress" {
             self.progressView.progress = Float(self.webView.estimatedProgress)
             self.progressView.alpha = 1
             if self.progressView.progress >= 1 {
-                UIView.animateWithDuration(0.35, animations: {
+                UIView.animate(withDuration: 0.35, animations: {
                     self.progressView.alpha = 0
                     self.progressView.removeFromSuperview()
                 })
@@ -69,13 +69,13 @@ class HeaderWebController: BaseViewController {
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         self.webView.removeObserver(self, forKeyPath: "estimatedProgress", context: nil)
     }
     
     
-    func backClick(btn:UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func backClick(_ btn:UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

@@ -8,8 +8,8 @@
 
 import UIKit
 
-let kScreenWidth = UIScreen.mainScreen().bounds.width
-let kScreenHeight = UIScreen.mainScreen().bounds.height
+let kScreenWidth = UIScreen.main.bounds.width
+let kScreenHeight = UIScreen.main.bounds.height
 /*********************接口**************************/
 //首页头视图
 let theme = "http://api.nanyibang.com/theme"

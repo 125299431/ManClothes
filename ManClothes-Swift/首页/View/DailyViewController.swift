@@ -16,8 +16,8 @@ class DailyViewController: BaseViewController {
         super.viewDidLoad()
         
         self.title = "洗护专区"
-        self.navigationController?.navigationBar.translucent = false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont.systemFontOfSize(15), NSForegroundColorAttributeName: UIColor.blueColor()]
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont.systemFont(ofSize: 15), NSForegroundColorAttributeName: UIColor.blue]
         
         self._initView()
         self._loadData()
@@ -25,15 +25,15 @@ class DailyViewController: BaseViewController {
     }
     
     func _initView() {
-        let leftBtn = UIButton(type: .Custom)
+        let leftBtn = UIButton(type: .custom)
         leftBtn.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
-        leftBtn.setImage(UIImage(named: "backButton_blue.png"), forState: .Normal)
-        leftBtn.addTarget(self, action: #selector(DailyViewController.backClick(_:)), forControlEvents: .TouchUpInside)
+        leftBtn.setImage(UIImage(named: "backButton_blue.png"), for: UIControlState())
+        leftBtn.addTarget(self, action: #selector(DailyViewController.backClick(_:)), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
     }
     
-    func backClick(btn:UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func backClick(_ btn:UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     func _creatButton() {
@@ -43,11 +43,11 @@ class DailyViewController: BaseViewController {
                 //创建button
                 let button = UIButtonCustom(frame: CGRect(x:CGFloat(j * Int(kScreenWidth / 2)), y:CGFloat(i * Int((kScreenHeight - 64) / 3)), width: kScreenWidth / 2, height: (kScreenHeight - 64) / 3))
                 button.tag = m + 2016
-                button.addTarget(self, action: #selector(DailyViewController.buttonClick(_:)), forControlEvents: .TouchUpInside)
+                button.addTarget(self, action: #selector(DailyViewController.buttonClick(_:)), for: .touchUpInside)
                 let dailyModel = self.buttonImageData[m] as! DailyModel
-                button.backgroundColor = UIColor.whiteColor()
-                button.imgName = dailyModel.kind_icon
-                button.title = dailyModel.kind_name
+                button.backgroundColor = UIColor.white
+                button.imgName = dailyModel.kind_icon as NSString!
+                button.title = dailyModel.kind_name as NSString!
                 self.view.addSubview(button)
                 m += 1
             }
@@ -57,13 +57,13 @@ class DailyViewController: BaseViewController {
     
     func _loadData() {
         let params = ["daily_count":"6"]
-        DataSerive.requireDataWithURL(daily_classify, params: params, method: "GET", successBlock: { (operation, resust) in
+        DataSerive.requireDataWithURL(daily_classify as NSString, params: params as NSDictionary, method: "GET", successBlock: { (operation, resust) in
             let jsonArr = resust["data"] as! NSArray
             let mArr = NSMutableArray()
             for dic in jsonArr {
                 var dailyModel = DailyModel()
                 dailyModel = dailyModel.initContentWithDic(dic as! NSDictionary) as! DailyModel
-                mArr.addObject(dailyModel)
+                mArr.add(dailyModel)
             }
             
             self.buttonImageData = mArr
@@ -76,13 +76,13 @@ class DailyViewController: BaseViewController {
     }
     
     
-    func buttonClick(btn:UIButton) {
+    func buttonClick(_ btn:UIButton) {
         let dailySellVC = DailySellViewController()
         let dailyModel = self.buttonImageData[btn.tag - 2016] as! DailyModel
         dailySellVC.title = dailyModel.kind_name 
         dailySellVC.kind_id = dailyModel.kind_id
         let nav = UINavigationController(rootViewController: dailySellVC)
-        self.presentViewController(nav, animated: true, completion: nil)
+        self.present(nav, animated: true, completion: nil)
         
     }
 

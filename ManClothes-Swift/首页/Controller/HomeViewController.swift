@@ -38,19 +38,19 @@ class HomeViewController: BaseViewController , UICollectionViewDataSource, UICol
         //单元格偏移量
         flowLayout.sectionInset = UIEdgeInsetsMake(0, 15, 0, 15)
         self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowLayout)
-        self.collectionView!.backgroundColor = UIColor.clearColor()
+        self.collectionView!.backgroundColor = UIColor.clear
         self.collectionView!.delegate = self
         self.collectionView!.dataSource = self
         self.collectionView!.contentInset = UIEdgeInsetsMake(0, 0, 64, 0)
         self.collectionView?.showsVerticalScrollIndicator = false
         
         //注册头视图
-        self.collectionView?.registerClass(HomeHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "HomeHeader")
-        self.collectionView!.registerClass(HomeCell.self, forCellWithReuseIdentifier: "HomeCell")
+        self.collectionView?.register(HomeHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "HomeHeader")
+        self.collectionView!.register(HomeCell.self, forCellWithReuseIdentifier: "HomeCell")
         self.view.addSubview(self.collectionView!)
         
         //下拉刷新
-        self.collectionView.addHeaderWithTarget(self, action: #selector(HomeViewController._loadData))
+        self.collectionView.addHeader(withTarget: self, action: #selector(HomeViewController._loadData))
         
     }
     
@@ -60,7 +60,7 @@ class HomeViewController: BaseViewController , UICollectionViewDataSource, UICol
         
         //请求头视图数据
         let params = ["type":"2"]
-        DataSerive.requireDataWithURL(theme, params: params, method: "GET", successBlock: { (operation, resust) -> Void in
+        DataSerive.requireDataWithURL(theme as NSString, params: params as NSDictionary, method: "GET", successBlock: { (operation, resust) -> Void in
             let jsonArr = resust["data"]
             var mArr = [HomeHerderModel]()
             for dic in jsonArr as! [NSDictionary]{
@@ -79,7 +79,7 @@ class HomeViewController: BaseViewController , UICollectionViewDataSource, UICol
         
         //请求头视图专区数据
         let params1 = ["type":"3"]
-        DataSerive.requireDataWithURL(theme, params: params1, method: "GET", successBlock: { (operation, resust) -> Void in
+        DataSerive.requireDataWithURL(theme as NSString, params: params1 as NSDictionary, method: "GET", successBlock: { (operation, resust) -> Void in
             let jsonArr = resust["data"]
             var mArr = [HomeHerderModel]()
             for dic in jsonArr as! [NSDictionary]{
@@ -100,12 +100,12 @@ class HomeViewController: BaseViewController , UICollectionViewDataSource, UICol
         
         //请求单元格数据
         let params0 = NSMutableDictionary()
-        params0.setObject("19", forKey: "age")
-        params0.setObject("0", forKey: "campaignId")
-        params0.setObject("jingxuan", forKey: "campaignType")
-        params0.setObject("1", forKey: "page")
+        params0.setObject("19", forKey: "age" as NSCopying)
+        params0.setObject("0", forKey: "campaignId" as NSCopying)
+        params0.setObject("jingxuan", forKey: "campaignType" as NSCopying)
+        params0.setObject("1", forKey: "page" as NSCopying)
         
-        DataSerive.requireDataWithURL(campaign, params: params0, method: "GET", successBlock: { (operation, resust) -> Void in
+        DataSerive.requireDataWithURL(campaign as NSString, params: params0, method: "GET", successBlock: { (operation, resust) -> Void in
             
 //            print(resust)
             let jsonDic = resust["data"] as! NSDictionary
@@ -136,7 +136,7 @@ class HomeViewController: BaseViewController , UICollectionViewDataSource, UICol
     }
     
     //MARK:UICollectionViewDataSource
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let count = self.data?.count {
             return count
         }else {
@@ -144,26 +144,26 @@ class HomeViewController: BaseViewController , UICollectionViewDataSource, UICol
         }
         
     }
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: kScreenWidth / 2 - 30, height: 200 * (kScreenWidth / 2 - 30) / 150)
     }
     //头视图
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        homeHeaderView  = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "HomeHeader", forIndexPath: indexPath) as! HomeHeaderView
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        homeHeaderView  = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "HomeHeader", for: indexPath) as! HomeHeaderView
         return self.homeHeaderView!
     }
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("HomeCell", forIndexPath: indexPath) as! HomeCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCell", for: indexPath) as! HomeCell
 //        cell.contentView.backgroundColor = UIColor.redColor()
         cell.homeModel = self.data[indexPath.row]
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let buyVC = BuyViewController()
         let homeModel = self.data[indexPath.row] 
         buyVC.itemID = homeModel._id
-        self.presentViewController(buyVC, animated: true, completion: nil)
+        self.present(buyVC, animated: true, completion: nil)
     }
     
 

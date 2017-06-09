@@ -24,14 +24,14 @@ class PhotoViewController: BaseViewController, UITableViewDelegate, UITableViewD
     
     func _init() {
         self.title = "照片墙"
-        self.view.backgroundColor = UIColor.whiteColor()
-        self.navigationController?.navigationBar.translucent = false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont.systemFontOfSize(17), NSForegroundColorAttributeName:UIColor.redColor()]
+        self.view.backgroundColor = UIColor.white
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont.systemFont(ofSize: 17), NSForegroundColorAttributeName:UIColor.red]
         
-        let leftBtn = UIButton(type: .Custom)
+        let leftBtn = UIButton(type: .custom)
         leftBtn.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
-        leftBtn.setImage(UIImage(named: "backButton_blue.png"), forState: .Normal)
-        leftBtn.addTarget(self, action: #selector(PhotoViewController.backClick), forControlEvents: .TouchUpInside)
+        leftBtn.setImage(UIImage(named: "backButton_blue.png"), for: UIControlState())
+        leftBtn.addTarget(self, action: #selector(PhotoViewController.backClick), for: .touchUpInside)
         let item = UIBarButtonItem(customView: leftBtn)
         self.navigationItem.leftBarButtonItem = item
         
@@ -39,29 +39,29 @@ class PhotoViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     func backClick() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     func _creatTabbleView() {
-        self.tableView = UITableView(frame: self.view.bounds, style: .Plain)
+        self.tableView = UITableView(frame: self.view.bounds, style: .plain)
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.rowHeight = 400
         self.view.addSubview(self.tableView)
         
         //下拉刷新
-        self.tableView.addHeaderWithTarget(self, action: #selector(PhotoViewController._loadData))
+        self.tableView.addHeader(withTarget: self, action: #selector(PhotoViewController._loadData))
     }
     
     func _loadData() {
         let params = NSMutableDictionary()
-        params.setObject("15243", forKey: "member_id")
-        params.setObject("member", forKey: "member_type")
-        params.setObject("1", forKey: "page")
-        params.setObject("1", forKey: "public")
-        params.setObject("38388", forKey: "random_key")
+        params.setObject("15243", forKey: "member_id" as NSCopying)
+        params.setObject("member", forKey: "member_type" as NSCopying)
+        params.setObject("1", forKey: "page" as NSCopying)
+        params.setObject("1", forKey: "public" as NSCopying)
+        params.setObject("38388", forKey: "random_key" as NSCopying)
         
-        DataSerive.requireDataWithURL(photoMall, params: params, method: "GET", successBlock: { (operation, resust) in
+        DataSerive.requireDataWithURL(photoMall as NSString, params: params, method: "GET", successBlock: { (operation, resust) in
             let jsonArr = resust["data"] as! NSArray
             var mArr = [PhotoModel]()
             for dic in jsonArr {
@@ -70,7 +70,7 @@ class PhotoViewController: BaseViewController, UITableViewDelegate, UITableViewD
                 mArr.append(model)
             }
             
-            self.photoData = mArr
+            self.photoData = mArr as NSArray!
             
             self.tableView.reloadData()
             self.tableView.headerEndRefreshing()
@@ -88,17 +88,17 @@ class PhotoViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     //MARK:UITableViewDelegate
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.photoData != nil {
             return self.photoData.count
         }
         return 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("photoCell") as? PhotoViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "photoCell") as? PhotoViewCell
         if cell == nil {
-            cell = NSBundle.mainBundle().loadNibNamed("PhotoViewCell", owner: self, options: nil).last as? PhotoViewCell
+            cell = Bundle.main.loadNibNamed("PhotoViewCell", owner: self, options: nil)?.last as? PhotoViewCell
             
         }
         cell!.photoModel = self.photoData[indexPath.row] as? PhotoModel

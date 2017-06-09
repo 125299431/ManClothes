@@ -26,26 +26,26 @@ class MatchedCell: UICollectionViewCell {
     
     func _initView() {
         //颜色与边框
-        self.contentView.backgroundColor = UIColor.whiteColor()
+        self.contentView.backgroundColor = UIColor.white
         self.contentView.layer.cornerRadius  = 10
         self.contentView.layer.masksToBounds = true
         
         //图片
-        self.imgView = UIImageView(frame: CGRectZero)
+        self.imgView = UIImageView(frame: CGRect.zero)
         self.contentView.addSubview(self.imgView)
         
         //描述
         self.descriptionLabel = SpaceLabel(frame: CGRect(x: 0, y: self.imgView.bottom, width: self.contentView.width, height: 30))
         self.descriptionLabel.text = "【秋季上新】男士新款"
-        self.descriptionLabel.font = UIFont.systemFontOfSize(14)
+        self.descriptionLabel.font = UIFont.systemFont(ofSize: 14)
         self.contentView.addSubview(self.descriptionLabel)
         
         //类型
-        self.typeLabel = UILabel(frame: CGRectZero)
-        self.typeLabel.textColor = UIColor.blueColor()
+        self.typeLabel = UILabel(frame: CGRect.zero)
+        self.typeLabel.textColor = UIColor.blue
         self.typeLabel.numberOfLines = 2
-        self.typeLabel.textAlignment = .Center
-        self.typeLabel.font = UIFont.systemFontOfSize(12)
+        self.typeLabel.textAlignment = .center
+        self.typeLabel.font = UIFont.systemFont(ofSize: 12)
         self.contentView.addSubview(self.typeLabel)
  
     }
@@ -71,7 +71,7 @@ class MatchedCell: UICollectionViewCell {
             self.imgView.frame = CGRect(x: 0, y: 0, width: self.width, height:CGFloat(rowHeight - 50))
         }
         
-        self.imgView.sd_setImageWithURL(NSURL(string: self.itemModel.big_image), placeholderImage: UIImage(named: "plaseholder.png"))
+        self.imgView.sd_setImage(with: URL(string: self.itemModel.big_image), placeholderImage: UIImage(named: "plaseholder.png"))
         //title
         self.descriptionLabel.frame = CGRect(x: 0, y: self.imgView.bottom, width: self.imgView.width, height: 30)
         self.descriptionLabel.text = self.itemModel.info

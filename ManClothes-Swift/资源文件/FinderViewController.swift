@@ -10,12 +10,12 @@ import UIKit
 
 extension UIView {
     func viewController() -> UIViewController {
-        var next = self.nextResponder()
+        var next = self.next
         repeat {
-            if next?.isKindOfClass(UIViewController.self) == true {
+            if next?.isKind(of: UIViewController.self) == true {
                 return next as! UIViewController
             }
-            next = next?.nextResponder()
+            next = next?.next
         }while(next != nil)
         
         return next as! UIViewController

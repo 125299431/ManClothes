@@ -39,7 +39,7 @@ class PhotoViewCell: UITableViewCell {
 //            <#code#>
 //        }
         //头像
-        self.userImageView.sd_setImageWithURL(NSURL(string: self.photoModel!.head_pic!))
+        self.userImageView.sd_setImage(with: URL(string: self.photoModel!.head_pic!))
         //昵称
         self.userName.text = self.photoModel?.nick_name
         //时间
@@ -48,17 +48,17 @@ class PhotoViewCell: UITableViewCell {
         //描述
         //判断是否有
         if self.photoModel?.comment?.characters.count != 0 {
-            self.descriptionLabel.hidden = false
+            self.descriptionLabel.isHidden = false
             self.descriptionLabel.text = self.photoModel?.comment
             
         }else {
-            self.descriptionLabel.hidden = true
+            self.descriptionLabel.isHidden = true
             self.image_y.constant = -20;
 
         }
         
         //照片
-        self.photoImage.sd_setImageWithURL(NSURL(string: (self.photoModel?.image)! as String))
+        self.photoImage.sd_setImage(with: URL(string: (self.photoModel?.image)! as String))
         
         
         
@@ -67,10 +67,10 @@ class PhotoViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        self.selectionStyle = .None
+        self.selectionStyle = .none
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

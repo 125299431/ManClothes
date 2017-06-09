@@ -39,7 +39,7 @@ class FationTableViewCell: UITableViewCell {
         super.layoutSubviews()
         
         //图片
-        self.pictureView.sd_setImageWithURL(NSURL(string: (self.homeModel?.pic_url)!))
+        self.pictureView.sd_setImage(with: URL(string: (self.homeModel?.pic_url)!))
         //title
         self.descriptionLabel.text = self.homeModel?.title
         //类型
@@ -48,7 +48,7 @@ class FationTableViewCell: UITableViewCell {
         self.priceLabel.text = "¥" + (self.homeModel?.coupon_price)!
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

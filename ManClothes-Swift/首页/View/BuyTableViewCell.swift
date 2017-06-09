@@ -39,7 +39,7 @@ class BuyTableViewCell: UITableViewCell {
         self.pinpaiLabel.text = "品牌名称：" + self.sellModel.brand
         self.caizhiLabel.text = "材质：" + self.sellModel.material
         self.styleLabel.text = "基础风格：" + self.sellModel.style
-        self.huohaoLabel.text = "货号：" + String(self.sellModel.num_iid)
+        self.huohaoLabel.text = "货号：" + String(describing: self.sellModel.num_iid)
         self.colorLabel.text = "款式颜色：" + self.sellModel.color
         self.jijieLabel.text = "使用季节：" + self.sellModel.season
         
@@ -47,10 +47,10 @@ class BuyTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.selectionStyle = .None
+        self.selectionStyle = .none
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
